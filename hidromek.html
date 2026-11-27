@@ -1,0 +1,200 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>HİDROMEK – Rsquared Trade</title>
+<meta name="description" content="HİDROMEK backhoe loaders, crawler and wheel excavators, wheel loaders, motor graders and soil compactors, represented in Egypt by Rsquared Trade.">
+
+<link rel="icon" type="image/x-icon" href="assets/images/brand/favicon.ico">
+
+<link rel="stylesheet" href="assets/css/vendor/bootstrap.min.css">
+<link rel="stylesheet" href="assets/css/vendor/fontawesome.min.css">
+<link rel="stylesheet" href="assets/css/main.css">
+<link rel="stylesheet" href="assets/css/catalog.css">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700&display=swap" rel="stylesheet">
+
+<!-- All HİDROMEK model data lives in this one file -->
+<script src="assets/js/data/hidromek.js" defer></script>
+<script src="assets/js/catalog.js" defer></script>
+<script src="assets/js/site.js" defer></script>
+<!-- Before first paint: theme (saved choice, else system setting) and the loader -->
+<script>(function(){var d=document.documentElement,t;try{t=localStorage.getItem('rs-theme')}catch(e){}if(t!=='light'&&t!=='dark')t=window.matchMedia&&matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';d.setAttribute('data-theme',t);d.classList.add('js-loading')})();</script>
+</head>
+
+<body class="catalog-page">
+<!-- =========================
+	LOADER
+============================== -->
+<div class="rs-loader" data-loader aria-hidden="true">
+	<div class="rs-loader__inner">
+		<img class="rs-loader__logo" src="assets/images/brand/logo-light.webp" alt="" width="137" height="180">
+		<p class="rs-loader__name">Rsquared <span>Trade</span></p>
+		<div class="rs-loader__progress"><div class="rs-loader__bar"><span data-loader-progress></span></div><span class="rs-loader__percent" data-loader-percent>0%</span></div>
+		<p class="rs-loader__tag"><span>Crushers</span><span>Asphalt plants</span><span>Paving equipment</span></p>
+	</div>
+	<div class="rs-loader__edge"></div>
+</div>
+
+<a class="visually-hidden-focusable position-absolute top-0 start-0 m-2 p-2 bg-white text-dark" style="z-index:2000" href="#catalog">Skip to products</a>
+
+<!-- =========================
+	NAVBAR SECTION
+============================== -->
+<nav class="rs-nav" data-nav aria-label="Main navigation">
+	<div class="container rs-nav__inner">
+		<a class="rs-nav__brand" href="index.html" aria-label="Rsquared Trade – home">
+			<span class="rs-nav__mark">
+				<img class="logo-light" src="assets/images/brand/logo-light.webp" alt="Rsquared Trade" width="137" height="180">
+				<img class="logo-dark" src="assets/images/brand/logo-dark.webp" alt="" aria-hidden="true" width="137" height="180">
+			</span>
+			<span class="rs-brand-text" aria-hidden="true">
+				<span class="rs-brand-text__name">Rsquared <em>Trade</em></span>
+				<span class="rs-brand-text__tag">Heavy equipment &amp; plants</span>
+			</span>
+		</a>
+
+		<button class="rs-theme-toggle" type="button" data-theme-toggle aria-label="Switch to dark theme">
+			<i class="fas fa-moon" aria-hidden="true"></i><i class="fas fa-sun" aria-hidden="true"></i>
+		</button>
+
+		<button class="rs-nav__toggle" type="button" aria-controls="rs-nav-menu" aria-expanded="false" aria-label="Open menu" data-nav-toggle>
+			<span></span><span></span><span></span>
+		</button>
+
+		<div class="rs-nav__collapse" id="rs-nav-menu">
+			<ul class="rs-nav__menu">
+				<li><a class="rs-nav__link" href="index.html">Home</a></li>
+				<li><a class="rs-nav__link" href="index.html#about">About Us</a></li>
+				<li><a class="rs-nav__link is-active" href="index.html#brand">Brands</a></li>
+				<li><a class="rs-nav__link" href="index.html#location">Location</a></li>
+				<li><a class="rs-nav__link" href="index.html#contact">Contact Us</a></li>
+			</ul>
+			<div class="rs-nav__actions">
+				<a class="rs-nav__phone" href="tel:+20244875070"><i class="fas fa-phone-alt" aria-hidden="true"></i><span>+20 2 4487 5070</span></a>
+				<a class="rs-btn rs-btn--accent rs-btn--sm" href="index.html?brand=HİDROMEK#contact">Get a Quote</a>
+			</div>
+		</div>
+	</div>
+</nav>
+
+<!-- =========================
+	PAGE HEADER (filled in by assets/js/catalog.js for the selected category)
+============================== -->
+<header class="catalog-hero">
+	<div class="container catalog-hero__inner">
+		<div class="catalog-hero__text">
+			<ol class="catalog-crumbs" aria-label="Breadcrumb" data-crumbs>
+				<li><a href="index.html">Home</a></li>
+				<li><a href="index.html#brand">Brands</a></li>
+				<li aria-current="page">HİDROMEK</li>
+			</ol>
+			<p class="catalog-hero__eyebrow" data-hero-eyebrow>Türkiye &middot; Represented in Egypt by Rsquared Trade</p>
+			<h1 class="catalog-hero__title" data-hero-title>HİDROMEK</h1>
+			<p class="catalog-hero__lead" data-hero-lead>Backhoe loaders, hydraulic excavators, wheel loaders, motor graders and soil compactors, designed and built in Türkiye since 1978.</p>
+			<div class="catalog-hero__stats" data-hero-stats></div>
+		</div>
+		<div class="catalog-hero__visual" data-hero-visual>
+			<span class="catalog-hero__logo"><img src="assets/images/partners/hidromek.png" alt="HİDROMEK" width="465" height="60"></span>
+		</div>
+	</div>
+</header>
+
+<!-- Category tabs -->
+<div class="catalog-tabs" data-tabs-wrap>
+	<div class="container">
+		<nav class="catalog-tabs__list" aria-label="HİDROMEK product lines" data-tabs></nav>
+	</div>
+</div>
+
+<!-- =========================
+	CATALOGUE
+============================== -->
+<main id="catalog" class="catalog">
+	<div class="container">
+		<div class="catalog__toolbar" data-toolbar></div>
+		<div class="catalog__grid" data-grid aria-live="polite"></div>
+		<div class="catalog__video" data-video hidden></div>
+		<noscript><p class="catalog__empty">Please enable JavaScript to browse the HİDROMEK range, or <a href="index.html#contact">contact us</a> for a catalogue.</p></noscript>
+	</div>
+</main>
+
+<!-- Call to action -->
+<section class="catalog-cta">
+	<div class="container">
+		<div class="catalog-cta__box">
+			<div>
+				<h2>Choosing the right machine?</h2>
+				<p>Tell us about your job site and the work you need done, and our team will recommend the right HİDROMEK model.</p>
+			</div>
+			<a class="rs-btn rs-btn--accent" href="index.html?brand=HİDROMEK#contact">Talk to our team <i class="fas fa-arrow-right" aria-hidden="true"></i></a>
+		</div>
+	</div>
+</section>
+
+<!-- =========================
+	FOOTER SECTION
+============================== -->
+<footer class="site-footer">
+	<div class="container">
+		<div class="site-footer__main">
+			<div class="site-footer__about">
+				<a class="site-footer__logo" href="index.html" aria-label="Rsquared Trade – home">
+					<span class="site-footer__mark">
+						<img class="logo-dark" src="assets/images/brand/logo-dark.webp" alt="Rsquared Trade" width="137" height="180" loading="lazy">
+						<img class="logo-light" src="assets/images/brand/logo-light.webp" alt="Rsquared Trade" width="137" height="180" loading="lazy">
+					</span>
+					<span class="rs-brand-text" aria-hidden="true">
+						<span class="rs-brand-text__name">Rsquared <em>Trade</em></span>
+						<span class="rs-brand-text__tag">A Rsquared Holding company</span>
+					</span>
+				</a>
+				<p>Rsquared Trade is part of Rsquared Holding, representing world-leading brands in Egypt: heavy equipment, mobile crushers, attachments, asphalt plants, concrete plants and hardscape machinery.</p>
+			</div>
+
+			<div class="site-footer__col">
+				<h3>Company</h3>
+				<ul>
+					<li><a href="index.html">Home</a></li>
+					<li><a href="index.html#about">About Us</a></li>
+					<li><a href="index.html#brand">Brands</a></li>
+					<li><a href="index.html#contact">Contact Us</a></li>
+				</ul>
+			</div>
+
+			<div class="site-footer__col">
+				<h3>Brands</h3>
+				<ul>
+					<li><a href="mbcrusher.html">MB Crusher</a></li>
+					<li><a href="lintec.html">Lintec &amp; Linnhoff</a></li>
+					<li><a href="optimas.html">Optimas</a></li>
+					<li><a href="hidromek.html">HİDROMEK</a></li>
+				</ul>
+			</div>
+
+			<div class="site-footer__col">
+				<h3>HİDROMEK range</h3>
+				<ul data-footer-range>
+					<li><a href="hidromek.html?type=backhoe-loaders">Backhoe loaders</a></li>
+					<li><a href="hidromek.html?type=crawler-excavators">Crawler excavators</a></li>
+					<li><a href="hidromek.html?type=wheel-excavators">Wheel excavators</a></li>
+					<li><a href="hidromek.html?type=special-purpose-excavators">Special purpose excavators</a></li>
+					<li><a href="hidromek.html?type=wheel-loaders">Wheel loaders</a></li>
+					<li><a href="hidromek.html?type=motor-graders">Motor graders</a></li>
+					<li><a href="hidromek.html?type=soil-compactors">Soil compactors</a></li>
+				</ul>
+			</div>
+		</div>
+
+		<div class="site-footer__bottom">
+			<p>&copy; <span data-year>2026</span> Rsquared Trade &middot; A Rsquared Holding company. All rights reserved.</p>
+			<a class="site-footer__top" href="#">Back to top <i class="fas fa-arrow-up" aria-hidden="true"></i></a>
+		</div>
+	</div>
+</footer>
+
+</body>
+</html>

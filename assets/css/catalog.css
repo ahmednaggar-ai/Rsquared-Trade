@@ -1105,3 +1105,61 @@ a.mb-card__media{ display: block; }
 	.mb-card__variants .mb-card__carrier{ display: block; font-size: .7rem; }
 	.mb-card__variants .mb-card__range{ text-align: left; white-space: normal; }
 }
+
+
+/* ==========================================================================
+   Grouped specifications and "Features & benefits" (e.g. HİDROMEK)
+   ========================================================================== */
+
+/* two flowing columns so a short group (e.g. one line) doesn't leave a gap next to a long one */
+.mb-spec-groups{
+	columns: 2;
+	column-gap: 48px;
+}
+.mb-spec-group{ break-inside: avoid; display: inline-block; width: 100%; }
+.mb-spec-group__title{
+	margin: 18px 0 4px;
+	padding-bottom: 8px;
+	border-bottom: 2px solid var(--rs-accent);
+	font-family: var(--rs-heading-font);
+	font-size: .85rem;
+	font-weight: 700;
+	letter-spacing: .1em;
+	text-transform: uppercase;
+	color: var(--rs-text);
+}
+.mb-specs__table--single{ grid-template-columns: 1fr; }
+.mb-specs__table--single dd{ max-width: 60%; }
+.mb-specs__note a{ color: var(--rs-text); text-decoration: underline; text-decoration-color: var(--rs-accent); text-underline-offset: 3px; }
+
+.mb-sections{ margin-top: 64px; }
+.mb-sections__grid{
+	display: grid;
+	grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+	gap: 20px;
+}
+.mb-section{
+	padding: 24px 26px;
+	border: 1px solid var(--rs-border);
+	border-top: 3px solid var(--rs-accent);
+	border-radius: 14px;
+	background: var(--rs-surface);
+}
+.mb-section__title{
+	margin: 0 0 10px;
+	font-family: var(--rs-heading-font);
+	font-size: 1.02rem;
+	font-weight: 700;
+	color: var(--rs-text);
+}
+.mb-section p{
+	margin: 0 0 8px;
+	font-size: .93rem;
+	line-height: 1.7;
+	color: var(--rs-muted);
+}
+.mb-section p:last-child{ margin-bottom: 0; }
+
+@media (max-width: 991.98px){
+	.mb-spec-groups{ columns: 1; }
+}

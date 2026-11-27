@@ -9,12 +9,13 @@ index.html                 Home page: hero, about, brands, contact
 mbcrusher.html             MB Crusher catalogue (every product line on one page)
 lintec.html                Lintec & Linnhoff asphalt plants (same catalogue engine)
 optimas.html               Optimas paving machines & tools (same catalogue engine)
+hidromek.html              HİDROMEK construction machines (same catalogue engine)
 assets/
   css/
     vendor/                Bootstrap 5 (grid/utilities only) and Font Awesome
     main.css               Shared by every page: tokens, navbar, buttons, footer, scroll reveal
     home.css               index.html only
-    catalog.css            brand catalogue pages (mbcrusher.html, lintec.html, optimas.html)
+    catalog.css            brand catalogue pages (mbcrusher, lintec, optimas, hidromek)
   fonts/fontawesome/       Icon font files used by fontawesome.min.css
   js/
     site.js                Shared: navbar, scroll reveal, footer year, contact form, home hero slideshow
@@ -22,6 +23,7 @@ assets/
     data/mbcrusher.js      All MB Crusher product lines and products
     data/lintec.js         All Lintec & Linnhoff plants (models table, features, photos)
     data/optimas.js        All Optimas products (from optimas.de/en/products: text, specs, photos)
+    data/hidromek.js       All HİDROMEK models (from hidromek.com/europe-EN: highlights, features, grouped specs)
   images/
     brand/                 Rsquared logos + favicon
     partners/              MB Crusher, Lintec & Linnhoff, Optimas logos
@@ -33,6 +35,7 @@ assets/
       icons/               Carrier machine icons (excavator, crane, demolition)
     lintec/                products/ (card photos), gallery/<plant>/
     optimas/<product>/     1.webp (card/main photo) + gallery photos, up to 5 per product
+    hidromek/<model>/      main.webp, photo-N.webp (job site), view-N.webp (360° angles)
 ```
 
 Each page loads: `vendor/*.css` → `main.css` → its own page CSS, then `site.js`.

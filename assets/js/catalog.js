@@ -49,7 +49,7 @@
     if (!id) return BRAND.page;
     return BRAND.page + '?type=' + encodeURIComponent(id) + (model ? '&model=' + encodeURIComponent(model) : '');
   };
-  var hasDetails = function (p) { return !!(p && (p.description || p.specs || p.variants || p.gallery)); };
+  var hasDetails = function (p) { return !!(p && (p.description || p.specs || p.variants || p.gallery || p.sections || p.specGroups)); };
   var countLabel = function (n) { return n + ' ' + (n === 1 ? WORD[0] : WORD[1]).toLowerCase(); };
 
   // "variants" = a model comparison table: { columns: [model names], rows: [{ label, values: [...] }] }
@@ -133,7 +133,9 @@
         for (var i = 0; i < (m.specs || []).length; i++) if (m.specs[i].label.toLowerCase() === label) return m.specs[i].value.length <= 18 ? m.specs[i].value : null;
         return null;
       };
-      el.stats.innerHTML = m.variants
+      el.stats.innerHTML = m.highlights && m.highlights.length
+        ? m.highlights.slice(0, 3).map(function (h) { return stat(h.value, h.label); }).join('')
+        : m.variants
         ? stat(m.variants.columns.length, m.variants.columns.length === 1 ? 'Model' : 'Models') +
           (variantRange(m, 'capacity') ? stat(variantRange(m, 'capacity'), 'Capacity') : '') +
           (variantRange(m, 'batch size') ? stat(variantRange(m, 'batch size'), 'Batch size') : '')
@@ -284,6 +286,11 @@
         '<li><span class="mb-card__carrier">' + 'Models' + '</span><span class="mb-card__range">' + esc(p.variants.columns.join(' · ')) + '</span></li>' +
         (cap ? '<li><span class="mb-card__carrier">Capacity</span><span class="mb-card__range">' + esc(cap) + '</span></li>' : '') +
         '</ul>';
+    } else if (p.highlights && p.highlights.length) {
+      // headline figures chosen in the data file (e.g. weight, power, bucket capacity)
+      specs = '<ul class="mb-card__carriers mb-card__variants">' + p.highlights.slice(0, 3).map(function (h) {
+        return '<li><span class="mb-card__carrier">' + esc(h.label) + '</span><span class="mb-card__range">' + esc(h.value) + '</span></li>';
+      }).join('') + '</ul>';
     } else if (p.specs && p.specs.length) {
       // generic products: the first two short specs (long free-text values are left to the detail page)
       var short = p.specs.filter(function (s) { return s.value.length <= 32; }).slice(0, 2);
@@ -381,6 +388,36 @@
           p.features.map(function (f) { return '<li>' + esc(f) + '</li>'; }).join('') + '</ul>'
       : '';
 
+    // grouped technical specs (e.g. Engine / Hydraulic system / Working dimensions)
+    if (p.specGroups && p.specGroups.length) {
+      specs +=
+        '<section class="mb-specs" aria-labelledby="mb-groups-title">' +
+          '<h2 class="mb-specs__title" id="mb-groups-title">Technical specifications</h2>' +
+          '<div class="mb-spec-groups">' + p.specGroups.map(function (g) {
+            return '<div class="mb-spec-group">' +
+              '<h3 class="mb-spec-group__title">' + esc(g.title) + '</h3>' +
+              '<dl class="mb-specs__table mb-specs__table--single">' + g.specs.map(function (s) {
+                return '<div><dt>' + esc(s.label) + '</dt><dd>' + esc(s.value) + '</dd></div>';
+              }).join('') + '</dl>' +
+            '</div>';
+          }).join('') + '</div>' +
+          (c.specNote ? '<p class="mb-specs__note"><i class="fas fa-info-circle" aria-hidden="true"></i> ' + esc(c.specNote) + '</p>' : '') +
+          (p.source ? '<p class="mb-specs__note"><i class="fas fa-external-link-alt" aria-hidden="true"></i> Specifications from the manufacturer; <a href="' + esc(p.source) + '" target="_blank" rel="noopener">see the official page</a>.</p>' : '') +
+        '</section>';
+    }
+    // "Features & benefits": titled text blocks, shown as cards under the main details
+    var sections = p.sections && p.sections.length
+      ? '<section class="mb-sections" aria-labelledby="mb-sections-title">' +
+          '<h2 class="mb-specs__title" id="mb-sections-title">Features &amp; benefits</h2>' +
+          '<div class="mb-sections__grid">' + p.sections.map(function (s) {
+            return '<article class="mb-section">' +
+              (s.title ? '<h3 class="mb-section__title">' + esc(s.title) + '</h3>' : '') +
+              s.text.map(function (t) { return '<p>' + esc(t) + '</p>'; }).join('') +
+            '</article>';
+          }).join('') + '</div>' +
+        '</section>'
+      : '';
+
     // accessories: "It's available for …" repeats what the "Works with" chips already say
     var avail = /\bavailable for\b/i;
     var tagline = p.fits && avail.test(p.tagline || '') ? '' : p.tagline;
@@ -398,6 +435,11 @@
           '<h2 class="mb-detail__name">' + esc(p.name) + '</h2>' +
           (tagline ? '<p class="mb-detail__tagline">' + esc(tagline) + '</p>' : '') +
           carriers +
+          (p.highlights && p.highlights.length
+            ? '<ul class="mb-card__carriers mb-detail__carriers mb-card__variants">' + p.highlights.map(function (h) {
+                return '<li><span class="mb-card__carrier">' + esc(h.label) + '</span><span class="mb-card__range">' + esc(h.value) + '</span></li>';
+              }).join('') + '</ul>'
+            : '') +
           (p.fits ? '<p class="mb-detail__fits"><span>Works with</span>' +
             (p.fits.indexOf('all') !== -1 ? ['All ' + BRAND.name + ' units'] : p.fits.map(function (f) { var x = byId(f); return x ? x.name : f; }))
               .map(function (n) { return '<em>' + esc(n) + '</em>'; }).join('') + '</p>' : '') +
@@ -410,6 +452,7 @@
           '</div>' +
         '</div>' +
       '</div>' +
+      sections +
       specs +
       (withDetails.length > 1
         ? '<nav class="mb-pager" aria-label="Other models">' +
