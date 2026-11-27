@@ -381,18 +381,18 @@ html{ scroll-padding-top: var(--rs-nav-offset); }
 .rs-nav.is-open .rs-brand-text__tag{ color: var(--rs-subtle); }
 /* medium screens: keep the name, drop the tagline so the menu still fits */
 @media (min-width: 992px) and (max-width: 1199.98px){
-	.rs-nav__inner{ gap: 16px; }
-	.rs-nav__collapse{ gap: 16px; }
-	.rs-nav__brand{ gap: 10px; }
-	.rs-brand-text{ padding-left: 10px; }
-	.rs-brand-text__tag{ display: none; }
-	.rs-brand-text__name{ font-size: 1.05rem; }
+	html .rs-nav__inner{ gap: 16px; }
+	html .rs-nav__collapse{ gap: 16px; }
+	html .rs-nav__brand{ gap: 10px; }
+	html .rs-brand-text{ padding-left: 10px; }
+	html .rs-brand-text__tag{ display: none; }
+	html .rs-brand-text__name{ font-size: 1.05rem; }
 	/* the container is only 960px here: compact links so brand + menu + quote + theme fit on one line */
-	.rs-nav .rs-nav__link{ padding-left: 7px; padding-right: 7px; font-size: .72rem; letter-spacing: .04em; white-space: nowrap; }
-	.rs-nav .rs-nav__link::after{ left: 7px; right: 7px; }
-	.rs-nav__phone{ display: none; }   /* "Contact Us" is in the menu */
-	.rs-nav__actions .rs-btn--sm{ padding: 10px 14px; }
-	.rs-theme-toggle{ width: 36px; height: 36px; }
+	html .rs-nav .rs-nav__link{ padding-left: 7px; padding-right: 7px; font-size: .72rem; letter-spacing: .04em; white-space: nowrap; }
+	html .rs-nav .rs-nav__link::after{ left: 7px; right: 7px; }
+	html .rs-nav__phone{ display: none; }   /* "Contact Us" is in the menu */
+	html .rs-nav__actions .rs-btn--sm{ padding: 10px 14px; }
+	html .rs-theme-toggle{ width: 36px; height: 36px; }
 }
 .rs-nav.is-scrolled .logo-light,
 .rs-nav.is-open .logo-light{ opacity: 0; }
