@@ -312,15 +312,22 @@ html{ scroll-padding-top: var(--rs-nav-offset); }
 	gap: 24px;
 }
 
-/* brand */
+/* brand: logo + "Rsquared Trade" wordmark */
 .rs-nav__brand{
-	position: relative;
+	display: flex;
+	align-items: center;
+	gap: 14px;
+	flex-shrink: 0;
+	text-decoration: none;
+}
+.rs-nav__mark{
+	position: relative;   /* the dark logo is stacked on top of the light one */
 	display: block;
 	flex-shrink: 0;
 	line-height: 0;
 }
 .rs-nav__brand img{
-	height: 64px;
+	height: 56px;
 	width: auto;
 	transition: height .35s ease, opacity .25s ease;
 }
@@ -330,7 +337,58 @@ html{ scroll-padding-top: var(--rs-nav-offset); }
 	opacity: 0;
 }
 .rs-nav.is-scrolled .rs-nav__brand img,
-.rs-nav.is-open .rs-nav__brand img{ height: 50px; }
+.rs-nav.is-open .rs-nav__brand img{ height: 46px; }
+
+/* wordmark (navbar + footer) */
+.rs-brand-text{
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	gap: 5px;
+	padding-left: 14px;
+	border-left: 1px solid rgba(255,255,255,.28);
+	line-height: 1;
+	white-space: nowrap;
+	transition: border-color .35s ease;
+}
+.rs-brand-text__name{
+	font-family: var(--rs-heading-font);
+	font-size: max(1.2rem, 15px);   /* phones scale rem down to 70%: keep it readable */
+	font-weight: 700;
+	letter-spacing: .01em;
+	color: #fff;
+	transition: color .35s ease;
+}
+.rs-brand-text__name em{
+	font-style: normal;
+	color: var(--rs-accent);
+}
+.rs-brand-text__tag{
+	font-size: max(.62rem, 8.5px);
+	font-weight: 700;
+	letter-spacing: .2em;
+	text-transform: uppercase;
+	color: rgba(255,255,255,.62);
+	transition: color .35s ease;
+}
+.rs-nav.is-scrolled .rs-brand-text,
+.rs-nav.is-open .rs-brand-text{ border-left-color: var(--rs-border-strong); }
+.rs-nav.is-scrolled .rs-brand-text__name,
+.rs-nav.is-open .rs-brand-text__name{ color: var(--rs-text); }
+.rs-nav.is-scrolled .rs-brand-text__name em,
+.rs-nav.is-open .rs-brand-text__name em{ color: var(--rs-accent-text); }
+.rs-nav.is-scrolled .rs-brand-text__tag,
+.rs-nav.is-open .rs-brand-text__tag{ color: var(--rs-subtle); }
+/* medium screens: keep the name, drop the tagline so the menu still fits */
+@media (min-width: 992px) and (max-width: 1199.98px){
+	.rs-nav__inner{ gap: 16px; }
+	.rs-nav__collapse{ gap: 16px; }
+	.rs-nav__brand{ gap: 10px; }
+	.rs-brand-text{ padding-left: 10px; }
+	.rs-brand-text__tag{ display: none; }
+	.rs-nav .rs-nav__link{ padding-left: 8px; padding-right: 8px; letter-spacing: .05em; white-space: nowrap; }
+	.rs-nav__phone{ display: none; }   /* "Contact Us" is in the menu; keeps the quote button and theme switch clear */
+}
 .rs-nav.is-scrolled .logo-light,
 .rs-nav.is-open .logo-light{ opacity: 0; }
 .rs-nav.is-scrolled .logo-dark,
@@ -511,9 +569,11 @@ html{ scroll-padding-top: var(--rs-nav-offset); }
 }
 @media (max-width: 991.98px){
 	.rs-nav{ padding: 12px 0; }
-	.rs-nav__brand img{ height: 52px; }
+	.rs-nav__brand{ gap: 10px; }
+	.rs-nav__brand img{ height: 46px; }
 	.rs-nav.is-scrolled .rs-nav__brand img,
-	.rs-nav.is-open .rs-nav__brand img{ height: 44px; }
+	.rs-nav.is-open .rs-nav__brand img{ height: 40px; }
+	.rs-brand-text{ padding-left: 10px; gap: 4px; }
 	.rs-nav__toggle{ display: block; margin-left: 4px; }
 	.rs-theme-toggle{ order: 0; margin-left: auto; }
 	.rs-nav__collapse{
@@ -617,14 +677,21 @@ footer.site-footer{
 	border-top: 1px solid var(--rs-border);
 }
 .site-footer__logo{
-	display: inline-block;
-	margin-bottom: 18px;
-	line-height: 0;
+	display: inline-flex;
+	align-items: center;
+	gap: 16px;
+	margin-bottom: 20px;
+	text-decoration: none;
 }
+.site-footer__mark{ display: block; line-height: 0; flex-shrink: 0; }
 .site-footer__logo img{
 	height: 64px;
 	width: auto;
 }
+.site-footer__logo .rs-brand-text{ border-left-color: var(--rs-border-strong); padding-left: 16px; }
+.site-footer__logo .rs-brand-text__name{ font-size: 1.35rem; color: var(--rs-text); }
+.site-footer__logo .rs-brand-text__name em{ color: var(--rs-accent-text); }
+.site-footer__logo .rs-brand-text__tag{ color: var(--rs-subtle); }
 .site-footer__about p{
 	max-width: 360px;
 	margin: 0;
