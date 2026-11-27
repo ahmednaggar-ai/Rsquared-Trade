@@ -49,7 +49,8 @@ window.CATALOG = {
     crane:      { label: "Crane"             , icon: "assets/images/mbcrusher/icons/crane.webp" },
     demolition: { label: "Demolition machine", icon: "assets/images/mbcrusher/icons/demolition.webp" },
     backhoe:    { label: "Backhoe loader"    , icon: "assets/images/mbcrusher/icons/backhoe.svg" },
-    skid:       { label: "Skid steer loader" , icon: "assets/images/mbcrusher/icons/skid.svg" }
+    skid:       { label: "Skid steer loader" , icon: "assets/images/mbcrusher/icons/skid.svg" },
+    loader:     { label: "Wheel loader"      , icon: "assets/images/mbcrusher/icons/loader.svg" }
   },
   categories: [
     {
@@ -75,6 +76,11 @@ window.CATALOG = {
               "type": "excavator",
               "min": 5,
               "max": 8
+            },
+            {
+              "type": "backhoe",
+              "min": 8,
+              "max": 9
             }
           ],
           "description": [
@@ -113,7 +119,31 @@ window.CATALOG = {
             "assets/images/mbcrusher/gallery/c50/3.webp",
             "assets/images/mbcrusher/gallery/c50/4.webp"
           ],
-          "video": "https://www.rsquaredtrade.com/MB/Videos/crusherbucket%20MB-C50.mp4"
+          "video": "https://vimeo.com/302289235",
+          "accessories": [
+            {
+              "name": "The dust supression kit",
+              "id": "the-dust-suppression-kit"
+            },
+            {
+              "name": "Warranty extension gold 24",
+              "id": "warranty-extension-gold-24"
+            },
+            {
+              "name": "Hour meter",
+              "id": "hour-meter"
+            }
+          ],
+          "downloads": [
+            {
+              "label": "Product sheet – metric system",
+              "href": "https://storage.onpage.it/899d82dc0cd439a3f56e4e791a99eb1a6d1db6e7/SchedaProdotto_A4_EU_MB-C50%20S4_EN_Rev20261125.pdf?download=1"
+            },
+            {
+              "label": "Product sheet – imperial system",
+              "href": "https://storage.onpage.it/bb6dc6398c745e568103b5eca04965cce110c0ef/SchedaProdotto_A4_US_MB-C50%20S4_EN_Rev20261125.pdf?download=1"
+            }
+          ]
         },
         {
           "id": "bf60-1-s4",
@@ -164,7 +194,35 @@ window.CATALOG = {
             "assets/images/mbcrusher/gallery/60-1/bf60-1-volvo-portugal-granite-and-marble-hd-640x640.webp",
             "assets/images/mbcrusher/gallery/60-1/mb-c50-kobelco-reunion-inert-material-urban-jobsite-3-640x640.webp"
           ],
-          "video": "https://www.rsquaredtrade.com/MB/Videos/crusherbucket%20BF60.1.mp4"
+          "video": "https://vimeo.com/306792502",
+          "accessories": [
+            {
+              "name": "24 V Iron separator",
+              "id": "24-v-iron-separator"
+            },
+            {
+              "name": "The dust supression kit",
+              "id": "the-dust-suppression-kit"
+            },
+            {
+              "name": "Warranty extension gold 24",
+              "id": "warranty-extension-gold-24"
+            },
+            {
+              "name": "Hour meter",
+              "id": "hour-meter"
+            }
+          ],
+          "downloads": [
+            {
+              "label": "Product sheet – metric system",
+              "href": "https://storage.onpage.it/9e1cfd794fad1739503fdff3694424d7001404c3/SchedaProdotto_A4_EU_BF60.1%20S4_EN_Rev20261125.pdf?download=1"
+            },
+            {
+              "label": "Product sheet – imperial system",
+              "href": "https://storage.onpage.it/f258547ee84eef9d26a71de4e0e5fe5601397102/SchedaProdotto_A4_US_BF60.1%20S4_EN_Rev20261125.pdf?download=1"
+            }
+          ]
         },
         {
           "id": "bf70-2-s4",
@@ -214,7 +272,35 @@ window.CATALOG = {
             "assets/images/mbcrusher/gallery/70-2/3.webp",
             "assets/images/mbcrusher/gallery/70-2/4.webp"
           ],
-          "video": "https://www.rsquaredtrade.com/MB/Videos/crusherbucket%20BF70.2.mp4"
+          "video": "https://vimeo.com/336801282",
+          "accessories": [
+            {
+              "name": "24 V Iron separator",
+              "id": "24-v-iron-separator"
+            },
+            {
+              "name": "The dust supression kit",
+              "id": "the-dust-suppression-kit"
+            },
+            {
+              "name": "Warranty extension gold 24",
+              "id": "warranty-extension-gold-24"
+            },
+            {
+              "name": "Hour meter",
+              "id": "hour-meter"
+            }
+          ],
+          "downloads": [
+            {
+              "label": "Product sheet – metric system",
+              "href": "https://storage.onpage.it/5c8ddc04f702099343a9484177781963ff24282d/SchedaProdotto_A4_EU_BF70.2%20S4_EN_Rev20261125.pdf?download=1"
+            },
+            {
+              "label": "Product sheet – imperial system",
+              "href": "https://storage.onpage.it/7f360c35de39301ac1c39ef874aac429085770c6/SchedaProdotto_A4_US_BF70.2%20S4_EN_Rev20261125.pdf?download=1"
+            }
+          ]
         },
         {
           "id": "bf80-3-s4",
@@ -263,7 +349,35 @@ window.CATALOG = {
             "assets/images/mbcrusher/gallery/80-3/bf80-3-with-iron-separator-france-sleepers-640x640.webp",
             "assets/images/mbcrusher/gallery/80-3/mb-c50-kobelco-reunion-inert-material-urban-jobsite-3-640x640.webp"
           ],
-          "video": "https://www.rsquaredtrade.com/MB/Videos/crusherbucket%20BF80.3.mp4"
+          "video": "https://vimeo.com/339508579",
+          "accessories": [
+            {
+              "name": "24 V Iron separator",
+              "id": "24-v-iron-separator"
+            },
+            {
+              "name": "The dust supression kit",
+              "id": "the-dust-suppression-kit"
+            },
+            {
+              "name": "Warranty extension gold 24",
+              "id": "warranty-extension-gold-24"
+            },
+            {
+              "name": "Hour meter",
+              "id": "hour-meter"
+            }
+          ],
+          "downloads": [
+            {
+              "label": "Product sheet – metric system",
+              "href": "https://storage.onpage.it/ffdb5667bcab6bd91858401d261f52772f133c41/SchedaProdotto_A4_EU_BF80.3%20S4_EN_Rev20261125.pdf?download=1"
+            },
+            {
+              "label": "Product sheet – imperial system",
+              "href": "https://storage.onpage.it/be6bddb9ff4a1a49a2cc893f48728417d628d5ce/SchedaProdotto_A4_US_BF80.3%20S4_EN_Rev20261125.pdf?download=1"
+            }
+          ]
         },
         {
           "id": "bf90-3-s4",
@@ -314,7 +428,35 @@ window.CATALOG = {
             "assets/images/mbcrusher/gallery/80-3/bf80-3-with-iron-separator-france-sleepers-640x640.webp",
             "assets/images/mbcrusher/gallery/80-3/mb-c50-kobelco-reunion-inert-material-urban-jobsite-3-640x640.webp"
           ],
-          "video": "https://www.rsquaredtrade.com/MB/Videos/crusherbucket%20BF90.3.mp4"
+          "video": "https://vimeo.com/339541842",
+          "accessories": [
+            {
+              "name": "24 V Iron separator",
+              "id": "24-v-iron-separator"
+            },
+            {
+              "name": "The dust supression kit",
+              "id": "the-dust-suppression-kit"
+            },
+            {
+              "name": "Warranty extension gold 24",
+              "id": "warranty-extension-gold-24"
+            },
+            {
+              "name": "Hour meter",
+              "id": "hour-meter"
+            }
+          ],
+          "downloads": [
+            {
+              "label": "Product sheet – metric system",
+              "href": "https://storage.onpage.it/51e878c265e9cad12e488e31af9a28616d034abf/SchedaProdotto_A4_EU_BF90.3%20S4_EN_Rev20261125.pdf?download=1"
+            },
+            {
+              "label": "Product sheet – imperial system",
+              "href": "https://storage.onpage.it/899d483ae8da406e671bd257b5cdceb973738c1f/SchedaProdotto_A4_US_BF90.3%20S4_EN_Rev20261125.pdf?download=1"
+            }
+          ]
         },
         {
           "id": "bf120-4-s4",
@@ -364,7 +506,35 @@ window.CATALOG = {
             "assets/images/mbcrusher/gallery/120-4/3.webp",
             "assets/images/mbcrusher/gallery/120-4/4.webp"
           ],
-          "video": "https://www.rsquaredtrade.com/MB/Videos/crusherbucket%20BF120.4.mp4"
+          "video": "https://vimeo.com/344519045",
+          "accessories": [
+            {
+              "name": "24 V Iron separator",
+              "id": "24-v-iron-separator"
+            },
+            {
+              "name": "The dust supression kit",
+              "id": "the-dust-suppression-kit"
+            },
+            {
+              "name": "Warranty extension gold 24",
+              "id": "warranty-extension-gold-24"
+            },
+            {
+              "name": "Hour meter",
+              "id": "hour-meter"
+            }
+          ],
+          "downloads": [
+            {
+              "label": "Product sheet – metric system",
+              "href": "https://storage.onpage.it/d0f83cfda6b068b611a52cbdebac8a737e83862f/SchedaProdotto_A4_EU_BF120.4%20S4_EN_Rev20261125.pdf?download=1"
+            },
+            {
+              "label": "Product sheet – imperial system",
+              "href": "https://storage.onpage.it/05d7122869943267d02aba4413703e5636d2422c/SchedaProdotto_A4_US_BF120.4%20S4_EN_Rev20261125.pdf?download=1"
+            }
+          ]
         },
         {
           "id": "bf135-8",
@@ -414,7 +584,35 @@ window.CATALOG = {
             "assets/images/mbcrusher/gallery/135-8/3.webp",
             "assets/images/mbcrusher/gallery/135-8/4.webp"
           ],
-          "video": "https://www.rsquaredtrade.com/MB/Videos/crusherbucket%20BF135.8.mp4"
+          "video": "https://vimeo.com/344547587",
+          "accessories": [
+            {
+              "name": "24 V Iron separator",
+              "id": "24-v-iron-separator"
+            },
+            {
+              "name": "The dust supression kit",
+              "id": "the-dust-suppression-kit"
+            },
+            {
+              "name": "Warranty extension gold 24",
+              "id": "warranty-extension-gold-24"
+            },
+            {
+              "name": "Hour meter",
+              "id": "hour-meter"
+            }
+          ],
+          "downloads": [
+            {
+              "label": "Product sheet – metric system",
+              "href": "https://storage.onpage.it/54a398f9053a8b3083556ca588532905e8dc908a/SchedaProdotto_A4_EU_BF135.8_EN_Rev20261125.pdf?download=1"
+            },
+            {
+              "label": "Product sheet – imperial system",
+              "href": "https://storage.onpage.it/188145863f1d848ffa049f3bcc39cf205b5cef30/SchedaProdotto_A4_US_BF135.8_EN_Rev20261125.pdf?download=1"
+            }
+          ]
         },
         {
           "id": "bf150-10",
@@ -465,7 +663,27 @@ window.CATALOG = {
             "assets/images/mbcrusher/gallery/150-10/3.webp",
             "assets/images/mbcrusher/gallery/150-10/4.webp"
           ],
-          "video": "https://www.rsquaredtrade.com/MB/Videos/crusherbucket%20BF150.10.mp4"
+          "video": "https://vimeo.com/314443504",
+          "accessories": [
+            {
+              "name": "Warranty extension gold 24",
+              "id": "warranty-extension-gold-24"
+            },
+            {
+              "name": "Hour meter",
+              "id": "hour-meter"
+            }
+          ],
+          "downloads": [
+            {
+              "label": "Product sheet – metric system",
+              "href": "https://storage.onpage.it/f404c61384e8583e2e9c9bfef76720cc896a2886/SchedaProdotto_A4_EU_BF150.10_EN_Rev20261125.pdf?download=1"
+            },
+            {
+              "label": "Product sheet – imperial system",
+              "href": "https://storage.onpage.it/31dc8bc4867200451ad95f076b6d130d40f10c41/SchedaProdotto_A4_US_BF150.10_EN_Rev20261125.pdf?download=1"
+            }
+          ]
         },
         {
           "id": "mb-l120-s2",
@@ -485,6 +703,16 @@ window.CATALOG = {
             },
             {
               "type": "crane",
+              "min": 3,
+              "max": 6
+            },
+            {
+              "type": "backhoe",
+              "min": 5,
+              "max": 9
+            },
+            {
+              "type": "skid",
               "min": 3,
               "max": 6
             }
@@ -530,7 +758,31 @@ window.CATALOG = {
             "assets/images/mbcrusher/gallery/l120/3.webp",
             "assets/images/mbcrusher/gallery/l120/4.webp"
           ],
-          "video": "https://www.rsquaredtrade.com/MB/Videos/crusherbucket%20MB-L120.mp4"
+          "video": "https://vimeo.com/344740413",
+          "accessories": [
+            {
+              "name": "The dust supression kit",
+              "id": "the-dust-suppression-kit"
+            },
+            {
+              "name": "Warranty extension gold 24",
+              "id": "warranty-extension-gold-24"
+            },
+            {
+              "name": "Hour meter",
+              "id": "hour-meter"
+            }
+          ],
+          "downloads": [
+            {
+              "label": "Product sheet – metric system",
+              "href": "https://storage.onpage.it/593ce70c408d4c00281754fc6b903dd76f895e7a/SchedaProdotto_A4_EU_MB-L120%20S2_EN_Rev20261125.pdf?download=1"
+            },
+            {
+              "label": "Product sheet – imperial system",
+              "href": "https://storage.onpage.it/f7f6bf64f5478bf422ebbb85a4bcf438501583b8/SchedaProdotto_A4_US_MB-L120%20S2_EN_Rev20261125.pdf?download=1"
+            }
+          ]
         },
         {
           "id": "mb-l140-s2",
@@ -550,6 +802,16 @@ window.CATALOG = {
             },
             {
               "type": "crane",
+              "min": 3,
+              "max": 6
+            },
+            {
+              "type": "backhoe",
+              "min": 5,
+              "max": 10
+            },
+            {
+              "type": "skid",
               "min": 3,
               "max": 6
             }
@@ -595,7 +857,31 @@ window.CATALOG = {
             "assets/images/mbcrusher/gallery/l140/3.webp",
             "assets/images/mbcrusher/gallery/l140/4.webp"
           ],
-          "video": "https://www.rsquaredtrade.com/MB/Videos/crusherbucket%20MB-L140.mp4"
+          "video": "https://vimeo.com/362735760",
+          "accessories": [
+            {
+              "name": "The dust supression kit",
+              "id": "the-dust-suppression-kit"
+            },
+            {
+              "name": "Warranty extension gold 24",
+              "id": "warranty-extension-gold-24"
+            },
+            {
+              "name": "Hour meter",
+              "id": "hour-meter"
+            }
+          ],
+          "downloads": [
+            {
+              "label": "Product sheet – metric system",
+              "href": "https://storage.onpage.it/421deb263fba2ec56c1ccac01147c8c76a2612ae/SchedaProdotto_A4_EU_MB-L140%20S2_EN_Rev20261125.pdf?download=1"
+            },
+            {
+              "label": "Product sheet – imperial system",
+              "href": "https://storage.onpage.it/2ce98b5f001cc9169f2f3de7bc4be44c38c00677/SchedaProdotto_A4_US_MB-L140%20S2_EN_Rev20261125.pdf?download=1"
+            }
+          ]
         },
         {
           "id": "mb-l160-s2",
@@ -616,6 +902,16 @@ window.CATALOG = {
             {
               "type": "crane",
               "min": 4.5,
+              "max": 7
+            },
+            {
+              "type": "backhoe",
+              "min": 7,
+              "max": 11
+            },
+            {
+              "type": "skid",
+              "min": 5,
               "max": 7
             }
           ],
@@ -660,7 +956,31 @@ window.CATALOG = {
             "assets/images/mbcrusher/gallery/l160/4.webp",
             "assets/images/mbcrusher/gallery/l160/mb-l160-4-640x640.webp"
           ],
-          "video": "https://www.rsquaredtrade.com/MB/Videos/crusherbucket%20MB-L160.mp4"
+          "video": "https://vimeo.com/1009820434",
+          "accessories": [
+            {
+              "name": "The dust supression kit",
+              "id": "the-dust-suppression-kit"
+            },
+            {
+              "name": "Warranty extension gold 24",
+              "id": "warranty-extension-gold-24"
+            },
+            {
+              "name": "Hour meter",
+              "id": "hour-meter"
+            }
+          ],
+          "downloads": [
+            {
+              "label": "Product sheet – metric system",
+              "href": "https://storage.onpage.it/8e91a6f1cb54463757113b8ec7632e5ad6fd5595/SchedaProdotto_A4_EU_MB-L160%20S2_EN_Rev20261125.pdf?download=1"
+            },
+            {
+              "label": "Product sheet – imperial system",
+              "href": "https://storage.onpage.it/e0e5a60d01c3fa2b6bc689abf931bd1a75735b56/SchedaProdotto_A4_US_MB-L160%20S2_EN_Rev20261125.pdf?download=1"
+            }
+          ]
         },
         {
           "id": "mb-l200-s2",
@@ -680,6 +1000,16 @@ window.CATALOG = {
             },
             {
               "type": "crane",
+              "min": 6,
+              "max": 8
+            },
+            {
+              "type": "backhoe",
+              "min": 7,
+              "max": 12
+            },
+            {
+              "type": "skid",
               "min": 6,
               "max": 8
             }
@@ -725,7 +1055,31 @@ window.CATALOG = {
             "assets/images/mbcrusher/gallery/l200/3.webp",
             "assets/images/mbcrusher/gallery/l200/4.webp"
           ],
-          "video": "https://www.rsquaredtrade.com/MB/Videos/crusherbucket%20MB-L200.mp4"
+          "video": "https://vimeo.com/344767365",
+          "accessories": [
+            {
+              "name": "The dust supression kit",
+              "id": "the-dust-suppression-kit"
+            },
+            {
+              "name": "Warranty extension gold 24",
+              "id": "warranty-extension-gold-24"
+            },
+            {
+              "name": "Hour meter",
+              "id": "hour-meter"
+            }
+          ],
+          "downloads": [
+            {
+              "label": "Product sheet – metric system",
+              "href": "https://storage.onpage.it/0dfafe96f01cfda40af8587a35b7239f3eb3f188/SchedaProdotto_A4_EU_MB-L200%20S2_EN_Rev20261125.pdf?download=1"
+            },
+            {
+              "label": "Product sheet – imperial system",
+              "href": "https://storage.onpage.it/d4ecf9c1ff085a4e2e8eb9a11df5d125a27a91a5/SchedaProdotto_A4_US_MB-L200%20S2_EN_Rev20261125.pdf?download=1"
+            }
+          ]
         }
       ]
     },
@@ -752,6 +1106,16 @@ window.CATALOG = {
               "type": "excavator",
               "min": 6.5,
               "max": 11
+            },
+            {
+              "type": "backhoe",
+              "min": 8,
+              "max": 15
+            },
+            {
+              "type": "loader",
+              "min": 8,
+              "max": 15
             }
           ],
           "description": [
@@ -786,7 +1150,27 @@ window.CATALOG = {
             "assets/images/mbcrusher/gallery/screening-buckets/screenbucket/3.webp",
             "assets/images/mbcrusher/gallery/screening-buckets/screenbucket/4.webp"
           ],
-          "video": "https://www.rsquaredtrade.com/MB/Videos/screeningbucket%20%20LS170.mp4"
+          "video": "https://vimeo.com/334890979",
+          "accessories": [
+            {
+              "name": "Warranty extension gold 24",
+              "id": "warranty-extension-gold-24"
+            },
+            {
+              "name": "Hour meter",
+              "id": "hour-meter"
+            }
+          ],
+          "downloads": [
+            {
+              "label": "Product sheet – metric system",
+              "href": "https://storage.onpage.it/388f43ed70818dbcb33389b15b590c8557b17234/SchedaProdotto_A4_EU_MB-LS170%20S2_EN_Rev20261125.pdf?download=1"
+            },
+            {
+              "label": "Product sheet – imperial system",
+              "href": "https://storage.onpage.it/d4ce42e2b238d4ee47436c58805e85bef784e55a/SchedaProdotto_A4_US_MB-LS170%20S2_EN_Rev20261125.pdf?download=1"
+            }
+          ]
         },
         {
           "id": "mb-ls220-s2",
@@ -802,6 +1186,11 @@ window.CATALOG = {
             {
               "type": "excavator",
               "min": 12,
+              "max": 25
+            },
+            {
+              "type": "loader",
+              "min": 15,
               "max": 25
             }
           ],
@@ -837,7 +1226,27 @@ window.CATALOG = {
             "assets/images/mbcrusher/gallery/screening-buckets/ls200/2.webp",
             "assets/images/mbcrusher/gallery/screening-buckets/ls200/3.webp"
           ],
-          "video": "https://www.rsquaredtrade.com/MB/Videos/screeningbucket%20LS220.mp4"
+          "video": "https://vimeo.com/316053732",
+          "accessories": [
+            {
+              "name": "Warranty extension gold 24",
+              "id": "warranty-extension-gold-24"
+            },
+            {
+              "name": "Hour meter",
+              "id": "hour-meter"
+            }
+          ],
+          "downloads": [
+            {
+              "label": "Product sheet – metric system",
+              "href": "https://storage.onpage.it/31e35e801d2000f564e1582204a8321f0214e04f/SchedaProdotto_A4_EU_MB-LS220%20S2_EN_Rev20261125.pdf?download=1"
+            },
+            {
+              "label": "Product sheet – imperial system",
+              "href": "https://storage.onpage.it/d6b150ee8e28382a74e74132ba55e6a41e7309eb/SchedaProdotto_A4_US_MB-LS220%20S2_EN_Rev20261125.pdf?download=1"
+            }
+          ]
         },
         {
           "id": "mb-s10-s4",
@@ -853,6 +1262,11 @@ window.CATALOG = {
             {
               "type": "excavator",
               "min": 4,
+              "max": 9
+            },
+            {
+              "type": "backhoe",
+              "min": 8,
               "max": 9
             }
           ],
@@ -889,7 +1303,31 @@ window.CATALOG = {
             "assets/images/mbcrusher/gallery/screening-buckets/s10/3.webp",
             "assets/images/mbcrusher/gallery/screening-buckets/s10/4.webp"
           ],
-          "video": "https://www.rsquaredtrade.com/MB/Videos/screeningbucket%20S10.mp4"
+          "video": "https://vimeo.com/335379117",
+          "accessories": [
+            {
+              "name": "Warranty extension gold 24",
+              "id": "warranty-extension-gold-24"
+            },
+            {
+              "name": "Hour meter",
+              "id": "hour-meter"
+            },
+            {
+              "name": "Basket protection kit",
+              "id": "basket-protection-kit"
+            }
+          ],
+          "downloads": [
+            {
+              "label": "Product sheet – metric system",
+              "href": "https://storage.onpage.it/1a013573d5fe080227d7ba141be8e1cdcd261fbc/SchedaProdotto_A4_EU_MB-S10%20S4_EN_Rev20261125.pdf?download=1"
+            },
+            {
+              "label": "Product sheet – imperial system",
+              "href": "https://storage.onpage.it/ef980c46c01cbcab616e194727c9ee9292f4ecac/SchedaProdotto_A4_US_MB-S10%20S4_EN_Rev20261125.pdf?download=1"
+            }
+          ]
         },
         {
           "id": "mb-s14-s4",
@@ -936,7 +1374,35 @@ window.CATALOG = {
             "assets/images/mbcrusher/gallery/screening-buckets/s14/3.webp",
             "assets/images/mbcrusher/gallery/screening-buckets/s14/4.webp"
           ],
-          "video": "https://www.rsquaredtrade.com/MB/Videos/screeningbucket%20S14.mp4"
+          "video": "https://vimeo.com/284365219",
+          "accessories": [
+            {
+              "name": "The dust supression kit",
+              "id": "the-dust-suppression-kit"
+            },
+            {
+              "name": "Warranty extension gold 24",
+              "id": "warranty-extension-gold-24"
+            },
+            {
+              "name": "Hour meter",
+              "id": "hour-meter"
+            },
+            {
+              "name": "Basket protection kit",
+              "id": "basket-protection-kit"
+            }
+          ],
+          "downloads": [
+            {
+              "label": "Product sheet – metric system",
+              "href": "https://storage.onpage.it/d87983a720489c69c86ef09eacceb9ed940fb903/SchedaProdotto_A4_EU_MB-S14%20S4_EN_Rev20261125.pdf?download=1"
+            },
+            {
+              "label": "Product sheet – imperial system",
+              "href": "https://storage.onpage.it/8d8caf22c3a165172926799606c623222d4adf92/SchedaProdotto_A4_US_MB-S14%20S4_EN_Rev20261125.pdf?download=1"
+            }
+          ]
         },
         {
           "id": "mb-s18-s4",
@@ -983,7 +1449,35 @@ window.CATALOG = {
             "assets/images/mbcrusher/gallery/screening-buckets/s18/3.webp",
             "assets/images/mbcrusher/gallery/screening-buckets/s18/4.webp"
           ],
-          "video": "https://www.rsquaredtrade.com/MB/Videos/screeningbucket%20S18.mp4"
+          "video": "https://vimeo.com/365212397",
+          "accessories": [
+            {
+              "name": "The dust supression kit",
+              "id": "the-dust-suppression-kit"
+            },
+            {
+              "name": "Warranty extension gold 24",
+              "id": "warranty-extension-gold-24"
+            },
+            {
+              "name": "Hour meter",
+              "id": "hour-meter"
+            },
+            {
+              "name": "Basket protection kit",
+              "id": "basket-protection-kit"
+            }
+          ],
+          "downloads": [
+            {
+              "label": "Product sheet – metric system",
+              "href": "https://storage.onpage.it/132627a47c1beee3f073261b26a36c05336b6393/SchedaProdotto_A4_EU_MB-S18%20S4_EN_Rev20261125.pdf?download=1"
+            },
+            {
+              "label": "Product sheet – imperial system",
+              "href": "https://storage.onpage.it/2027af50fee3b81135781b89b78a9552b8ccd3a8/SchedaProdotto_A4_US_MB-S18%20S4_EN_Rev20261125.pdf?download=1"
+            }
+          ]
         },
         {
           "id": "mb-s23",
@@ -1022,7 +1516,38 @@ window.CATALOG = {
             "assets/images/mbcrusher/gallery/screening-buckets/s23/2.webp",
             "assets/images/mbcrusher/gallery/screening-buckets/s23/3.webp"
           ],
-          "video": "https://www.rsquaredtrade.com/MB/Videos/screeningbucket%20S23.mp4"
+          "video": "https://vimeo.com/348139195",
+          "carriers": [
+            {
+              "type": "excavator",
+              "min": 35,
+              "max": 50
+            }
+          ],
+          "accessories": [
+            {
+              "name": "The dust supression kit",
+              "id": "the-dust-suppression-kit"
+            },
+            {
+              "name": "Warranty extension gold 24",
+              "id": "warranty-extension-gold-24"
+            },
+            {
+              "name": "Hour meter",
+              "id": "hour-meter"
+            }
+          ],
+          "downloads": [
+            {
+              "label": "Product sheet – metric system",
+              "href": "https://storage.onpage.it/a88b6612e98d215116575733da8c49fdaa6e5e82/SchedaProdotto_A4_EU_MB-S23_EN_Rev20261125.pdf?download=1"
+            },
+            {
+              "label": "Product sheet – imperial system",
+              "href": "https://storage.onpage.it/f0472ce8154dd99d3165f022d54c1b3c8e44ae99/SchedaProdotto_A4_US_MB-S23_EN_Rev20261125.pdf?download=1"
+            }
+          ]
         }
       ]
     },
@@ -1034,6 +1559,439 @@ window.CATALOG = {
       icon: "assets/images/mbcrusher/categories/shaft-screeners.webp",
       specNote: "The hydraulic flow and pressure must both meet the required parameters.",
       products: [
+        {
+          "id": "mb-hds207",
+          "name": "MB-HDS207",
+          "image": "assets/images/mbcrusher/products/shaft-screeners/mb-hds207.webp",
+          "carriers": [
+            {
+              "type": "excavator",
+              "min": 1.3,
+              "max": 2.8
+            },
+            {
+              "type": "backhoe",
+              "min": 3,
+              "max": 4
+            }
+          ],
+          "description": [
+            "Weighing 98 kg, the unit is suitable for mini excavators with an operating weight ranging from 1.3 to 2.8 tons.",
+            "Optimally designed to collect and process material.",
+            "The coupler’s connection is located in the centre of the machine and is lower compared to the rest of the structure. This design creates less stress on the frame, improving manoeuvrability and more precision when processing material. The design also increases productivity.",
+            "The gears are protected, thanks to the fixed cover that shields them from harmful materials (sand, dirt, etc.)",
+            "The welded cover behind the machine protects the bolts and side casings.",
+            "The operator can easily replace the shafts on the job site.",
+            "Maintenance is simple and happens directly on site.",
+            "The shaft holder is included. The unit can be equipped with a kit that increases the unit’s load capacity, which goes from 50l to 60l.",
+            "Note: Only compatible with the rear (backhoe) boom of a backhoe loader.",
+            "Note: The package includes an RQ Shaft Kit. The weight may vary based on the installed kit."
+          ],
+          "specs": [
+            {
+              "label": "Oil flow rate",
+              "value": "25–35 L/min"
+            },
+            {
+              "label": "Load capacity",
+              "value": "0.05 m³"
+            },
+            {
+              "label": "Weight",
+              "value": "98 kg"
+            },
+            {
+              "label": "Pressure",
+              "value": "200–220 bar"
+            },
+            {
+              "label": "Back pressure",
+              "value": "< 20 bar"
+            }
+          ],
+          "gallery": [
+            "assets/images/mbcrusher/gallery/shaft-screeners/mb-hds207/1.webp",
+            "assets/images/mbcrusher/gallery/shaft-screeners/mb-hds207/2.webp"
+          ],
+          "video": "https://vimeo.com/687148555",
+          "accessories": [
+            {
+              "name": "Warranty extension gold 24",
+              "id": "warranty-extension-gold-24"
+            },
+            {
+              "name": "Shafts holder",
+              "id": "shaft-holder"
+            },
+            {
+              "name": "RQ8 sifting kit",
+              "id": "rq8-sifting-kit"
+            },
+            {
+              "name": "RQ15 sifting kit",
+              "id": "rq15-sifting-kit"
+            },
+            {
+              "name": "RM mixer kit",
+              "id": "rc-mixer-kit"
+            },
+            {
+              "name": "Load capacity increase kit",
+              "id": "load-capacity-increase-kit"
+            }
+          ],
+          "downloads": [
+            {
+              "label": "Product sheet – metric system",
+              "href": "https://storage.onpage.it/f9427d57bcc739293afeac9d651dd199e5e144c0/SchedaProdotto_A4_EU_MB-HDS207_EN_Rev20261125.pdf?download=1"
+            },
+            {
+              "label": "Product sheet – imperial system",
+              "href": "https://storage.onpage.it/0cf3d33f6f426f8135d7e6264ae4785af5ed7eb6/SchedaProdotto_A4_US_MB-HDS207_EN_Rev20261125.pdf?download=1"
+            }
+          ]
+        },
+        {
+          "id": "mb-hds307",
+          "name": "MB-HDS307",
+          "tagline": "For excavators",
+          "image": "assets/images/mbcrusher/products/shaft-screeners/mb-hds307.webp",
+          "carriers": [
+            {
+              "type": "excavator",
+              "min": 2.5,
+              "max": 5
+            },
+            {
+              "type": "backhoe",
+              "min": 4,
+              "max": 6
+            }
+          ],
+          "description": [
+            "The new MB-HDS307 shafts screener for 2.5 to 5 tonne excavators is the ideal attachment for all sites that need to combine efficiency and versatility in a compact piece of equipment. It is perfect for selecting material for covering pipes or trenches and creating the bedding; aerating packed soil; reclaiming and cleaning soils from various demolition debris, stones or roots and moving materials of different types and sizes.",
+            "Note: Only compatible with the rear (backhoe) boom of a backhoe loader.",
+            "Note: The package includes an RQ Shaft Kit. The weight may vary based on the installed kit."
+          ],
+          "specs": [
+            {
+              "label": "Oil flow rate",
+              "value": "25–35 L/min"
+            },
+            {
+              "label": "Load capacity",
+              "value": "0.08 m³"
+            },
+            {
+              "label": "Weight",
+              "value": "170 kg"
+            },
+            {
+              "label": "Pressure",
+              "value": "200–220 bar"
+            },
+            {
+              "label": "Back pressure",
+              "value": "< 20 bar"
+            }
+          ],
+          "accessories": [
+            {
+              "name": "Warranty extension gold 24",
+              "id": "warranty-extension-gold-24"
+            },
+            {
+              "name": "Shafts holder",
+              "id": "shaft-holder"
+            },
+            {
+              "name": "RQ8 sifting kit",
+              "id": "rq8-sifting-kit"
+            },
+            {
+              "name": "RQ15 sifting kit",
+              "id": "rq15-sifting-kit"
+            },
+            {
+              "name": "RM mixer kit",
+              "id": "rc-mixer-kit"
+            }
+          ],
+          "downloads": [
+            {
+              "label": "Product sheet – metric system",
+              "href": "https://storage.onpage.it/fe2fa7f77e97d6560d7ae74a84861dc53ebf2b9a/SchedaProdotto_A4_EU_MB-HDS307_EN_Rev20261125.pdf?download=1"
+            },
+            {
+              "label": "Product sheet – imperial system",
+              "href": "https://storage.onpage.it/1c506e769bed505bf4a87f5ac56b3c2f9f5d5ec3/SchedaProdotto_A4_US_MB-HDS307_EN_Rev20261125.pdf?download=1"
+            }
+          ]
+        },
+        {
+          "id": "mb-hds407",
+          "name": "MB-HDS407",
+          "tagline": "For excavators and backhoe loaders",
+          "image": "assets/images/mbcrusher/products/shaft-screeners/mb-hds407.webp",
+          "carriers": [
+            {
+              "type": "excavator",
+              "min": 3.5,
+              "max": 5.5
+            },
+            {
+              "type": "backhoe",
+              "min": 6,
+              "max": 9
+            }
+          ],
+          "description": [
+            "Note: Only compatible with the rear (backhoe) boom of a backhoe loader.",
+            "Note: The package includes an RQ Shaft Kit. The weight may vary based on the installed kit."
+          ],
+          "specs": [
+            {
+              "label": "Oil flow rate",
+              "value": "25–35 L/min"
+            },
+            {
+              "label": "Load capacity",
+              "value": "0.14 m³"
+            },
+            {
+              "label": "Weight",
+              "value": "280 kg"
+            },
+            {
+              "label": "Pressure",
+              "value": "200–220 bar"
+            },
+            {
+              "label": "Back pressure",
+              "value": "< 20 bar"
+            }
+          ],
+          "gallery": [
+            "assets/images/mbcrusher/gallery/shaft-screeners/mb-hds407/1.webp"
+          ],
+          "accessories": [
+            {
+              "name": "Warranty extension gold 24",
+              "id": "warranty-extension-gold-24"
+            },
+            {
+              "name": "Shafts holder",
+              "id": "shaft-holder"
+            }
+          ],
+          "downloads": [
+            {
+              "label": "Product sheet – metric system",
+              "href": "https://storage.onpage.it/66ebceeeb7bb7e366922b7d93e1da0ab70858dd6/SchedaProdotto_A4_EU_MB-HDS407_EN_Rev20261119.pdf?download=1"
+            },
+            {
+              "label": "Product sheet – imperial system",
+              "href": "https://storage.onpage.it/e3741b709ff4e0c5607a9c92d959c1621e6d1f87/SchedaProdotto_A4_US_MB-HDS407_EN_Rev20261119.pdf?download=1"
+            }
+          ]
+        },
+        {
+          "id": "mb-hds212",
+          "name": "MB-HDS212",
+          "image": "assets/images/mbcrusher/products/shaft-screeners/mb-hds212.webp",
+          "carriers": [
+            {
+              "type": "excavator",
+              "min": 5,
+              "max": 10
+            },
+            {
+              "type": "backhoe",
+              "min": 8,
+              "max": 9
+            },
+            {
+              "type": "skid",
+              "min": 3,
+              "max": 4
+            }
+          ],
+          "description": [
+            "Weighing 480kg, the MB-HDS212 bucket is compatible with midi excavators with weights ranging from 5 to 10 tons, backhoe loaders weighing from 8 to 9 tons, and skid from 3 to 4 tons.",
+            "The bucket’s shape is optimal when collecting and processing material",
+            "The coupler’s connection is located at the top of the machine and is lower than the rest of the structure, causing less wear on the unit’s frame, greater manoeuvrability and more precision and control. It is designed to increase productivity.",
+            "Thanks to the fixed covers, the gears are protected and the inside parts of the machine is shielded from potentially harmful materials (sand, dirt, etc.)",
+            "The welded covers on the back of the machine shields the bolts and side casings.",
+            "The operator can easily replace the shafts on site.",
+            "Maintenance is simple and happens directly on site.",
+            "The shaft holder is supplied. The shape of the unit enables the material to travel toward the rotating shafts, allowing for greater productivity.",
+            "Note: Only compatible with the rear (backhoe) boom of a backhoe loader.",
+            "Note: Skid steer loaders: please verify the machine's rated operating capacity.",
+            "Note: The package includes an RQ Shaft Kit. The weight may vary based on the installed kit."
+          ],
+          "specs": [
+            {
+              "label": "Oil flow rate",
+              "value": "75–100 L/min"
+            },
+            {
+              "label": "Load capacity",
+              "value": "0.15 m³"
+            },
+            {
+              "label": "Weight",
+              "value": "480 kg"
+            },
+            {
+              "label": "Pressure",
+              "value": "200–250 bar"
+            },
+            {
+              "label": "Back pressure",
+              "value": "< 20 bar"
+            }
+          ],
+          "gallery": [
+            "assets/images/mbcrusher/gallery/shaft-screeners/mb-hds212/1.webp",
+            "assets/images/mbcrusher/gallery/shaft-screeners/mb-hds212/2.webp"
+          ],
+          "video": "https://vimeo.com/687148555",
+          "accessories": [
+            {
+              "name": "Warranty extension gold 24",
+              "id": "warranty-extension-gold-24"
+            },
+            {
+              "name": "Shafts holder",
+              "id": "shaft-holder"
+            },
+            {
+              "name": "RQ8 sifting kit",
+              "id": "rq8-sifting-kit"
+            },
+            {
+              "name": "RQ20 sifting kit",
+              "id": "rq20-rq50-medium-sifting-kit"
+            },
+            {
+              "name": "RQ50 sifting kit",
+              "id": "rq20-rq50-medium-sifting-kit"
+            },
+            {
+              "name": "RM mixer kit",
+              "id": "rc-mixer-kit"
+            },
+            {
+              "name": "RE8 fine sifting kit",
+              "id": "re8-re16-fine-sifting-kit-compost-kit"
+            },
+            {
+              "name": "RE16 fine sifting kit",
+              "id": "re8-re16-fine-sifting-kit-compost-kit"
+            },
+            {
+              "name": "RC compost kit",
+              "id": "rc-compost-kit"
+            }
+          ],
+          "downloads": [
+            {
+              "label": "Product sheet – metric system",
+              "href": "https://storage.onpage.it/1d155484a31f6bc5febcf9bf3eb72247a13315e2/SchedaProdotto_A4_EU_MB-HDS212_EN_Rev20261119.pdf?download=1"
+            },
+            {
+              "label": "Product sheet – imperial system",
+              "href": "https://storage.onpage.it/eb32bead43bb39c4a2c50d0b33e52668409fd03f/SchedaProdotto_A4_US_MB-HDS212_EN_Rev20261119.pdf?download=1"
+            }
+          ]
+        },
+        {
+          "id": "mb-hds312",
+          "name": "MB-HDS312",
+          "tagline": "For excavators",
+          "image": "assets/images/mbcrusher/products/shaft-screeners/mb-hds312.webp",
+          "carriers": [
+            {
+              "type": "excavator",
+              "min": 7,
+              "max": 11
+            }
+          ],
+          "description": [
+            "The new MB-HDS312 shafts screener for 7 to 11 tonne excavators is the ideal attachment for all sites that need to combine efficiency and versatility in a compact piece of equipment. It is perfect for selecting material for covering pipes or trenches and creating the bedding; aerating packed soil; reclaiming and cleaning soils from various demolition debris, stones or roots and moving materials of different types and sizes.",
+            "Note: The package includes an RQ Shaft Kit. The weight may vary based on the installed kit."
+          ],
+          "specs": [
+            {
+              "label": "Oil flow rate",
+              "value": "75–100 L/min"
+            },
+            {
+              "label": "Load capacity",
+              "value": "0.35 m³"
+            },
+            {
+              "label": "Weight",
+              "value": "720 kg"
+            },
+            {
+              "label": "Pressure",
+              "value": "200–250 bar"
+            },
+            {
+              "label": "Back pressure",
+              "value": "< 20 bar"
+            }
+          ],
+          "accessories": [
+            {
+              "name": "Warranty extension gold 24",
+              "id": "warranty-extension-gold-24"
+            },
+            {
+              "name": "Shafts holder",
+              "id": "shaft-holder"
+            },
+            {
+              "name": "RQ8 sifting kit",
+              "id": "rq8-sifting-kit"
+            },
+            {
+              "name": "RQ20 sifting kit",
+              "id": "rq20-rq50-medium-sifting-kit"
+            },
+            {
+              "name": "RQ50 sifting kit",
+              "id": "rq20-rq50-medium-sifting-kit"
+            },
+            {
+              "name": "RM mixer kit",
+              "id": "rc-mixer-kit"
+            },
+            {
+              "name": "RE8 fine sifting kit",
+              "id": "re8-re16-fine-sifting-kit-compost-kit"
+            },
+            {
+              "name": "RE16 fine sifting kit",
+              "id": "re8-re16-fine-sifting-kit-compost-kit"
+            },
+            {
+              "name": "RC compost kit",
+              "id": "rc-compost-kit"
+            }
+          ],
+          "downloads": [
+            {
+              "label": "Product sheet – metric system",
+              "href": "https://storage.onpage.it/01385f351c94704e80be23b6bc629db5e1f542e4/SchedaProdotto_A4_EU_MB-HDS312_EN_Rev20261119.pdf?download=1"
+            },
+            {
+              "label": "Product sheet – imperial system",
+              "href": "https://storage.onpage.it/50e62b0c7c663efb709435f33803835e2b915605/SchedaProdotto_A4_US_MB-HDS312_EN_Rev20261119.pdf?download=1"
+            }
+          ]
+        },
         {
           "id": "mb-hds214",
           "name": "MB-HDS214",
@@ -1053,6 +2011,16 @@ window.CATALOG = {
               "type": "crane",
               "min": 3.5,
               "max": null
+            },
+            {
+              "type": "backhoe",
+              "min": 8,
+              "max": 13
+            },
+            {
+              "type": "skid",
+              "min": 4,
+              "max": 10
             }
           ],
           "description": [
@@ -1082,7 +2050,231 @@ window.CATALOG = {
             "assets/images/mbcrusher/gallery/shaft-screeners/shaftscreener/3.webp",
             "assets/images/mbcrusher/gallery/shaft-screeners/shaftscreener/4.webp"
           ],
-          "video": "https://www.rsquaredtrade.com/MB/Videos/Shafts%20Screener%20MB-HDS214.mp4"
+          "video": "https://vimeo.com/395677670",
+          "accessories": [
+            {
+              "name": "Warranty extension gold 24",
+              "id": "warranty-extension-gold-24"
+            },
+            {
+              "name": "Shafts holder",
+              "id": "shaft-holder"
+            },
+            {
+              "name": "RQ8 sifting kit",
+              "id": "rq8-sifting-kit"
+            },
+            {
+              "name": "RQ15 sifting kit",
+              "id": "rq15-sifting-kit"
+            },
+            {
+              "name": "RQ20 sifting kit",
+              "id": "rq20-rq50-medium-sifting-kit"
+            },
+            {
+              "name": "RQ50 sifting kit",
+              "id": "rq20-rq50-medium-sifting-kit"
+            },
+            {
+              "name": "RM mixer kit",
+              "id": "rc-mixer-kit"
+            },
+            {
+              "name": "RE8 fine sifting kit",
+              "id": "re8-re16-fine-sifting-kit-compost-kit"
+            },
+            {
+              "name": "RE16 fine sifting kit",
+              "id": "re8-re16-fine-sifting-kit-compost-kit"
+            },
+            {
+              "name": "RC compost kit",
+              "id": "rc-compost-kit"
+            }
+          ],
+          "downloads": [
+            {
+              "label": "Product sheet – metric system",
+              "href": "https://storage.onpage.it/776fbe9fa4b330c2035eed6e38808fe697f86e2f/SchedaProdotto_A4_EU_MB-HDS214_EN_Rev20261119.pdf?download=1"
+            },
+            {
+              "label": "Product sheet – imperial system",
+              "href": "https://storage.onpage.it/4e5cb5c1aae7362f85270ce36ee95af11809a090/SchedaProdotto_A4_US_MB-HDS214_EN_Rev20261119.pdf?download=1"
+            }
+          ]
+        },
+        {
+          "id": "mb-hds220",
+          "name": "MB-HDS220",
+          "image": "assets/images/mbcrusher/products/shaft-screeners/mb-hds220.webp",
+          "carriers": [
+            {
+              "type": "backhoe",
+              "min": 7,
+              "max": 11
+            },
+            {
+              "type": "skid",
+              "min": 4.5,
+              "max": 10
+            }
+          ],
+          "description": [
+            "1-tonne weight and a load capacity of 0.6 m3 for a versatile and reliable piece of equipment: MB Crusher brought the new MB-HDS220 padding bucket at Bauma 2022, suitable for loaders and skid steer loaders from 4.5 to 11 tons. Practicality, reliability and productivity on site Compact, versatile and extremely manoeuvrable, the new MB Crusher MB-HDS220 padding bucket is designed to make work easier, reduce processing time and save on operating costs. The size of its inlet mouth opening - 2.20 m - facilitates loading by ensuring that the tracks or wheels of the carrier machine remain clean. The inlet is designed to quickly convey material to the rotors. Maintenance is simple - greasing is centralised and done on-site, as with all MB Crusher products. The coupling system is designed to allow maximum freedom of movement of the operating machine. This system allows excellent visibility of the material to be worked on and of the site As with the other HDS models, the MB-HDS-220 allows the rotors to be changed easily and directly on-site by the operator. This makes it a versatile machine, with which different types of material can be processed easily and quickly.",
+            "Note: Skid steer loaders: please verify the machine's rated operating capacity.",
+            "Note: The package includes an RQ Shaft Kit. The weight may vary based on the installed kit."
+          ],
+          "specs": [
+            {
+              "label": "Oil flow rate",
+              "value": "90–150 L/min"
+            },
+            {
+              "label": "Load capacity",
+              "value": "0.60 m³"
+            },
+            {
+              "label": "Weight",
+              "value": "1.00 t"
+            },
+            {
+              "label": "Pressure",
+              "value": "230–280 bar"
+            },
+            {
+              "label": "Back pressure",
+              "value": "< 20 bar"
+            }
+          ],
+          "gallery": [
+            "assets/images/mbcrusher/gallery/shaft-screeners/mb-hds220/1.webp",
+            "assets/images/mbcrusher/gallery/shaft-screeners/mb-hds220/2.webp"
+          ],
+          "video": "https://vimeo.com/678564962",
+          "accessories": [
+            {
+              "name": "Warranty extension gold 24",
+              "id": "warranty-extension-gold-24"
+            },
+            {
+              "name": "Shafts holder",
+              "id": "shaft-holder"
+            },
+            {
+              "name": "RQ8 sifting kit",
+              "id": "rq8-sifting-kit"
+            },
+            {
+              "name": "RQ20 sifting kit",
+              "id": "rq20-rq50-medium-sifting-kit"
+            },
+            {
+              "name": "RM mixer kit",
+              "id": "rc-mixer-kit"
+            },
+            {
+              "name": "RE8 fine sifting kit",
+              "id": "re8-re16-fine-sifting-kit-compost-kit"
+            }
+          ],
+          "downloads": [
+            {
+              "label": "Product sheet – metric system",
+              "href": "https://storage.onpage.it/4bf6bbe692c390da3e596e54b4cb30d66ff6d18f/SchedaProdotto_A4_EU_MB-HDS220_EN_Rev20261119.pdf?download=1"
+            },
+            {
+              "label": "Product sheet – imperial system",
+              "href": "https://storage.onpage.it/250f3fa6c7eee9715beb50b3492422765a1cfb86/SchedaProdotto_A4_US_MB-HDS220_EN_Rev20261119.pdf?download=1"
+            }
+          ]
+        },
+        {
+          "id": "mb-hds412",
+          "name": "MB-HDS412",
+          "tagline": "For excavators",
+          "image": "assets/images/mbcrusher/products/shaft-screeners/mb-hds412.webp",
+          "carriers": [
+            {
+              "type": "excavator",
+              "min": 10,
+              "max": 14
+            }
+          ],
+          "description": [
+            "The new MB-HDS412 shafts screener for 10 to 14 tonne excavators is the ideal attachment for all sites that need to combine efficiency and versatility in a compact piece of equipment. It is perfect for selecting material for covering pipes or trenches and creating the bedding; aerating packed soil; reclaiming and cleaning soils from various demolition debris, stones or roots and moving materials of different types and sizes.",
+            "Note: The package includes an RQ Shaft Kit. The weight may vary based on the installed kit."
+          ],
+          "specs": [
+            {
+              "label": "Oil flow rate",
+              "value": "90–150 L/min"
+            },
+            {
+              "label": "Load capacity",
+              "value": "0.55 m³"
+            },
+            {
+              "label": "Weight",
+              "value": "1.20 t"
+            },
+            {
+              "label": "Pressure",
+              "value": "230–280 bar"
+            },
+            {
+              "label": "Back pressure",
+              "value": "< 20 bar"
+            }
+          ],
+          "accessories": [
+            {
+              "name": "Warranty extension gold 24",
+              "id": "warranty-extension-gold-24"
+            },
+            {
+              "name": "Shafts holder",
+              "id": "shaft-holder"
+            },
+            {
+              "name": "RQ8 sifting kit",
+              "id": "rq8-sifting-kit"
+            },
+            {
+              "name": "RQ20 sifting kit",
+              "id": "rq20-rq50-medium-sifting-kit"
+            },
+            {
+              "name": "RQ50 sifting kit",
+              "id": "rq20-rq50-medium-sifting-kit"
+            },
+            {
+              "name": "RM mixer kit",
+              "id": "rc-mixer-kit"
+            },
+            {
+              "name": "RE8 fine sifting kit",
+              "id": "re8-re16-fine-sifting-kit-compost-kit"
+            },
+            {
+              "name": "RE16 fine sifting kit",
+              "id": "re8-re16-fine-sifting-kit-compost-kit"
+            },
+            {
+              "name": "RC compost kit",
+              "id": "rc-compost-kit"
+            }
+          ],
+          "downloads": [
+            {
+              "label": "Product sheet – metric system",
+              "href": "https://storage.onpage.it/ad62fe733eda0ea96631595bb70c1fa5e06a7585/SchedaProdotto_A4_EU_MB-HDS412_EN_Rev20261119.pdf?download=1"
+            },
+            {
+              "label": "Product sheet – imperial system",
+              "href": "https://storage.onpage.it/c444c957ed146644dbfad4e3d03c28d23f1230ec/SchedaProdotto_A4_US_MB-HDS412_EN_Rev20261119.pdf?download=1"
+            }
+          ]
         },
         {
           "id": "mb-hds314",
@@ -1103,6 +2295,11 @@ window.CATALOG = {
               "type": "crane",
               "min": 3.5,
               "max": null
+            },
+            {
+              "type": "loader",
+              "min": 9,
+              "max": 14
             }
           ],
           "description": [
@@ -1134,7 +2331,55 @@ window.CATALOG = {
             "assets/images/mbcrusher/gallery/shaft-screeners/hds314/3.webp",
             "assets/images/mbcrusher/gallery/shaft-screeners/hds314/4.webp"
           ],
-          "video": "https://www.rsquaredtrade.com/MB/Videos/Shafts%20Screener%20MB-HDS314.mp4"
+          "video": "https://vimeo.com/395675815",
+          "accessories": [
+            {
+              "name": "Warranty extension gold 24",
+              "id": "warranty-extension-gold-24"
+            },
+            {
+              "name": "Shafts holder",
+              "id": "shaft-holder"
+            },
+            {
+              "name": "RQ8 sifting kit",
+              "id": "rq8-sifting-kit"
+            },
+            {
+              "name": "RQ20 sifting kit",
+              "id": "rq20-rq50-medium-sifting-kit"
+            },
+            {
+              "name": "RQ50 sifting kit",
+              "id": "rq20-rq50-medium-sifting-kit"
+            },
+            {
+              "name": "RM mixer kit",
+              "id": "rc-mixer-kit"
+            },
+            {
+              "name": "RE8 fine sifting kit",
+              "id": "re8-re16-fine-sifting-kit-compost-kit"
+            },
+            {
+              "name": "RE16 fine sifting kit",
+              "id": "re8-re16-fine-sifting-kit-compost-kit"
+            },
+            {
+              "name": "RC compost kit",
+              "id": "rc-compost-kit"
+            }
+          ],
+          "downloads": [
+            {
+              "label": "Product sheet – metric system",
+              "href": "https://storage.onpage.it/0f70dd347f884876ef1986166eb35e828b750f20/SchedaProdotto_A4_EU_MB-HDS314_EN_Rev20261119.pdf?download=1"
+            },
+            {
+              "label": "Product sheet – imperial system",
+              "href": "https://storage.onpage.it/5d410b87ec4cb838c694889d9097f6213fe2a665/SchedaProdotto_A4_US_MB-HDS314_EN_Rev20261119.pdf?download=1"
+            }
+          ]
         },
         {
           "id": "mb-hds320",
@@ -1155,6 +2400,11 @@ window.CATALOG = {
               "type": "crane",
               "min": 3.5,
               "max": null
+            },
+            {
+              "type": "loader",
+              "min": 11,
+              "max": 14
             }
           ],
           "description": [
@@ -1185,7 +2435,55 @@ window.CATALOG = {
             "assets/images/mbcrusher/gallery/shaft-screeners/hds320/3.webp",
             "assets/images/mbcrusher/gallery/shaft-screeners/hds320/4.webp"
           ],
-          "video": "https://www.rsquaredtrade.com/MB/Videos/Shafts%20Screener%20MB-HDS320.mp4"
+          "video": "https://vimeo.com/395174157",
+          "accessories": [
+            {
+              "name": "Warranty extension gold 24",
+              "id": "warranty-extension-gold-24"
+            },
+            {
+              "name": "Shafts holder",
+              "id": "shaft-holder"
+            },
+            {
+              "name": "RQ8 sifting kit",
+              "id": "rq8-sifting-kit"
+            },
+            {
+              "name": "RQ20 sifting kit",
+              "id": "rq20-rq50-medium-sifting-kit"
+            },
+            {
+              "name": "RQ50 sifting kit",
+              "id": "rq20-rq50-medium-sifting-kit"
+            },
+            {
+              "name": "RM mixer kit",
+              "id": "rc-mixer-kit"
+            },
+            {
+              "name": "RE8 fine sifting kit",
+              "id": "re8-re16-fine-sifting-kit-compost-kit"
+            },
+            {
+              "name": "RE16 fine sifting kit",
+              "id": "re8-re16-fine-sifting-kit-compost-kit"
+            },
+            {
+              "name": "RC compost kit",
+              "id": "rc-compost-kit"
+            }
+          ],
+          "downloads": [
+            {
+              "label": "Product sheet – metric system",
+              "href": "https://storage.onpage.it/f4d685490306b8e3c3f536037d492f6cdbd876df/SchedaProdotto_A4_EU_MB-HDS320_EN_Rev20261119.pdf?download=1"
+            },
+            {
+              "label": "Product sheet – imperial system",
+              "href": "https://storage.onpage.it/fd424461c2233bdebc05a1632a77981496c48ffe/SchedaProdotto_A4_US_MB-HDS320_EN_Rev20261119.pdf?download=1"
+            }
+          ]
         },
         {
           "id": "mb-hds323",
@@ -1206,6 +2504,11 @@ window.CATALOG = {
               "type": "crane",
               "min": 3.5,
               "max": null
+            },
+            {
+              "type": "loader",
+              "min": 12,
+              "max": 16
             }
           ],
           "description": [
@@ -1236,7 +2539,59 @@ window.CATALOG = {
             "assets/images/mbcrusher/gallery/shaft-screeners/hds323/3.webp",
             "assets/images/mbcrusher/gallery/shaft-screeners/hds323/4.webp"
           ],
-          "video": "https://www.rsquaredtrade.com/MB/Videos/Shafts%20Screener%20MB-HDS323.mp4"
+          "video": "https://vimeo.com/395682734",
+          "accessories": [
+            {
+              "name": "Warranty extension gold 24",
+              "id": "warranty-extension-gold-24"
+            },
+            {
+              "name": "Shafts holder",
+              "id": "shaft-holder"
+            },
+            {
+              "name": "RQ8 sifting kit",
+              "id": "rq8-sifting-kit"
+            },
+            {
+              "name": "RQ20 sifting kit",
+              "id": "rq20-rq50-medium-sifting-kit"
+            },
+            {
+              "name": "RQ50 sifting kit",
+              "id": "rq20-rq50-medium-sifting-kit"
+            },
+            {
+              "name": "RM mixer kit",
+              "id": "rc-mixer-kit"
+            },
+            {
+              "name": "RE8 fine sifting kit",
+              "id": "re8-re16-fine-sifting-kit-compost-kit"
+            },
+            {
+              "name": "RE16 fine sifting kit",
+              "id": "re8-re16-fine-sifting-kit-compost-kit"
+            },
+            {
+              "name": "RC compost kit",
+              "id": "rc-compost-kit"
+            },
+            {
+              "name": "Load capacity increase kit",
+              "id": "load-capacity-increase-kit"
+            }
+          ],
+          "downloads": [
+            {
+              "label": "Product sheet – metric system",
+              "href": "https://storage.onpage.it/ac6fae8bb1b3d9d16c48d222c971452a6dfc8e40/SchedaProdotto_A4_EU_MB-HDS323_EN_Rev20261119.pdf?download=1"
+            },
+            {
+              "label": "Product sheet – imperial system",
+              "href": "https://storage.onpage.it/109ee5f427ca33e81c2d146cae90585a4c62f242/SchedaProdotto_A4_US_MB-HDS323_EN_Rev20261119.pdf?download=1"
+            }
+          ]
         },
         {
           "id": "mb-hds523",
@@ -1278,7 +2633,138 @@ window.CATALOG = {
             "assets/images/mbcrusher/gallery/shaft-screeners/hd523/3.webp",
             "assets/images/mbcrusher/gallery/shaft-screeners/hd523/4.webp"
           ],
-          "video": "https://www.rsquaredtrade.com/MB/Videos/Shafts%20Screener%20MB-HDS523.mp4"
+          "video": "https://vimeo.com/547995047",
+          "accessories": [
+            {
+              "name": "Warranty extension gold 24",
+              "id": "warranty-extension-gold-24"
+            },
+            {
+              "name": "Shafts holder",
+              "id": "shaft-holder"
+            },
+            {
+              "name": "RQ8 sifting kit",
+              "id": "rq8-sifting-kit"
+            },
+            {
+              "name": "RQ20 sifting kit",
+              "id": "rq20-rq50-medium-sifting-kit"
+            },
+            {
+              "name": "RQ50 sifting kit",
+              "id": "rq20-rq50-medium-sifting-kit"
+            },
+            {
+              "name": "RM mixer kit",
+              "id": "rc-mixer-kit"
+            },
+            {
+              "name": "RE8 fine sifting kit",
+              "id": "re8-re16-fine-sifting-kit-compost-kit"
+            },
+            {
+              "name": "RE16 fine sifting kit",
+              "id": "re8-re16-fine-sifting-kit-compost-kit"
+            },
+            {
+              "name": "RC compost kit",
+              "id": "rc-compost-kit"
+            },
+            {
+              "name": "Load capacity increase kit",
+              "id": "load-capacity-increase-kit"
+            }
+          ],
+          "downloads": [
+            {
+              "label": "Product sheet – metric system",
+              "href": "https://storage.onpage.it/4a71fb2074f986b9c15fe381c42e68dab7572619/SchedaProdotto_A4_EU_MB-HDS523_EN_Rev20261119.pdf?download=1"
+            },
+            {
+              "label": "Product sheet – imperial system",
+              "href": "https://storage.onpage.it/78a8b1b6a901de8e922aab76f39d62b9b8498448/SchedaProdotto_A4_US_MB-HDS523_EN_Rev20261119.pdf?download=1"
+            }
+          ]
+        },
+        {
+          "id": "mb-hds533",
+          "name": "MB-HDS533",
+          "tagline": "For excavators",
+          "image": "assets/images/mbcrusher/products/shaft-screeners/mb-hds533.webp",
+          "carriers": [
+            {
+              "type": "excavator",
+              "min": 50,
+              "max": 80
+            },
+            {
+              "type": "loader",
+              "min": 30,
+              "max": 50
+            }
+          ],
+          "description": [
+            "Note: Loaders: please verify the machine's rated operating capacity.",
+            "Note: The package includes an RQ Shaft Kit. The weight may vary based on the installed kit."
+          ],
+          "specs": [
+            {
+              "label": "Oil flow rate",
+              "value": "230–250 L/min"
+            },
+            {
+              "label": "Load capacity",
+              "value": "3.80–5.20 m³"
+            },
+            {
+              "label": "Weight",
+              "value": "6.60 t"
+            },
+            {
+              "label": "Pressure",
+              "value": "250–300 bar"
+            },
+            {
+              "label": "Back pressure",
+              "value": "< 20 bar"
+            }
+          ],
+          "gallery": [
+            "assets/images/mbcrusher/gallery/shaft-screeners/mb-hds533/1.webp"
+          ],
+          "accessories": [
+            {
+              "name": "Warranty extension gold 24",
+              "id": "warranty-extension-gold-24"
+            },
+            {
+              "name": "Hour meter",
+              "id": "hour-meter"
+            },
+            {
+              "name": "Shafts holder",
+              "id": "shaft-holder"
+            },
+            {
+              "name": "RM mixer kit",
+              "id": "rc-mixer-kit"
+            },
+            {
+              "name": "RQ45 sifting kit",
+              "id": "rq45-sifting-kit"
+            }
+          ],
+          "downloads": [
+            {
+              "label": "Product sheet – metric system",
+              "href": "https://storage.onpage.it/9425f2f544a3328139378644fd1cfac7aaae50b6/SchedaProdotto_A4_EU_MB-HDS533_EN_Rev20261119.pdf?download=1"
+            },
+            {
+              "label": "Product sheet – imperial system",
+              "href": "https://storage.onpage.it/683c13d229b4e7a11d993e44e4672decb26717c5/SchedaProdotto_A4_US_MB-HDS533_EN_Rev20261119.pdf?download=1"
+            }
+          ]
         }
       ]
     },
@@ -1303,6 +2789,11 @@ window.CATALOG = {
             },
             {
               "type": "excavator",
+              "min": 3.5,
+              "max": 6
+            },
+            {
+              "type": "skid",
               "min": 3.5,
               "max": 6
             }
@@ -1352,7 +2843,51 @@ window.CATALOG = {
             "assets/images/mbcrusher/gallery/drum-cutters/r500/3.webp",
             "assets/images/mbcrusher/gallery/drum-cutters/r500/4.webp"
           ],
-          "video": "https://www.rsquaredtrade.com/MB/Videos/drumcutter%20R500.mp4"
+          "video": "https://vimeo.com/360986142",
+          "accessories": [
+            {
+              "name": "The dust supression kit",
+              "id": "the-dust-suppression-kit"
+            },
+            {
+              "name": "Warranty extension gold 24",
+              "id": "warranty-extension-gold-24"
+            },
+            {
+              "name": "Drum cover kit",
+              "id": "drum-cover-kit"
+            },
+            {
+              "name": "Cutting depth adjustment kit",
+              "id": "cutting-depth-adjustment-kit"
+            },
+            {
+              "name": "Cutter body rotation kit",
+              "id": "cutter-body-rotation-kit"
+            },
+            {
+              "name": "Rock and asphalt pick kits",
+              "id": "rock-and-asphalt-pick-kit"
+            },
+            {
+              "name": "Drum kit",
+              "id": "drum-kit"
+            },
+            {
+              "name": "Power transmission kit",
+              "id": "power-transmission-kit"
+            }
+          ],
+          "downloads": [
+            {
+              "label": "Product sheet – metric system",
+              "href": "https://storage.onpage.it/e9f9a922487f724bce5e9f2601affd192bee0870/SchedaProdotto_A4_EU_MB-R500_EN_Rev20261125.pdf?download=1"
+            },
+            {
+              "label": "Product sheet – imperial system",
+              "href": "https://storage.onpage.it/6f2cbc265910d5840b55fcbfe75c7ceb9a46e705/SchedaProdotto_A4_US_MB-R500_EN_Rev20261125.pdf?download=1"
+            }
+          ]
         },
         {
           "id": "mb-r700",
@@ -1367,6 +2902,11 @@ window.CATALOG = {
             },
             {
               "type": "excavator",
+              "min": 6,
+              "max": 10
+            },
+            {
+              "type": "skid",
               "min": 6,
               "max": 10
             }
@@ -1418,7 +2958,35 @@ window.CATALOG = {
             "assets/images/mbcrusher/gallery/drum-cutters/r700/2.webp",
             "assets/images/mbcrusher/gallery/drum-cutters/r700/3.webp"
           ],
-          "video": "https://www.rsquaredtrade.com/MB/Videos/drumcutter%20R700.mp4"
+          "video": "https://vimeo.com/295534087",
+          "accessories": [
+            {
+              "name": "The dust supression kit",
+              "id": "the-dust-suppression-kit"
+            },
+            {
+              "name": "Warranty extension gold 24",
+              "id": "warranty-extension-gold-24"
+            },
+            {
+              "name": "Rock and asphalt pick kits",
+              "id": "rock-and-asphalt-pick-kit"
+            },
+            {
+              "name": "Drum kit",
+              "id": "drum-kit"
+            }
+          ],
+          "downloads": [
+            {
+              "label": "Product sheet – metric system",
+              "href": "https://storage.onpage.it/770f87a005c0f6abe956496c558bc3c47008ab33/SchedaProdotto_A4_EU_MB-R700_EN_Rev20261125.pdf?download=1"
+            },
+            {
+              "label": "Product sheet – imperial system",
+              "href": "https://storage.onpage.it/cae41dc60015d6e286858806d43da234d01c6f81/SchedaProdotto_A4_US_MB-R700_EN_Rev20261125.pdf?download=1"
+            }
+          ]
         },
         {
           "id": "mb-r800",
@@ -1480,7 +3048,35 @@ window.CATALOG = {
             "assets/images/mbcrusher/gallery/drum-cutters/r800/3.webp",
             "assets/images/mbcrusher/gallery/drum-cutters/r800/4.webp"
           ],
-          "video": "https://www.rsquaredtrade.com/MB/Videos/drumcutter%20R800.mp4"
+          "video": "https://vimeo.com/295529472",
+          "accessories": [
+            {
+              "name": "The dust supression kit",
+              "id": "the-dust-suppression-kit"
+            },
+            {
+              "name": "Warranty extension gold 24",
+              "id": "warranty-extension-gold-24"
+            },
+            {
+              "name": "Rock and asphalt pick kits",
+              "id": "rock-and-asphalt-pick-kit"
+            },
+            {
+              "name": "Drum kit",
+              "id": "drum-kit"
+            }
+          ],
+          "downloads": [
+            {
+              "label": "Product sheet – metric system",
+              "href": "https://storage.onpage.it/1507a9ce0e3f4d59823fc6e400c0909d5cdda399/SchedaProdotto_A4_EU_MB-R800_EN_Rev20261125.pdf?download=1"
+            },
+            {
+              "label": "Product sheet – imperial system",
+              "href": "https://storage.onpage.it/ad9e14a729c01fb02a3bb2bb87be4375211dafd2/SchedaProdotto_A4_US_MB-R800_EN_Rev20261125.pdf?download=1"
+            }
+          ]
         },
         {
           "id": "mb-r900",
@@ -1542,7 +3138,35 @@ window.CATALOG = {
             "assets/images/mbcrusher/gallery/drum-cutters/r900/2.webp",
             "assets/images/mbcrusher/gallery/drum-cutters/r900/3.webp"
           ],
-          "video": "https://www.rsquaredtrade.com/MB/Videos/drumcutter%20R900.mp4"
+          "video": "https://vimeo.com/334871138",
+          "accessories": [
+            {
+              "name": "The dust supression kit",
+              "id": "the-dust-suppression-kit"
+            },
+            {
+              "name": "Warranty extension gold 24",
+              "id": "warranty-extension-gold-24"
+            },
+            {
+              "name": "Rock and asphalt pick kits",
+              "id": "rock-and-asphalt-pick-kit"
+            },
+            {
+              "name": "Drum kit",
+              "id": "drum-kit"
+            }
+          ],
+          "downloads": [
+            {
+              "label": "Product sheet – metric system",
+              "href": "https://storage.onpage.it/5ac40573996d36c42b5001f260e72a46b3bc888b/SchedaProdotto_A4_EU_MB-R900_EN_Rev20261125.pdf?download=1"
+            },
+            {
+              "label": "Product sheet – imperial system",
+              "href": "https://storage.onpage.it/cd39f4cc4a7f91085635ace04e3a180d0d19ca66/SchedaProdotto_A4_US_MB-R900_EN_Rev20261125.pdf?download=1"
+            }
+          ]
         }
       ]
     },
@@ -1607,7 +3231,121 @@ window.CATALOG = {
             "assets/images/mbcrusher/gallery/sorting-grapples/sortinggrapler/3.webp",
             "assets/images/mbcrusher/gallery/sorting-grapples/sortinggrapler/4.webp"
           ],
-          "video": "https://www.rsquaredtrade.com/MB/Videos/MB-G350%20-%20MB-G450_EN.mp4"
+          "video": "https://vimeo.com/604637830/1a9805045b",
+          "accessories": [
+            {
+              "name": "Warranty extension gold 24",
+              "id": "warranty-extension-gold-24"
+            },
+            {
+              "name": "Clam shell kit",
+              "id": "clamshell-kit"
+            },
+            {
+              "name": "12 V Electrical Kit for 2 Hose Functionality",
+              "id": "12-v-electrical-kit"
+            },
+            {
+              "name": "Serrated side plate kit",
+              "id": "serrated-side-plate-kit"
+            },
+            {
+              "name": "Serrated side profile kit",
+              "id": "serrated-side-profile-kit"
+            }
+          ],
+          "downloads": [
+            {
+              "label": "Product sheet – metric system",
+              "href": "https://storage.onpage.it/b513c3d2b6cbb6c2c19c56d9dba59bd0db17229c/SchedaProdotto_A4_EU_MB-G350%20S4_EN_Rev20261119.pdf?download=1"
+            },
+            {
+              "label": "Product sheet – imperial system",
+              "href": "https://storage.onpage.it/e257e39194cb53230027af2716b398ca55b99825/SchedaProdotto_A4_US_MB-G350%20S4_EN_Rev20261119.pdf?download=1"
+            }
+          ]
+        },
+        {
+          "id": "mb-g400-s4",
+          "name": "MB-G400 S4",
+          "tagline": "For mini excavator",
+          "image": "assets/images/mbcrusher/products/sorting-grapples/mb-g400-s4.webp",
+          "carriers": [
+            {
+              "type": "excavator",
+              "min": 2.4,
+              "max": 4
+            }
+          ],
+          "description": [
+            "Extremely compact and precise, the new MB-G400 sorting grapple for mini-excavators from 2.4 to 4 tons is designed to facilitate work on-site, in any application area. It is the ideal attachment for moving logs, stones, debris, and piles; placing stones for dry stone walls, and clearing fields of brushwood... Its claws opening is very wide, allowing it to grasp and handle even large materials; the material anti-fall valve guarantees maximum safety; the silent block allows work even in areas where noise needs to be kept under control; wear parts are made of Hardox; it is predisposed for the installation of an electrical kit for two-pipe functionality, which allows work with 360° rotation movement even with excavators that only have a two-pipe system; the interchangeable blades can be turned upside down to extend their life and is available in two versions, with or without a rotation turret."
+          ],
+          "specs": [
+            {
+              "label": "Weight",
+              "value": "200 kg"
+            },
+            {
+              "label": "Capacity (claws closed)",
+              "value": "0.07 m³"
+            },
+            {
+              "label": "Speed (min–max)",
+              "value": "20–25 rpm"
+            },
+            {
+              "label": "Rotation",
+              "value": "360°"
+            },
+            {
+              "label": "Oil pressure (rotation)",
+              "value": "130–170 bar"
+            },
+            {
+              "label": "Oil flow rate (rotation)",
+              "value": "8–12 L/min"
+            },
+            {
+              "label": "Oil pressure (opening/closing)",
+              "value": "180–220 bar"
+            },
+            {
+              "label": "Oil flow rate (opening/closing)",
+              "value": "20–25 L/min"
+            }
+          ],
+          "accessories": [
+            {
+              "name": "Warranty extension gold 24",
+              "id": "warranty-extension-gold-24"
+            },
+            {
+              "name": "Clam shell kit",
+              "id": "clamshell-kit"
+            },
+            {
+              "name": "12 V Electrical Kit for 2 Hose Functionality",
+              "id": "12-v-electrical-kit"
+            },
+            {
+              "name": "Serrated side plate kit",
+              "id": "serrated-side-plate-kit"
+            },
+            {
+              "name": "Serrated side profile kit",
+              "id": "serrated-side-profile-kit"
+            }
+          ],
+          "downloads": [
+            {
+              "label": "Product sheet – metric system",
+              "href": "https://storage.onpage.it/652b0e79ea7e458deb10e8783e9d1481e7ed76d3/SchedaProdotto_A4_EU_MB-G400%20S4_EN_Rev20261119.pdf?download=1"
+            },
+            {
+              "label": "Product sheet – imperial system",
+              "href": "https://storage.onpage.it/cf375d2163f6a58e961913040884edc72805e1ed/SchedaProdotto_A4_US_MB-G400%20S4_EN_Rev20261119.pdf?download=1"
+            }
+          ]
         },
         {
           "id": "mb-g450-s4",
@@ -1659,7 +3397,145 @@ window.CATALOG = {
             "assets/images/mbcrusher/gallery/sorting-grapples/g450/1.webp",
             "assets/images/mbcrusher/gallery/sorting-grapples/g450/2.webp"
           ],
-          "video": "https://www.rsquaredtrade.com/MB/Videos/MB-G350%20-%20MB-G450_EN.mp4"
+          "video": "https://vimeo.com/604637830/1a9805045b",
+          "accessories": [
+            {
+              "name": "Warranty extension gold 24",
+              "id": "warranty-extension-gold-24"
+            },
+            {
+              "name": "Multi-purpose blade kit",
+              "id": "multi-purpose-blade-kit"
+            },
+            {
+              "name": "Clam shell kit",
+              "id": "clamshell-kit"
+            },
+            {
+              "name": "Grip improvement kit",
+              "id": "grip-improvement-kit"
+            },
+            {
+              "name": "Tilting lift rubber protection kit",
+              "id": "tilting-lift-rubber-protection-kit"
+            },
+            {
+              "name": "12 V Electrical Kit for 2 Hose Functionality",
+              "id": "12-v-electrical-kit"
+            },
+            {
+              "name": "Serrated side plate kit",
+              "id": "serrated-side-plate-kit"
+            },
+            {
+              "name": "Serrated side profile kit",
+              "id": "serrated-side-profile-kit"
+            }
+          ],
+          "downloads": [
+            {
+              "label": "Product sheet – metric system",
+              "href": "https://storage.onpage.it/83c45600905e34a99637593e18134dcac5fa96ee/SchedaProdotto_A4_EU_MB-G450%20S4_EN_Rev20261119.pdf?download=1"
+            },
+            {
+              "label": "Product sheet – imperial system",
+              "href": "https://storage.onpage.it/e12c51452a6ecc92f69e53bebe261b1d50941c5c/SchedaProdotto_A4_US_MB-G450%20S4_EN_Rev20261119.pdf?download=1"
+            }
+          ]
+        },
+        {
+          "id": "mb-g500-s4",
+          "name": "MB-G500 S4",
+          "tagline": "For excavator",
+          "image": "assets/images/mbcrusher/products/sorting-grapples/mb-g500-s4.webp",
+          "carriers": [
+            {
+              "type": "excavator",
+              "min": 5,
+              "max": 8
+            }
+          ],
+          "description": [
+            "Extremely compact and precise, the new MB-G500 sorting grapple for mini-excavators from 5 to 7 tons is designed to facilitate work on-site, in any application area. It is the ideal attachment for moving logs, stones, debris, and piles; placing stones for dry stone walls, and clearing fields of brushwood... Its claws opening is very wide, allowing it to grasp and handle even large materials; the material anti-fall valve guarantees maximum safety; the silent block allows work even in areas where noise needs to be kept under control; wear parts are made of Hardox; it is predisposed for the installation of an electrical kit for two-pipe functionality, which allows work with 360° rotation movement even with excavators that only have a two-pipe system; the interchangeable blades can be turned upside down to extend their life and is available in two versions, with or without a rotation turret."
+          ],
+          "specs": [
+            {
+              "label": "Weight",
+              "value": "420 kg"
+            },
+            {
+              "label": "Capacity (claws closed)",
+              "value": "0.18 m³"
+            },
+            {
+              "label": "Speed (min–max)",
+              "value": "20–25 rpm"
+            },
+            {
+              "label": "Rotation",
+              "value": "360°"
+            },
+            {
+              "label": "Oil pressure (rotation)",
+              "value": "160–200 bar"
+            },
+            {
+              "label": "Oil flow rate (rotation)",
+              "value": "15–25 L/min"
+            },
+            {
+              "label": "Oil pressure (opening/closing)",
+              "value": "180–250 bar"
+            },
+            {
+              "label": "Oil flow rate (opening/closing)",
+              "value": "30–40 L/min"
+            }
+          ],
+          "accessories": [
+            {
+              "name": "Warranty extension gold 24",
+              "id": "warranty-extension-gold-24"
+            },
+            {
+              "name": "Multi-purpose blade kit",
+              "id": "multi-purpose-blade-kit"
+            },
+            {
+              "name": "Clam shell kit",
+              "id": "clamshell-kit"
+            },
+            {
+              "name": "Grip improvement kit",
+              "id": "grip-improvement-kit"
+            },
+            {
+              "name": "Tilting lift rubber protection kit",
+              "id": "tilting-lift-rubber-protection-kit"
+            },
+            {
+              "name": "12 V Electrical Kit for 2 Hose Functionality",
+              "id": "12-v-electrical-kit"
+            },
+            {
+              "name": "Serrated side plate kit",
+              "id": "serrated-side-plate-kit"
+            },
+            {
+              "name": "Serrated side profile kit",
+              "id": "serrated-side-profile-kit"
+            }
+          ],
+          "downloads": [
+            {
+              "label": "Product sheet – metric system",
+              "href": "https://storage.onpage.it/44e104c0a8372349a18ec78643ab9f420f87bc8e/SchedaProdotto_A4_EU_MB-G500%20S4_EN_Rev20261119.pdf?download=1"
+            },
+            {
+              "label": "Product sheet – imperial system",
+              "href": "https://storage.onpage.it/9b3c91e1d4b8a5b9a03c41ce2b277bceffcbf412/SchedaProdotto_A4_US_MB-G500%20S4_EN_Rev20261119.pdf?download=1"
+            }
+          ]
         },
         {
           "id": "mb-g600-s4",
@@ -1717,7 +3593,59 @@ window.CATALOG = {
             "assets/images/mbcrusher/gallery/sorting-grapples/g600/3.webp",
             "assets/images/mbcrusher/gallery/sorting-grapples/g600/4.webp"
           ],
-          "video": "https://www.rsquaredtrade.com/MB/Videos/MB-G600%20-%20Kubota.mp4"
+          "video": "https://vimeo.com/311426238",
+          "accessories": [
+            {
+              "name": "Warranty extension gold 24",
+              "id": "warranty-extension-gold-24"
+            },
+            {
+              "name": "Rotation power extender kit",
+              "id": "rotation-power-extender-kit"
+            },
+            {
+              "name": "Multi-purpose blade kit",
+              "id": "multi-purpose-blade-kit"
+            },
+            {
+              "name": "Clam shell kit",
+              "id": "clamshell-kit"
+            },
+            {
+              "name": "Grip improvement kit",
+              "id": "grip-improvement-kit"
+            },
+            {
+              "name": "Tilting lift rubber protection kit",
+              "id": "tilting-lift-rubber-protection-kit"
+            },
+            {
+              "name": "Remote Power Control System",
+              "id": "remote-power-control-system"
+            },
+            {
+              "name": "12 V Electrical Kit for 2 Hose Functionality",
+              "id": "12-v-electrical-kit"
+            },
+            {
+              "name": "Serrated side plate kit",
+              "id": "serrated-side-plate-kit"
+            },
+            {
+              "name": "Serrated side profile kit",
+              "id": "serrated-side-profile-kit"
+            }
+          ],
+          "downloads": [
+            {
+              "label": "Product sheet – metric system",
+              "href": "https://storage.onpage.it/3dacf960a88cfe8215d133c01dfd56c65b46a30b/SchedaProdotto_A4_EU_MB-G600%20S4_EN_Rev20261119.pdf?download=1"
+            },
+            {
+              "label": "Product sheet – imperial system",
+              "href": "https://storage.onpage.it/1d4c0f6548a8f2595cc61bb899219f4cf13b6192/SchedaProdotto_A4_US_MB-G600%20S4_EN_Rev20261119.pdf?download=1"
+            }
+          ]
         },
         {
           "id": "mb-g900-s4",
@@ -1771,7 +3699,164 @@ window.CATALOG = {
             "assets/images/mbcrusher/gallery/sorting-grapples/g900/3.webp",
             "assets/images/mbcrusher/gallery/sorting-grapples/g900/4.webp"
           ],
-          "video": "https://www.rsquaredtrade.com/MB/Videos/The%20MB-G900%20grapple%20in%20a%20big%20demolition%20project.mp4"
+          "video": "https://vimeo.com/293516684",
+          "accessories": [
+            {
+              "name": "Warranty extension gold 24",
+              "id": "warranty-extension-gold-24"
+            },
+            {
+              "name": "Rotation power extender kit",
+              "id": "rotation-power-extender-kit"
+            },
+            {
+              "name": "Multi-purpose blade kit",
+              "id": "multi-purpose-blade-kit"
+            },
+            {
+              "name": "Clam shell kit",
+              "id": "clamshell-kit"
+            },
+            {
+              "name": "Grip improvement kit",
+              "id": "grip-improvement-kit"
+            },
+            {
+              "name": "Tilting lift rubber protection kit",
+              "id": "tilting-lift-rubber-protection-kit"
+            },
+            {
+              "name": "Remote Power Control System",
+              "id": "remote-power-control-system"
+            },
+            {
+              "name": "12 V Electrical Kit for 2 Hose Functionality",
+              "id": "12-v-electrical-kit"
+            },
+            {
+              "name": "Serrated side plate kit",
+              "id": "serrated-side-plate-kit"
+            },
+            {
+              "name": "Serrated side profile kit",
+              "id": "serrated-side-profile-kit"
+            }
+          ],
+          "downloads": [
+            {
+              "label": "Product sheet – metric system",
+              "href": "https://storage.onpage.it/329bc15beefe371fc167176ddfcfc05ba70165da/SchedaProdotto_A4_EU_MB-G900%20S4_EN_Rev20261119.pdf?download=1"
+            },
+            {
+              "label": "Product sheet – imperial system",
+              "href": "https://storage.onpage.it/22d169156255a4b7696cb779ec2b22783676015b/SchedaProdotto_A4_US_MB-G900%20S4_EN_Rev20261119.pdf?download=1"
+            }
+          ]
+        },
+        {
+          "id": "mb-g940-s4",
+          "name": "MB-G940 S4",
+          "tagline": "For excavators",
+          "image": "assets/images/mbcrusher/products/sorting-grapples/mb-g940-s4.webp",
+          "carriers": [
+            {
+              "type": "excavator",
+              "min": 17,
+              "max": 22
+            }
+          ],
+          "description": [
+            "The MB Crusher MB-G940 S4 sorting grapple is designed for handling, sorting and separating materials on site. The optimised geometry ensures high gripping capacity and constant load control, while smooth movements enable fast, precise manoeuvres even during the most delicate operating phases. The robust structure guarantees long-term reliability and consistent performance even in demanding working conditions. Ideal for demolition, remediation, stockpile management and recycling centres, the MB-G940 S4 increases the excavator’s productivity, reduces cycle times and improves the overall efficiency of the job site."
+          ],
+          "specs": [
+            {
+              "label": "Weight",
+              "value": "1.10 t"
+            },
+            {
+              "label": "Capacity (claws closed)",
+              "value": "0.46 m³"
+            },
+            {
+              "label": "Speed (min–max)",
+              "value": "20–25 rpm"
+            },
+            {
+              "label": "Rotation",
+              "value": "360°"
+            },
+            {
+              "label": "Oil pressure (rotation)",
+              "value": "160–220 bar"
+            },
+            {
+              "label": "Oil flow rate (rotation)",
+              "value": "20–35 L/min"
+            },
+            {
+              "label": "Oil pressure (opening/closing)",
+              "value": "200–400 bar"
+            },
+            {
+              "label": "Oil flow rate (opening/closing)",
+              "value": "60–70 L/min"
+            }
+          ],
+          "gallery": [
+            "assets/images/mbcrusher/gallery/sorting-grapples/mb-g940-s4/1.webp"
+          ],
+          "accessories": [
+            {
+              "name": "Warranty extension gold 24",
+              "id": "warranty-extension-gold-24"
+            },
+            {
+              "name": "Rotation power extender kit",
+              "id": "rotation-power-extender-kit"
+            },
+            {
+              "name": "Multi-purpose blade kit",
+              "id": "multi-purpose-blade-kit"
+            },
+            {
+              "name": "Clam shell kit",
+              "id": "clamshell-kit"
+            },
+            {
+              "name": "Grip improvement kit",
+              "id": "grip-improvement-kit"
+            },
+            {
+              "name": "Tilting lift rubber protection kit",
+              "id": "tilting-lift-rubber-protection-kit"
+            },
+            {
+              "name": "Remote Power Control System",
+              "id": "remote-power-control-system"
+            },
+            {
+              "name": "12 V Electrical Kit for 2 Hose Functionality",
+              "id": "12-v-electrical-kit"
+            },
+            {
+              "name": "Serrated side plate kit",
+              "id": "serrated-side-plate-kit"
+            },
+            {
+              "name": "Serrated side profile kit",
+              "id": "serrated-side-profile-kit"
+            }
+          ],
+          "downloads": [
+            {
+              "label": "Product sheet – metric system",
+              "href": "https://storage.onpage.it/7b73b73185ad1ee56a7916035e8987f3c2155ddb/SchedaProdotto_A4_EU_MB-G940%20S4_EN_Rev20261119.pdf?download=1"
+            },
+            {
+              "label": "Product sheet – imperial system",
+              "href": "https://storage.onpage.it/1ee02409b86b50c84de0e7a7a254fa1f66e68aeb/SchedaProdotto_A4_US_MB-G940%20S4_EN_Rev20261119.pdf?download=1"
+            }
+          ]
         },
         {
           "id": "mb-g1000-s4",
@@ -1825,7 +3910,27 @@ window.CATALOG = {
             "assets/images/mbcrusher/gallery/sorting-grapples/g1000/3.webp",
             "assets/images/mbcrusher/gallery/sorting-grapples/g1000/4.webp"
           ],
-          "video": "https://www.rsquaredtrade.com/MB/Videos/MB-G1000_EN.mp4"
+          "video": "https://vimeo.com/604649895/6900a4d045",
+          "accessories": [
+            {
+              "name": "Warranty extension gold 24",
+              "id": "warranty-extension-gold-24"
+            },
+            {
+              "name": "Remote Power Control System",
+              "id": "remote-power-control-system"
+            }
+          ],
+          "downloads": [
+            {
+              "label": "Product sheet – metric system",
+              "href": "https://storage.onpage.it/63eeca6ff0a7117f34a48b05e05a4607c5a56da2/SchedaProdotto_A4_EU_MB-G1000%20S4_EN_Rev20261119.pdf?download=1"
+            },
+            {
+              "label": "Product sheet – imperial system",
+              "href": "https://storage.onpage.it/a10e0b4bca30d0057926b6638ad626873bd8dd76/SchedaProdotto_A4_US_MB-G1000%20S4_EN_Rev20261119.pdf?download=1"
+            }
+          ]
         },
         {
           "id": "mb-g1200-s4",
@@ -1879,7 +3984,51 @@ window.CATALOG = {
             "assets/images/mbcrusher/gallery/sorting-grapples/g1200/3.webp",
             "assets/images/mbcrusher/gallery/sorting-grapples/g1200/5.webp"
           ],
-          "video": "https://www.rsquaredtrade.com/MB/Videos/MB-G1200_Komatsu210_Croatia_moving%20and%20separating%20materials_wood.mp4"
+          "video": "https://vimeo.com/360996155",
+          "accessories": [
+            {
+              "name": "Warranty extension gold 24",
+              "id": "warranty-extension-gold-24"
+            },
+            {
+              "name": "Rotation power extender kit",
+              "id": "rotation-power-extender-kit"
+            },
+            {
+              "name": "Multi-purpose blade kit",
+              "id": "multi-purpose-blade-kit"
+            },
+            {
+              "name": "Clam shell kit",
+              "id": "clamshell-kit"
+            },
+            {
+              "name": "Grip improvement kit",
+              "id": "grip-improvement-kit"
+            },
+            {
+              "name": "Tilting lift rubber protection kit",
+              "id": "tilting-lift-rubber-protection-kit"
+            },
+            {
+              "name": "Remote Power Control System",
+              "id": "remote-power-control-system"
+            },
+            {
+              "name": "12 V Electrical Kit for 2 Hose Functionality",
+              "id": "12-v-electrical-kit"
+            }
+          ],
+          "downloads": [
+            {
+              "label": "Product sheet – metric system",
+              "href": "https://storage.onpage.it/f0bf5ae7da025621276e3df1567581f1e11df74f/SchedaProdotto_A4_EU_MB-G1200%20S4_EN_Rev20261119.pdf?download=1"
+            },
+            {
+              "label": "Product sheet – imperial system",
+              "href": "https://storage.onpage.it/b42d6bdb824dc27288e729b8ee636ff8712b519d/SchedaProdotto_A4_US_MB-G1200%20S4_EN_Rev20261119.pdf?download=1"
+            }
+          ]
         },
         {
           "id": "mb-g1500-s4",
@@ -1936,7 +4085,51 @@ window.CATALOG = {
             "assets/images/mbcrusher/gallery/sorting-grapples/g1500/2.webp",
             "assets/images/mbcrusher/gallery/sorting-grapples/g1500/3.webp"
           ],
-          "video": "https://www.rsquaredtrade.com/MB/Videos/Grapple%20rotary%20movement%20MB-G1500.mp4"
+          "video": "https://vimeo.com/313996467",
+          "accessories": [
+            {
+              "name": "Warranty extension gold 24",
+              "id": "warranty-extension-gold-24"
+            },
+            {
+              "name": "Rotation power extender kit",
+              "id": "rotation-power-extender-kit"
+            },
+            {
+              "name": "Multi-purpose blade kit",
+              "id": "multi-purpose-blade-kit"
+            },
+            {
+              "name": "Clam shell kit",
+              "id": "clamshell-kit"
+            },
+            {
+              "name": "Grip improvement kit",
+              "id": "grip-improvement-kit"
+            },
+            {
+              "name": "Tilting lift rubber protection kit",
+              "id": "tilting-lift-rubber-protection-kit"
+            },
+            {
+              "name": "Remote Power Control System",
+              "id": "remote-power-control-system"
+            },
+            {
+              "name": "12 V Electrical Kit for 2 Hose Functionality",
+              "id": "12-v-electrical-kit"
+            }
+          ],
+          "downloads": [
+            {
+              "label": "Product sheet – metric system",
+              "href": "https://storage.onpage.it/3a09d56a9b2b775528429e5b90f4048daa793849/SchedaProdotto_A4_EU_MB-G1500%20S4_EN_Rev20261119.pdf?download=1"
+            },
+            {
+              "label": "Product sheet – imperial system",
+              "href": "https://storage.onpage.it/1f8a13af735bf650d26db7170db9dd22459f8c13/SchedaProdotto_A4_US_MB-G1500%20S4_EN_Rev20261119.pdf?download=1"
+            }
+          ]
         }
       ]
     },
@@ -2012,10 +4205,12 @@ window.CATALOG = {
               "id": "warranty-extension-gold-24"
             },
             {
-              "name": "12 V Electrical Kit for 2 Hose Functionality"
+              "name": "12 V Electrical Kit for 2 Hose Functionality",
+              "id": "12-v-electrical-kit"
             },
             {
-              "name": "MB-P Pulverizer Kit"
+              "name": "MB-P Pulverizer Kit",
+              "id": "pulverizer-kit-mb-p"
             }
           ],
           "downloads": [
@@ -2104,13 +4299,16 @@ window.CATALOG = {
               "id": "warranty-extension-gold-24"
             },
             {
-              "name": "12 V Electrical Kit for 2 Hose Functionality"
+              "name": "12 V Electrical Kit for 2 Hose Functionality",
+              "id": "12-v-electrical-kit"
             },
             {
-              "name": "MB-P Pulverizer Kit"
+              "name": "MB-P Pulverizer Kit",
+              "id": "pulverizer-kit-mb-p"
             },
             {
-              "name": "Forestry pruner kit"
+              "name": "Forestry pruner kit",
+              "id": "forestry-pruner-kit"
             }
           ],
           "downloads": [
@@ -2186,16 +4384,20 @@ window.CATALOG = {
               "id": "warranty-extension-gold-24"
             },
             {
-              "name": "12 V Electrical Kit for 2 Hose Functionality"
+              "name": "12 V Electrical Kit for 2 Hose Functionality",
+              "id": "12-v-electrical-kit"
             },
             {
-              "name": "Crusher Kit"
+              "name": "Crusher Kit",
+              "id": "crusher-kit"
             },
             {
-              "name": "Pulverizer Kit"
+              "name": "Pulverizer Kit",
+              "id": "pulverizer-kit-mb-pt"
             },
             {
-              "name": "Shear Kit"
+              "name": "Shear Kit",
+              "id": "shear-kit"
             }
           ],
           "downloads": [
@@ -2267,16 +4469,20 @@ window.CATALOG = {
               "id": "warranty-extension-gold-24"
             },
             {
-              "name": "12 V Electrical Kit for 2 Hose Functionality"
+              "name": "12 V Electrical Kit for 2 Hose Functionality",
+              "id": "12-v-electrical-kit"
             },
             {
-              "name": "Crusher Kit"
+              "name": "Crusher Kit",
+              "id": "crusher-kit"
             },
             {
-              "name": "Pulverizer Kit"
+              "name": "Pulverizer Kit",
+              "id": "pulverizer-kit-mb-pt"
             },
             {
-              "name": "Shear Kit"
+              "name": "Shear Kit",
+              "id": "shear-kit"
             }
           ],
           "downloads": [
@@ -2345,16 +4551,20 @@ window.CATALOG = {
               "id": "warranty-extension-gold-24"
             },
             {
-              "name": "12 V Electrical Kit for 2 Hose Functionality"
+              "name": "12 V Electrical Kit for 2 Hose Functionality",
+              "id": "12-v-electrical-kit"
             },
             {
-              "name": "Crusher Kit"
+              "name": "Crusher Kit",
+              "id": "crusher-kit"
             },
             {
-              "name": "Pulverizer Kit"
+              "name": "Pulverizer Kit",
+              "id": "pulverizer-kit-mb-pt"
             },
             {
-              "name": "Shear Kit"
+              "name": "Shear Kit",
+              "id": "shear-kit"
             }
           ],
           "downloads": [
@@ -2401,7 +4611,8 @@ window.CATALOG = {
             "assets/images/mbcrusher/gallery/accessories/ironseprator/1.webp",
             "assets/images/mbcrusher/gallery/accessories/ironseprator/2.webp",
             "assets/images/mbcrusher/gallery/accessories/ironseprator/3.webp"
-          ]
+          ],
+          "video": "https://vimeo.com/336771532"
         },
         {
           "id": "the-dust-suppression-kit",
@@ -2420,7 +4631,8 @@ window.CATALOG = {
           "gallery": [
             "assets/images/mbcrusher/gallery/accessories/dustsupp/1.webp",
             "assets/images/mbcrusher/gallery/accessories/dustsupp/2.webp"
-          ]
+          ],
+          "video": "https://vimeo.com/239948602"
         },
         {
           "id": "coupling",
@@ -2530,6 +4742,19 @@ window.CATALOG = {
           ]
         },
         {
+          "id": "load-capacity-increase-kit",
+          "name": "Load capacity increase kit",
+          "tagline": "Available for the MB-HDS207.",
+          "image": "assets/images/mbcrusher/products/accessories/load-capacity-increase-kit.webp",
+          "group": null,
+          "fits": [
+            "shaft-screeners"
+          ],
+          "description": [
+            "The load capacity kit can be installed on the MB-HDS207 to increase its load capacity from 50l to 60l."
+          ]
+        },
+        {
           "id": "rc-compost-kit",
           "name": "RC compost kit",
           "tagline": "It's available for all MB-HDS models.",
@@ -2606,6 +4831,46 @@ window.CATALOG = {
           ]
         },
         {
+          "id": "rq8-sifting-kit",
+          "name": "RQ8 sifting kit",
+          "tagline": "Available for 11 shaft screener models.",
+          "image": "assets/images/mbcrusher/products/accessories/rq8-sifting-kit.webp",
+          "group": "Shaft kits",
+          "fits": [
+            "shaft-screeners"
+          ],
+          "description": [
+            "Adjustment: 8 mm",
+            "Available for the MB-HDS207, MB-HDS307, MB-HDS212, MB-HDS312, MB-HDS214, MB-HDS220, MB-HDS412, MB-HDS314, MB-HDS320, MB-HDS323 and MB-HDS523."
+          ]
+        },
+        {
+          "id": "rq15-sifting-kit",
+          "name": "RQ15 sifting kit",
+          "tagline": "Available for the MB-HDS207 and MB-HDS307.",
+          "image": "assets/images/mbcrusher/products/accessories/rq15-sifting-kit.webp",
+          "group": "Shaft kits",
+          "fits": [
+            "shaft-screeners"
+          ],
+          "description": [
+            "Adjustment: 15 mm"
+          ]
+        },
+        {
+          "id": "rq45-sifting-kit",
+          "name": "RQ45 sifting kit",
+          "tagline": "Available for the MB-HDS533.",
+          "image": "assets/images/mbcrusher/products/accessories/rq45-sifting-kit.webp",
+          "group": "Shaft kits",
+          "fits": [
+            "shaft-screeners"
+          ],
+          "description": [
+            "The RQ45 Sifting Kit allows for the effective screening of both wet and dry soil, improving soil aeration. With an 45 mm adjustment, it optimises material handling with precision and versatility."
+          ]
+        },
+        {
           "id": "drum-cover-kit",
           "name": "Drum cover kit",
           "tagline": "Available for the MB-R500",
@@ -2621,7 +4886,8 @@ window.CATALOG = {
           "gallery": [
             "assets/images/mbcrusher/gallery/accessories/drumcoverkit/1.webp",
             "assets/images/mbcrusher/gallery/accessories/drumcoverkit/2.webp"
-          ]
+          ],
+          "video": "https://vimeo.com/295574686"
         },
         {
           "id": "cutting-depth-adjustment-kit",
@@ -2822,6 +5088,136 @@ window.CATALOG = {
             "assets/images/mbcrusher/gallery/accessories/tit/1.webp",
             "assets/images/mbcrusher/gallery/accessories/tit/2.webp",
             "assets/images/mbcrusher/gallery/accessories/tit/3.webp"
+          ]
+        },
+        {
+          "id": "remote-power-control-system",
+          "name": "Remote Power Control System",
+          "tagline": "Available for 5 sorting grapple models.",
+          "image": "assets/images/mbcrusher/products/accessories/remote-power-control-system.webp",
+          "group": null,
+          "fits": [
+            "sorting-grapples"
+          ],
+          "description": [
+            "The KIT allows you to adjust the clamping force directly from the operator cab, by either increasing or decreasing the pressure. Available from the MB-G600 model.",
+            "Available for the MB-G600 S4, MB-G900 S4, MB-G1000 S4, MB-G1200 S4 and MB-G1500 S4."
+          ]
+        },
+        {
+          "id": "12-v-electrical-kit",
+          "name": "12 V Electrical kit for 2-hose functionality",
+          "tagline": "Available for 6 sorting grapple models.",
+          "image": "assets/images/mbcrusher/products/accessories/12-v-electrical-kit.webp",
+          "group": null,
+          "fits": [
+            "sorting-grapples"
+          ],
+          "description": [
+            "Utilize the 360° rotation even with excavators that only have two hoses.",
+            "Available for the MB-G400 S4, MB-G500 S4, MB-G600 S4, MB-G900 S4, MB-G1200 S4 and MB-G1500 S4."
+          ]
+        },
+        {
+          "id": "serrated-side-plate-kit",
+          "name": "Serrated side plate kit",
+          "tagline": "Available for 6 sorting grapple models.",
+          "image": "assets/images/mbcrusher/products/accessories/serrated-side-plate-kit.webp",
+          "group": null,
+          "fits": [
+            "sorting-grapples"
+          ],
+          "description": [
+            "For handling material of particular shapes.",
+            "Available for the MB-G350 S4, MB-G400 S4, MB-G450 S4, MB-G500 S4, MB-G600 S4 and MB-G900 S4."
+          ]
+        },
+        {
+          "id": "serrated-side-profile-kit",
+          "name": "Serrated side profile kit",
+          "tagline": "Available for 5 sorting grapple models.",
+          "image": "assets/images/mbcrusher/products/accessories/serrated-side-profile-kit.webp",
+          "group": null,
+          "fits": [
+            "sorting-grapples"
+          ],
+          "description": [
+            "The contoured teeth of the profile improve the grip on materials with particular shapes.",
+            "Available for the MB-G350 S4, MB-G400 S4, MB-G450 S4, MB-G500 S4 and MB-G900 S4."
+          ]
+        },
+        {
+          "id": "pulverizer-kit-mb-p",
+          "name": "Pulverizer kit (MB-P)",
+          "tagline": "Available for the MB-P160 and MB-P380.",
+          "image": "assets/images/mbcrusher/products/accessories/pulverizer-kit-mb-p.webp",
+          "group": "Pulverizer kits",
+          "fits": [
+            "demolition-pulverizers"
+          ],
+          "description": [
+            "The MB Crusher pulverizer kit, designed for MB-P demolition pulverizers, is engineered to demolish and downsize blocks and demolition materials, preparing them for recycling. The reinforced jaws ensure a secure grip and precise crushing action, producing finer, easier-to-handle material. Installation is quick and carried out directly on site. It is the ideal solution to speed up debris management, reduce processing stages, and increase jobsite operational efficiency."
+          ],
+          "gallery": [
+            "assets/images/mbcrusher/gallery/accessories/pulverizer-kit-mb-p/1.webp"
+          ]
+        },
+        {
+          "id": "crusher-kit",
+          "name": "Crusher kit",
+          "tagline": "Available for the MB-PT650, MB-PT1150 and MB-PT1650.",
+          "image": "assets/images/mbcrusher/products/accessories/crusher-kit.webp",
+          "group": "Pulverizer kits",
+          "fits": [
+            "demolition-pulverizers"
+          ],
+          "description": [
+            "The MB Crusher crusher kit is designed for demolishing reinforced concrete structures. It delivers high power, precision and a wide jaw opening to break columns, beams and load-bearing elements. It can be mounted on MB-PT demolition pulverizers in just a few minutes, directly on site, with no downtime. It is the most effective solution to start demolition and immediately separate materials."
+          ]
+        },
+        {
+          "id": "pulverizer-kit-mb-pt",
+          "name": "Pulverizer kit (MB-PT)",
+          "tagline": "Available for the MB-PT650, MB-PT1150 and MB-PT1650.",
+          "image": "assets/images/mbcrusher/products/accessories/pulverizer-kit-mb-pt.webp",
+          "group": "Pulverizer kits",
+          "fits": [
+            "demolition-pulverizers"
+          ],
+          "description": [
+            "The MB Crusher pulverizer kit, designed for the MB-PT demolition pulverizers, makes it possible to demolish and downsize blocks and construction materials directly on site, streamlining subsequent handling, recovery, or recycling operations. The reinforced jaws ensure a secure grip and effective crushing action, guaranteeing precision and consistency during operation. This allows the material to be reduced in a controlled way, improving debris management during jobsite activities. Installation is quick and easy and can be carried out directly on site."
+          ],
+          "gallery": [
+            "assets/images/mbcrusher/gallery/accessories/pulverizer-kit-mb-pt/1.webp"
+          ]
+        },
+        {
+          "id": "shear-kit",
+          "name": "Shear kit",
+          "tagline": "Available for the MB-PT650, MB-PT1150 and MB-PT1650.",
+          "image": "assets/images/mbcrusher/products/accessories/shear-kit.webp",
+          "group": "Pulverizer kits",
+          "fits": [
+            "demolition-pulverizers"
+          ],
+          "description": [
+            "The MB Crusher shear kit is specifically designed for cutting steel and metal in demolition applications. The reversible blades ensure precision, long service life and clean cuts, even on thick structures. It can be mounted on MB-PT demolition pulverisers in just a few minutes, directly on site. It is the ideal kit for mixed processing, dismantling operations and the fast separation of metal materials."
+          ]
+        },
+        {
+          "id": "forestry-pruner-kit",
+          "name": "Forestry pruner kit",
+          "tagline": "Available for the MB-P380.",
+          "image": "assets/images/mbcrusher/products/accessories/forestry-pruner-kit.webp",
+          "group": "Pulverizer kits",
+          "fits": [
+            "demolition-pulverizers"
+          ],
+          "description": [
+            "The MB Crusher forestry pruner kit is designed for cutting and de-branching plants, branches, and woody material. Installed on the demolition pulverizer, it expands the attachment’s range of applications, making it ideal for forestry operations and green area maintenance. Its dedicated configuration ensures clean, controlled cuts, optimizing on-site vegetation reduction and material handling. The kit is quick to install and allows fast reconfiguration of the attachment based on operational needs, increasing versatility and productivity."
+          ],
+          "gallery": [
+            "assets/images/mbcrusher/gallery/accessories/forestry-pruner-kit/1.webp"
           ]
         }
       ]

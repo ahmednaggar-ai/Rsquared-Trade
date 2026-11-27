@@ -648,12 +648,13 @@
         : '');
 
     // Vimeo / YouTube links are embedded (lazy iframe); anything else is played as an .mp4
-    var vimeo = p.video && String(p.video).match(/vimeo\.com\/(?:video\/)?(\d+)/);
+    // (unlisted Vimeo links carry a privacy hash: vimeo.com/<id>/<hash>)
+    var vimeo = p.video && String(p.video).match(/vimeo\.com\/(?:video\/)?(\d+)(?:\/([0-9a-f]{6,}))?/);
     var yt = p.video && String(p.video).match(/(?:youtube\.com\/(?:watch\?v=|embed\/)|youtu\.be\/)([\w-]{6,})/);
     if (p.video) {
       el.video.innerHTML = '<h2 class="catalog__video-title">See the ' + esc(p.name) + ' at work</h2>' +
         (vimeo || yt
-          ? '<div class="catalog__embed"><iframe src="' + (vimeo ? 'https://player.vimeo.com/video/' + vimeo[1] + '?dnt=1' : 'https://www.youtube-nocookie.com/embed/' + yt[1]) + '"' +
+          ? '<div class="catalog__embed"><iframe src="' + (vimeo ? 'https://player.vimeo.com/video/' + vimeo[1] + '?' + (vimeo[2] ? 'h=' + vimeo[2] + '&amp;' : '') + 'dnt=1' : 'https://www.youtube-nocookie.com/embed/' + yt[1]) + '"' +
             ' title="' + esc(p.name) + ' video" loading="lazy" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe></div>'
           : '<video controls preload="none" playsinline' + (p.gallery && p.gallery[0] ? ' poster="' + esc(p.gallery[0]) + '"' : '') + '>' +
             '<source src="' + esc(p.video) + '" type="video/mp4"></video>');
