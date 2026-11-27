@@ -64,10 +64,12 @@
   })();
 
   /* ---------------------------- LOADER ---------------------------- */
-  // A 3-second intro: the bar fills smoothly over DURATION while the business
-  // lines appear one by one, then the shutter lifts. If the first screen
-  // (heading font + hero image) isn't ready yet, the bar holds at 95% until
-  // it is, up to MAX.
+  // Shown on every page load, in two phases:
+  //   1. waiting  – until the page has fully loaded (window "load" + fonts);
+  //                 the bar shows an indeterminate sweep. Capped at WAIT_MAX.
+  //   2. intro    – a full DURATION (3s) animation starting only once the page
+  //                 is ready: bar fills 0→100%, business lines appear one by
+  //                 one, then the shutter lifts.
   (function () {
     var html = document.documentElement;
     var loader = document.querySelector('[data-loader]');
@@ -76,32 +78,35 @@
 
     var bar = loader.querySelector('[data-loader-progress]');
     var percent = loader.querySelector('[data-loader-percent]');
-    var DURATION = reduceMotion ? 600 : 3000, MAX = 6000;
-    var finished = false, ready = false;
+    var DURATION = 3000, WAIT_MAX = 8000;
+    var finished = false, running = false, introStart = 0;
 
-    var waitImage = function (img) {
-      return new Promise(function (resolve) {
-        if (!img || (img.complete && img.naturalWidth)) return resolve();
-        img.addEventListener('load', resolve, { once: true });
-        img.addEventListener('error', resolve, { once: true });
-      });
-    };
-    var tasks = [
-      document.fonts && document.fonts.ready ? document.fonts.ready : Promise.resolve(),
-      waitImage(document.querySelector('img[fetchpriority="high"]')),   // home hero frame
-      waitImage(document.querySelector('.rs-nav__brand img'))            // logo
-    ];
+    var pageReady = new Promise(function (resolve) {
+      if (document.readyState === 'complete') resolve();
+      else window.addEventListener('load', resolve, { once: true });
+    }).then(function () {
+      return document.fonts && document.fonts.ready ? document.fonts.ready : null;
+    });
+
     var setProgress = function (p) {
       p = Math.round(p);
       if (bar) bar.style.setProperty('--rs-progress', p + '%');
       if (percent) percent.textContent = p + '%';
     };
-    var ease = function (t) { return 1 - Math.pow(1 - t, 2); }; // fast start, gentle finish
+    var ease = function (t) { return t < .5 ? 2 * t * t : 1 - Math.pow(-2 * t + 2, 2) / 2; }; // ease-in-out
     var tick = function () {
       if (finished) return;
-      var t = Math.min(performance.now() / DURATION, 1); // measured from when the page started opening
-      setProgress(Math.min(ease(t) * 100, ready ? 100 : 95));
-      if (t >= 1 && ready) return finish();
+      var t = Math.min((performance.now() - introStart) / DURATION, 1);
+      setProgress(ease(t) * 100);
+      if (t >= 1) return finish();
+      requestAnimationFrame(tick);
+    };
+    var startIntro = function () {
+      if (running) return;
+      running = true;
+      introStart = performance.now();
+      setProgress(0);
+      loader.classList.add('is-running'); // starts the business-line animation in CSS
       requestAnimationFrame(tick);
     };
 
@@ -109,7 +114,6 @@
       if (finished) return;
       finished = true;
       setProgress(100);
-      try { sessionStorage.setItem('rs-loaded', '1'); } catch (e) {}
       setTimeout(function () {
         loader.classList.add('is-done');     // shutter lifts
         html.classList.remove('js-loading'); // hero content animates in underneath
@@ -118,9 +122,8 @@
         }, 1000);
       }, 150);
     };
-    Promise.all(tasks).then(function () { ready = true; });
-    requestAnimationFrame(tick);
-    setTimeout(finish, MAX);
+    pageReady.then(startIntro);
+    setTimeout(startIntro, WAIT_MAX); // very slow connection: don't wait forever
   })();
 
   /* ---------------------------- NAVBAR ---------------------------- */

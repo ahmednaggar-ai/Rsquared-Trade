@@ -134,7 +134,7 @@ body{
 	background:
 		radial-gradient(circle at 50% 40%, rgba(254,210,6,.12), transparent 55%),
 		var(--rs-ink);
-	animation: rs-loader-failsafe .5s ease 8s forwards;
+	animation: rs-loader-failsafe .5s ease 13s forwards; /* > 8s wait cap + 3s intro */
 	transition: transform .9s cubic-bezier(.77,0,.18,1);
 }
 /* hazard-stripe edge: the loader lifts away like a roller shutter */
@@ -217,10 +217,24 @@ body{
 	text-transform: uppercase;
 	color: rgba(255,255,255,.6);
 }
-.rs-loader__tag span{ animation: rs-loader-in .6s cubic-bezier(.2,.7,.2,1) both; }
-.rs-loader__tag span:nth-child(1){ animation-delay: .5s; }
-.rs-loader__tag span:nth-child(2){ animation-delay: 1.2s; }
-.rs-loader__tag span:nth-child(3){ animation-delay: 1.9s; }
+/* phase 1 (page still loading): lines hidden, bar sweeps back and forth.
+   phase 2 (.is-running, the 3s intro): lines appear in turn, bar fills. */
+@media (prefers-reduced-motion: no-preference){
+	.rs-loader__tag span{ opacity: 0; }
+	.rs-loader.is-running .rs-loader__tag span{ animation: rs-loader-in .6s cubic-bezier(.2,.7,.2,1) both; }
+	.rs-loader.is-running .rs-loader__tag span:nth-child(1){ animation-delay: .3s; }
+	.rs-loader.is-running .rs-loader__tag span:nth-child(2){ animation-delay: 1s; }
+	.rs-loader.is-running .rs-loader__tag span:nth-child(3){ animation-delay: 1.7s; }
+	.rs-loader:not(.is-running) .rs-loader__bar span{
+		width: 35%;
+		animation: rs-sweep 1.1s ease-in-out infinite alternate, rs-stripes .6s linear infinite;
+	}
+}
+.rs-loader:not(.is-running) .rs-loader__percent{ visibility: hidden; }
+@keyframes rs-sweep{
+	from{ transform: translateX(-10%); }
+	to{ transform: translateX(195%); }
+}
 .rs-loader__tag span + span::before{
 	content: "·";
 	margin: 0 .8em;

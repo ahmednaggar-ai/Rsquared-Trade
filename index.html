@@ -22,8 +22,8 @@
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700&display=swap" rel="stylesheet">
 
 <script src="assets/js/site.js" defer></script>
-<!-- Before first paint: theme (saved choice, else system setting) and the once-per-session loader -->
-<script>(function(){var d=document.documentElement,t;try{t=localStorage.getItem('rs-theme')}catch(e){}if(t!=='light'&&t!=='dark')t=window.matchMedia&&matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';d.setAttribute('data-theme',t);try{if(sessionStorage.getItem('rs-loaded'))return}catch(e){}d.classList.add('js-loading')})();</script>
+<!-- Before first paint: theme (saved choice, else system setting) and the loader -->
+<script>(function(){var d=document.documentElement,t;try{t=localStorage.getItem('rs-theme')}catch(e){}if(t!=='light'&&t!=='dark')t=window.matchMedia&&matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';d.setAttribute('data-theme',t);d.classList.add('js-loading')})();</script>
 </head>
 
 
