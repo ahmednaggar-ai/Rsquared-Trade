@@ -290,10 +290,32 @@
   var hero = document.querySelector('[data-hero]');
   if (!hero) return;
 
+  var heroVideoCounter = 0;
+  try {
+    heroVideoCounter = parseInt(localStorage.getItem('rs-hero-video-counter') || '0', 10);
+    if (isNaN(heroVideoCounter) || heroVideoCounter < 0) heroVideoCounter = 0;
+  } catch (e) {}
+  var initialSlide = heroVideoCounter % 2 === 0 ? 0 : 1;
+  try {
+    localStorage.setItem('rs-hero-video-counter', String((heroVideoCounter + 1) % 2));
+  } catch (e) {}
+
+  var media = hero.querySelector('.hero__media');
+  var videoSlides = Array.prototype.slice.call(hero.querySelectorAll('.hero__slide--video'));
+  var brandSlides = Array.prototype.slice.call(hero.querySelectorAll('.hero__slide--image'));
+  var firstVideo = initialSlide === 0 ? videoSlides[0] : videoSlides[1];
+  var secondVideo = initialSlide === 0 ? videoSlides[1] : videoSlides[0];
+  if (media) {
+    media.querySelectorAll('.hero__slide').forEach(function (slide) { slide.classList.remove('is-active'); });
+    media.appendChild(firstVideo);
+    brandSlides.forEach(function (slide) { media.appendChild(slide); });
+    media.appendChild(secondVideo);
+  }
+
   var slides = Array.prototype.slice.call(hero.querySelectorAll('.hero__slide'));
   var dotsWrap = hero.querySelector('[data-hero-dots]');
-  var video = hero.querySelector('.hero__video');
-  var useVideo = !!video && !reduceMotion && !saveData;
+  var videos = Array.prototype.slice.call(hero.querySelectorAll('.hero__video'));
+  var useVideo = videos.length > 0 && !reduceMotion && !saveData;
   var current = 0;
   var timer = null;
   var paused = false;
@@ -317,11 +339,13 @@
   var preloadRest = function () { slides.slice(1).forEach(loadImage); };
 
   // Video: attach sources only now so the bytes don't block the first paint
-  var videoStarted = false;
-  var startVideo = function () {
-    if (!useVideo) return;
-    if (!videoStarted) {
-      videoStarted = true;
+  var videoStarted = function (video) {
+    return video.hasAttribute('data-started');
+  };
+  var startVideo = function (video) {
+    if (!useVideo || !video) return;
+    if (!videoStarted(video)) {
+      video.setAttribute('data-started', 'true');
       Array.prototype.forEach.call(video.querySelectorAll('source[data-src]'), function (s) {
         s.src = s.getAttribute('data-src');
         s.removeAttribute('data-src');
@@ -333,6 +357,9 @@
     }
     var p = video.play();
     if (p && p.catch) p.catch(function () { /* autoplay blocked: poster stays */ });
+  };
+  var pauseVideos = function () {
+    videos.forEach(function (video) { video.pause(); });
   };
 
   var slideDuration = function (i) {
@@ -364,14 +391,15 @@
   var show = function (i) {
     if (current !== i) {
       slides[current].classList.remove('is-active');
-      if (current === 0 && video) video.pause();
+      pauseVideos();
       // restart the Ken Burns animation
       var img = slides[i].querySelector('img');
       if (img) { img.style.animation = 'none'; void img.offsetWidth; img.style.animation = ''; }
       slides[i].classList.add('is-active');
       current = i;
     }
-    if (i === 0) startVideo();
+    var activeVideo = slides[i].querySelector('.hero__video');
+    if (activeVideo) startVideo(activeVideo);
     dots.forEach(function (d, n) {
       d.classList.remove('is-active');
       d.setAttribute('aria-current', n === i ? 'true' : 'false');
@@ -400,7 +428,7 @@
     dots.forEach(function (d) { d.classList.toggle('is-paused', p); });
     if (p) {
       clearTimeout(timer);
-      if (video && current === 0) video.pause();
+      pauseVideos();
     } else {
       show(current); // restart the current slide so timer and progress bar stay in sync
     }
@@ -417,6 +445,7 @@
   });
 
   // Kick off: first slide is already visible (poster)
+  firstVideo.classList.add('is-active');
   show(0);
   if (document.readyState === 'complete') preloadRest();
   else window.addEventListener('load', preloadRest, { once: true });
