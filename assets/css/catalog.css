@@ -757,7 +757,8 @@ a.mb-card__media{ display: block; }
 
 .mb-detail__thumbs{
 	display: grid;
-	grid-template-columns: repeat(5, 1fr);
+	grid-auto-flow: column;
+	grid-auto-columns: 1fr;   /* all thumbnails share one row, however many there are */
 	gap: 10px;
 	margin-top: 12px;
 }
@@ -973,3 +974,127 @@ a.mb-card__media{ display: block; }
 	background: var(--rs-accent);
 	transform: rotate(45deg);
 }
+
+
+/* ==========================================================================
+   Photo-based catalogues (e.g. Lintec plants): real photos instead of
+   white-background product shots, model comparison tables, feature lists
+   ========================================================================== */
+
+.catalog__grid--lines.catalog__grid--two{ grid-template-columns: repeat(2, 1fr); }
+
+.line-card--photo .line-card__media{ display: block; overflow: hidden; height: 260px; padding: 0; background: #000; }
+.line-card--photo .line-card__media img{
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+}
+.line-card--photo:hover .line-card__media img{ transform: scale(1.05); }
+
+.mb-card--photo .mb-card__media{ padding: 0; background: #000; }
+.mb-card--photo .mb-card__media img{ aspect-ratio: 4 / 3; object-fit: cover; }
+[data-theme="dark"] .mb-card--photo .mb-card__media{ margin: 0; padding: 0; border-radius: 0; }
+
+.mb-card__variants .mb-card__range{ white-space: normal; text-align: right; }
+.mb-card__variants li{ grid-template-columns: auto 1fr; }
+
+/* header: a real photo in a frame */
+.catalog-hero__photo{
+	display: block;
+	overflow: hidden;
+	width: min(440px, 80vw);
+	aspect-ratio: 4 / 3;
+	border: 6px solid #fff;
+	border-radius: 22px;
+	box-shadow: 0 30px 60px rgba(0,0,0,.45);
+	animation: rs-rise .7s cubic-bezier(.2,.7,.2,1) both;
+}
+.catalog-hero__photo img{ width: 100%; height: 100%; object-fit: cover; display: block; }
+
+/* "Key features" */
+.mb-detail__subhead{
+	margin: 26px 0 12px;
+	font-family: var(--rs-heading-font);
+	font-size: .8rem;
+	font-weight: 700;
+	letter-spacing: .14em;
+	text-transform: uppercase;
+	color: var(--rs-text);
+}
+.mb-detail__features{
+	display: grid;
+	gap: 10px;
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+.mb-detail__features li{
+	position: relative;
+	padding-left: 30px;
+	line-height: 1.6;
+	color: var(--rs-muted);
+}
+.mb-detail__features li::before{
+	content: "\f00c";              /* Font Awesome check */
+	position: absolute;
+	left: 0; top: 2px;
+	display: grid;
+	place-items: center;
+	width: 20px; height: 20px;
+	border-radius: 50%;
+	background: var(--rs-accent);
+	color: var(--rs-ink);
+	font-family: "Font Awesome 5 Free";
+	font-weight: 900;
+	font-size: .6rem;
+}
+
+/* model comparison table */
+.mb-variants__scroll{
+	overflow-x: auto;
+	border: 1px solid var(--rs-border);
+	border-radius: 12px;
+}
+.mb-variants__scroll:focus-visible{ outline: none; box-shadow: 0 0 0 4px rgba(254,210,6,.45); }
+.mb-variants{
+	width: 100%;
+	min-width: 520px;
+	border-collapse: collapse;
+	font-size: .95rem;
+}
+.mb-variants th,
+.mb-variants td{
+	padding: 14px 18px;
+	border-bottom: 1px solid var(--rs-border);
+	text-align: center;
+	white-space: nowrap;
+	color: var(--rs-text);
+}
+.mb-variants thead th{
+	background: var(--rs-ink);
+	color: #fff;
+	font-family: var(--rs-heading-font);
+	font-weight: 700;
+}
+.mb-variants thead th:first-child{ color: var(--rs-accent); }
+.mb-variants tbody th{
+	text-align: left;
+	font-size: .78rem;
+	font-weight: 700;
+	letter-spacing: .08em;
+	text-transform: uppercase;
+	color: var(--rs-subtle);
+	background: var(--rs-surface-2);
+}
+.mb-variants tbody tr:last-child th,
+.mb-variants tbody tr:last-child td{ border-bottom: 0; }
+.mb-variants td{ font-family: var(--rs-heading-font); font-weight: 700; }
+.mb-variants tbody tr:hover td{ background: var(--rs-surface-2); }
+
+@media (max-width: 767.98px){
+	.catalog__grid--lines.catalog__grid--two{ grid-template-columns: 1fr; }
+}
+/* keep the row labels visible while the table scrolls sideways on phones */
+.mb-variants tbody th,
+.mb-variants thead th:first-child{ position: sticky; left: 0; z-index: 1; }
+.mb-variants thead th:first-child{ background: var(--rs-ink); }

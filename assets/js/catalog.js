@@ -1,23 +1,26 @@
 /* =================================================================
-   MB CRUSHER CATALOGUE
-   One page for every product line. Reads window.MB_CRUSHER
-   (assets/js/data/mbcrusher.js) and renders:
-     mbcrusher.html                                   overview of all product lines
-     mbcrusher.html?type=<category id>                that line's products
-     mbcrusher.html?type=<category id>&model=<id>     one product's details
-                                                      (products that have description/specs/gallery)
+   BRAND CATALOGUE ENGINE
+   Shared by every brand page (mbcrusher.html, lintec.html). The page
+   loads its own data file first, which sets window.CATALOG
+   (assets/js/data/<brand>.js). Renders:
+     <page>                                   overview of all product lines
+     <page>?type=<category id>                that line's products
+     <page>?type=<category id>&model=<id>     one product's details
+                                              (products with description/specs/variants/gallery)
    Navigation updates the URL without reloading, so links can be shared
    and the browser back button works.
    ================================================================= */
 (function () {
   'use strict';
 
-  var DATA = window.MB_CRUSHER;
+  var DATA = window.CATALOG;
   if (!DATA) return;
 
+  var BRAND = DATA.brand || { name: 'Products', page: location.pathname.split('/').pop() || 'index.html' };
   var CATS = DATA.categories;
-  var CARRIERS = DATA.carriers;
-  var QUOTE_URL = 'index.html?brand=' + encodeURIComponent('MB Crusher');
+  var CARRIERS = DATA.carriers || {};
+  var WORD = BRAND.productWord || ['Model', 'Models'];
+  var QUOTE_URL = 'index.html?brand=' + encodeURIComponent(BRAND.quoteBrand || BRAND.name);
 
   var $ = function (sel) { return document.querySelector(sel); };
   var el = {
@@ -43,10 +46,31 @@
     return null;
   };
   var urlFor = function (id, model) {
-    if (!id) return 'mbcrusher.html';
-    return 'mbcrusher.html?type=' + encodeURIComponent(id) + (model ? '&model=' + encodeURIComponent(model) : '');
+    if (!id) return BRAND.page;
+    return BRAND.page + '?type=' + encodeURIComponent(id) + (model ? '&model=' + encodeURIComponent(model) : '');
   };
-  var hasDetails = function (p) { return !!(p && (p.description || p.specs || p.gallery)); };
+  var hasDetails = function (p) { return !!(p && (p.description || p.specs || p.variants || p.gallery)); };
+  var countLabel = function (n) { return n + ' ' + (n === 1 ? WORD[0] : WORD[1]).toLowerCase(); };
+
+  // "variants" = a model comparison table: { columns: [model names], rows: [{ label, values: [...] }] }
+  var variantRow = function (p, label) {
+    if (!p.variants) return null;
+    for (var i = 0; i < p.variants.rows.length; i++) if (p.variants.rows[i].label.toLowerCase() === label) return p.variants.rows[i];
+    return null;
+  };
+  // "80 tph", "120–160 tph" … -> "80–240 tph" (min–max over all models)
+  var variantRange = function (p, label) {
+    var row = variantRow(p, label);
+    if (!row) return null;
+    var nums = [], unit = '';
+    row.values.forEach(function (v) {
+      (String(v).match(/\d+(?:\.\d+)?/g) || []).forEach(function (x) { nums.push(+x); });
+      var u = String(v).match(/[a-z]+$/i); if (u) unit = u[0];
+    });
+    if (!nums.length) return null;
+    var lo = Math.min.apply(null, nums), hi = Math.max.apply(null, nums);
+    return (lo === hi ? lo : lo + '–' + hi) + (unit ? ' ' + unit : '');
+  };
   var productOf = function (c, id) {
     if (!c || !id) return null;
     for (var i = 0; i < c.products.length; i++) if (c.products[i].id === id) return c.products[i];
@@ -96,41 +120,56 @@
     var c = byId(state.cat);
     var m = productOf(c, state.model);
     var crumbs = '<li><a href="index.html">Home</a></li><li><a href="index.html#brand">Brands</a></li>';
+    var brandCrumb = '<li><a href="' + urlFor(null) + '" data-cat="">' + esc(BRAND.name) + '</a></li>';
     if (m) {
-      crumbs += '<li><a href="' + urlFor(null) + '" data-cat="">MB Crusher</a></li>' +
+      crumbs += brandCrumb +
         '<li><a href="' + urlFor(c.id) + '" data-cat="' + c.id + '">' + esc(c.name) + '</a></li>' +
         '<li aria-current="page">' + esc(m.name) + '</li>';
-      el.eyebrow.textContent = 'MB Crusher · ' + c.name;
+      el.eyebrow.textContent = BRAND.name + ' · ' + c.name;
       el.title.textContent = m.name;
       el.lead.textContent = m.tagline || c.summary;
       var spec = function (label) {
         for (var i = 0; i < (m.specs || []).length; i++) if (m.specs[i].label.toLowerCase() === label) return m.specs[i].value;
         return null;
       };
-      el.stats.innerHTML =
-        (spec('weight') ? stat(spec('weight'), 'Weight') : '') +
-        (spec('load capacity') ? stat(spec('load capacity'), 'Load capacity') : '') +
-        (m.carriers && m.carriers.length ? stat(rangeText(m.carriers[0]), (CARRIERS[m.carriers[0].type] || {}).label || 'Carrier') : '');
-      // product photos have white backgrounds: present them on a white plate
-      el.visual.innerHTML = '<span class="catalog-hero__plate"><img src="' + esc(m.image) + '" alt="" width="360" height="360"></span>';
-      document.title = m.name + ' – ' + c.name + ' – MB Crusher – Rsquared Trade';
+      el.stats.innerHTML = m.variants
+        ? stat(m.variants.columns.length, m.variants.columns.length === 1 ? 'Model' : 'Models') +
+          (variantRange(m, 'capacity') ? stat(variantRange(m, 'capacity'), 'Capacity') : '') +
+          (variantRange(m, 'batch size') ? stat(variantRange(m, 'batch size'), 'Batch size') : '')
+        : (spec('weight') ? stat(spec('weight'), 'Weight') : '') +
+          (spec('load capacity') ? stat(spec('load capacity'), 'Load capacity') : '') +
+          (m.carriers && m.carriers.length ? stat(rangeText(m.carriers[0]), (CARRIERS[m.carriers[0].type] || {}).label || 'Carrier') : '');
+      // white-background product shots sit on a white plate; real photos get a photo frame
+      el.visual.innerHTML = m.photo
+        ? '<span class="catalog-hero__photo"><img src="' + esc(m.image) + '" alt="" width="900" height="675"></span>'
+        : '<span class="catalog-hero__plate"><img src="' + esc(m.image) + '" alt="" width="360" height="360"></span>';
+      document.title = m.name + ' – ' + c.name + ' – ' + BRAND.name + ' – Rsquared Trade';
     } else if (c) {
-      crumbs += '<li><a href="' + urlFor(null) + '" data-cat="">MB Crusher</a></li><li aria-current="page">' + esc(c.name) + '</li>';
-      el.eyebrow.textContent = c.series ? 'MB Crusher · ' + c.series + ' series' : 'MB Crusher';
+      crumbs += brandCrumb + '<li aria-current="page">' + esc(c.name) + '</li>';
+      el.eyebrow.textContent = c.series ? BRAND.name + ' · ' + c.series + ' series' : BRAND.name;
       el.title.textContent = c.name;
       el.lead.textContent = c.summary;
-      el.stats.innerHTML = stat(c.products.length, c.products.length === 1 ? 'Model' : 'Models') +
-        (c.products[0].carriers ? stat(carrierSpan(c), 'Carrier range') : stat(countFits(c), 'Product lines served'));
-      el.visual.innerHTML = '<img class="catalog-hero__product" src="' + esc(c.icon) + '" alt="" width="200" height="200">';
-      document.title = c.name + ' – MB Crusher – Rsquared Trade';
+      var first = c.products[0] || {};
+      el.stats.innerHTML = stat(c.products.length, c.products.length === 1 ? WORD[0] : WORD[1]) +
+        (first.carriers ? stat(carrierSpan(c), 'Carrier range')
+          : first.fits ? stat(countFits(c), 'Product lines served')
+          : first.variants ? stat(c.products.reduce(function (n, p) { return n + (p.variants ? p.variants.columns.length : 0); }, 0), 'Models')
+          : '');
+      el.visual.innerHTML = c.iconStyle === 'photo'
+        ? '<span class="catalog-hero__photo"><img src="' + esc(c.icon) + '" alt="" width="900" height="675"></span>'
+        : '<img class="catalog-hero__product" src="' + esc(c.icon) + '" alt="" width="200" height="200">';
+      document.title = c.name + ' – ' + BRAND.name + ' – Rsquared Trade';
     } else {
-      crumbs += '<li aria-current="page">MB Crusher</li>';
-      el.eyebrow.textContent = 'Italy · Represented in Egypt by Rsquared Trade';
-      el.title.textContent = 'MB Crusher';
-      el.lead.textContent = 'For over 20 years MB has offered the largest line of patented crusher buckets and attachments for excavators, skid loaders and backhoes of all sizes.';
-      el.stats.innerHTML = stat(total, 'Models') + stat(CATS.length, 'Product lines') + stat('7', 'International subsidiaries');
-      el.visual.innerHTML = '<span class="catalog-hero__logo"><img src="assets/images/partners/mb-crusher.png" alt="MB Crusher" width="754" height="271"></span>';
-      document.title = 'MB Crusher – Rsquared Trade';
+      crumbs += '<li aria-current="page">' + esc(BRAND.name) + '</li>';
+      el.eyebrow.textContent = BRAND.origin || '';
+      el.title.textContent = BRAND.name;
+      el.lead.textContent = BRAND.lead || '';
+      el.stats.innerHTML = stat(total, WORD[1]) + stat(CATS.length, 'Product lines') +
+        (BRAND.stats || []).map(function (s) { return stat(s[0], s[1]); }).join('');
+      el.visual.innerHTML = BRAND.logo
+        ? '<span class="catalog-hero__logo"><img src="' + esc(BRAND.logo.src) + '" alt="' + esc(BRAND.name) + '" width="' + BRAND.logo.width + '" height="' + BRAND.logo.height + '"></span>'
+        : '';
+      document.title = BRAND.name + ' – Rsquared Trade';
     }
     el.crumbs.innerHTML = crumbs;
   };
@@ -155,16 +194,17 @@
 
   /* --------------------------- overview --------------------------- */
   var renderOverview = function () {
-    el.toolbar.innerHTML = '<p class="catalog__count">' + CATS.length + ' product lines · ' + total + ' models</p>';
-    el.grid.className = 'catalog__grid catalog__grid--lines';
+    el.toolbar.innerHTML = '<p class="catalog__count">' + CATS.length + ' product lines · ' + countLabel(total) + '</p>';
+    el.grid.className = 'catalog__grid catalog__grid--lines' + (CATS.length === 2 ? ' catalog__grid--two' : '');
     el.grid.innerHTML = CATS.map(function (c, i) {
-      return '<a class="line-card" href="' + urlFor(c.id) + '" data-cat="' + c.id + '" style="--i:' + i + '">' +
-        '<div class="line-card__media"><img src="' + esc(c.icon) + '" alt="" width="200" height="200" loading="lazy"></div>' +
+      var photo = c.iconStyle === 'photo';
+      return '<a class="line-card' + (photo ? ' line-card--photo' : '') + '" href="' + urlFor(c.id) + '" data-cat="' + c.id + '" style="--i:' + i + '">' +
+        '<div class="line-card__media"><img src="' + esc(c.icon) + '" alt="" width="' + (photo ? 900 : 200) + '" height="' + (photo ? 675 : 200) + '" loading="lazy"></div>' +
         '<div class="line-card__body">' +
           (c.series ? '<p class="line-card__series">' + esc(c.series) + ' series</p>' : '<p class="line-card__series">Add-ons &amp; kits</p>') +
           '<h2 class="line-card__name">' + esc(c.name) + '</h2>' +
           '<p class="line-card__summary">' + esc(c.summary) + '</p>' +
-          '<span class="line-card__foot"><span>' + c.products.length + ' models</span><span class="line-card__cta">View range <i class="fas fa-arrow-right" aria-hidden="true"></i></span></span>' +
+          '<span class="line-card__foot"><span>' + countLabel(c.products.length) + '</span><span class="line-card__cta">View range <i class="fas fa-arrow-right" aria-hidden="true"></i></span></span>' +
         '</div></a>';
     }).join('');
     el.video.hidden = true;
@@ -195,6 +235,11 @@
             return '<button type="button" class="catalog-chip' + (state.fits === o[0] ? ' is-active' : '') + '" data-fits="' + o[0] + '" aria-pressed="' + (state.fits === o[0]) + '">' + esc(o[1]) + '</button>';
           }).join('') +
         '</div>';
+      return;
+    }
+    // no carrier data (e.g. asphalt plants): nothing to filter, just the count
+    if (!c.products.some(function (p) { return p.carriers; })) {
+      el.toolbar.innerHTML = '<p class="catalog__count" data-count></p>';
       return;
     }
     // attachments: "does it fit my machine?" filter
@@ -228,12 +273,19 @@
         return '<li><img src="' + esc(t.icon) + '" alt="" width="36" height="36"><span class="mb-card__carrier">' + esc(t.label) + '</span><span class="mb-card__range">' + rangeText(r) + '</span></li>';
       }).join('') + '</ul>';
     } else if (p.fits) {
-      var names = p.fits.indexOf('all') !== -1 ? ['All MB units'] : p.fits.map(function (f) { var x = byId(f); return x ? x.name : f; });
+      var names = p.fits.indexOf('all') !== -1 ? ['All ' + BRAND.name + ' units'] : p.fits.map(function (f) { var x = byId(f); return x ? x.name : f; });
       specs = '<p class="mb-card__fits"><span>Works with</span> ' + names.map(esc).join(', ') + '</p>';
+    } else if (p.variants) {
+      // plants: the models in the series + capacity range
+      var cap = variantRange(p, 'capacity');
+      specs = '<ul class="mb-card__carriers mb-card__variants">' +
+        '<li><span class="mb-card__carrier">' + 'Models' + '</span><span class="mb-card__range">' + esc(p.variants.columns.join(' · ')) + '</span></li>' +
+        (cap ? '<li><span class="mb-card__carrier">Capacity</span><span class="mb-card__range">' + esc(cap) + '</span></li>' : '') +
+        '</ul>';
     }
-    var img = '<img src="' + esc(p.image) + '" alt="' + esc(p.name) + '" width="360" height="360" loading="lazy" decoding="async">';
+    var img = '<img src="' + esc(p.image) + '" alt="' + esc(p.name) + '" width="' + (p.photo ? 900 : 360) + '" height="' + (p.photo ? 675 : 360) + '" loading="lazy" decoding="async">';
     var name = esc(p.name);
-    return '<article class="mb-card' + (detail ? ' has-details' : '') + '" id="' + esc(p.id) + '" style="--i:' + Math.min(i, 12) + '">' +
+    return '<article class="mb-card' + (detail ? ' has-details' : '') + (p.photo ? ' mb-card--photo' : '') + '" id="' + esc(p.id) + '" style="--i:' + Math.min(i, 12) + '">' +
       (detail ? '<a class="mb-card__media"' + dAttrs + ' tabindex="-1" aria-hidden="true">' + img + '</a>' : '<div class="mb-card__media">' + img + '</div>') +
       '<div class="mb-card__body">' +
         (p.group ? '<p class="mb-card__group">' + esc(p.group) + '</p>' : '') +
@@ -261,7 +313,7 @@
       '<a class="catalog-back" href="' + urlFor(c.id) + '" data-cat="' + c.id + '"><i class="fas fa-arrow-left" aria-hidden="true"></i> All ' + esc(c.name.toLowerCase()) + '</a>' +
       '<p class="catalog__count">Model ' + (idx + 1) + ' of ' + list.length + '</p>';
 
-    var shots = [{ src: p.image, product: true }].concat((p.gallery || []).map(function (g) { return { src: g }; }));
+    var shots = [{ src: p.image, product: !p.photo }].concat((p.gallery || []).map(function (g) { return { src: g }; }));
     var many = shots.length > 1;
     var slides = shots.map(function (s, i) {
       return '<div class="mb-detail__slide' + (s.product ? ' is-product' : '') + '" role="group" aria-roledescription="slide" aria-label="' + (i + 1) + ' of ' + shots.length + '"' + (i ? ' aria-hidden="true"' : '') + '>' +
@@ -298,6 +350,27 @@
         '</section>'
       : '';
 
+    // plants: one column per model size, one row per figure (capacity, batch size …)
+    if (p.variants) {
+      specs +=
+        '<section class="mb-specs" aria-labelledby="mb-variants-title">' +
+          '<h2 class="mb-specs__title" id="mb-variants-title">Specifications</h2>' +
+          '<div class="mb-variants__scroll" tabindex="0" role="region" aria-labelledby="mb-variants-title">' +
+            '<table class="mb-variants">' +
+              '<thead><tr><th scope="col">Model</th>' + p.variants.columns.map(function (m) { return '<th scope="col">' + esc(m) + '</th>'; }).join('') + '</tr></thead>' +
+              '<tbody>' + p.variants.rows.map(function (r) {
+                return '<tr><th scope="row">' + esc(r.label) + '</th>' + r.values.map(function (v) { return '<td>' + esc(v) + '</td>'; }).join('') + '</tr>';
+              }).join('') + '</tbody>' +
+            '</table>' +
+          '</div>' +
+          (c.specNote ? '<p class="mb-specs__note"><i class="fas fa-info-circle" aria-hidden="true"></i> ' + esc(c.specNote) + '</p>' : '') +
+        '</section>';
+    }
+    var features = p.features && p.features.length
+      ? '<h3 class="mb-detail__subhead">Key features</h3><ul class="mb-detail__features">' +
+          p.features.map(function (f) { return '<li>' + esc(f) + '</li>'; }).join('') + '</ul>'
+      : '';
+
     // accessories: "It's available for …" repeats what the "Works with" chips already say
     var avail = /\bavailable for\b/i;
     var tagline = p.fits && avail.test(p.tagline || '') ? '' : p.tagline;
@@ -316,10 +389,11 @@
           (tagline ? '<p class="mb-detail__tagline">' + esc(tagline) + '</p>' : '') +
           carriers +
           (p.fits ? '<p class="mb-detail__fits"><span>Works with</span>' +
-            (p.fits.indexOf('all') !== -1 ? ['All MB units'] : p.fits.map(function (f) { var x = byId(f); return x ? x.name : f; }))
+            (p.fits.indexOf('all') !== -1 ? ['All ' + BRAND.name + ' units'] : p.fits.map(function (f) { var x = byId(f); return x ? x.name : f; }))
               .map(function (n) { return '<em>' + esc(n) + '</em>'; }).join('') + '</p>' : '') +
           paragraphs.map(function (d) { return '<p class="mb-detail__text">' + esc(d) + '</p>'; }).join('') +
           (p.uses && p.uses.length ? '<ul class="mb-detail__uses">' + p.uses.map(function (u) { return '<li>' + esc(u) + '</li>'; }).join('') + '</ul>' : '') +
+          features +
           '<div class="mb-detail__actions">' +
             '<a class="rs-btn rs-btn--accent" href="' + quoteUrl(p) + '">Request a quote <i class="fas fa-arrow-right" aria-hidden="true"></i></a>' +
             '<a class="rs-btn rs-btn--outline" href="tel:+20244875070"><i class="fas fa-phone-alt" aria-hidden="true"></i> +20 2 4487 5070</a>' +
@@ -352,8 +426,8 @@
     var count = el.toolbar.querySelector('[data-count]');
     if (count) {
       count.textContent = list.length === c.products.length
-        ? c.products.length + ' models'
-        : list.length + ' of ' + c.products.length + ' models';
+        ? countLabel(c.products.length)
+        : list.length + ' of ' + countLabel(c.products.length);
     }
     el.grid.className = 'catalog__grid catalog__grid--products';
     el.grid.innerHTML = list.length ? list.map(function (p, i) { return card(p, c, i); }).join('') :
@@ -586,7 +660,7 @@
   readUrl();
   render();
 
-  // Deep link to a single product: mbcrusher.html?type=...#product-id
+  // Deep link to a single product: <page>?type=...#product-id
   if (location.hash.length > 1) {
     var target = document.getElementById(decodeURIComponent(location.hash.slice(1)));
     if (target) {

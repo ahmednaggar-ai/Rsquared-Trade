@@ -235,7 +235,10 @@
       });
     }
     if (qProduct && form.elements.message && !form.elements.message.value) {
-      form.elements.message.value = "I'd like a quote for the " + (qBrand ? qBrand + ' ' : '') + qProduct + '.';
+      // "MB Crusher BF90.3 S4", but just "Lintec CSD" (the name already says the brand)
+      var brandWords = (qBrand || '').toLowerCase().split(/[^a-z]+/).filter(function (w) { return w.length > 2; });
+      var named = brandWords.some(function (w) { return qProduct.toLowerCase().indexOf(w) !== -1; });
+      form.elements.message.value = "I'd like a quote for the " + (qBrand && !named ? qBrand + ' ' : '') + qProduct + '.';
     }
 
     // In-page links like "Ask about HİDROMEK" (data-prefill-message) start the

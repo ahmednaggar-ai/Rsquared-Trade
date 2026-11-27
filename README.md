@@ -7,17 +7,19 @@ Static site (HTML, CSS, vanilla JS). No build step: open `index.html` or serve t
 ```
 index.html                 Home page: hero, about, brands, contact
 mbcrusher.html             MB Crusher catalogue (every product line on one page)
+lintec.html                Lintec & Linnhoff asphalt plants (same catalogue engine)
 assets/
   css/
     vendor/                Bootstrap 5 (grid/utilities only) and Font Awesome
     main.css               Shared by every page: tokens, navbar, buttons, footer, scroll reveal
     home.css               index.html only
-    mbcrusher.css          mbcrusher.html only
+    catalog.css            brand catalogue pages (mbcrusher.html, lintec.html)
   fonts/fontawesome/       Icon font files used by fontawesome.min.css
   js/
     site.js                Shared: navbar, scroll reveal, footer year, contact form, home hero slideshow
-    mbcrusher.js           Renders the MB Crusher catalogue from the data file
-    data/mbcrusher.js      All MB Crusher product lines and products (edit this to change the catalogue)
+    catalog.js             Brand catalogue engine: renders a brand page from its data file
+    data/mbcrusher.js      All MB Crusher product lines and products
+    data/lintec.js         All Lintec & Linnhoff plants (models table, features, photos)
   images/
     brand/                 Rsquared logos + favicon
     partners/              MB Crusher, Lintec & Linnhoff, Optimas logos
@@ -27,9 +29,14 @@ assets/
       categories/          One image per product line, named by line id
       products/<line>/     One image per product, named by product id
       icons/               Carrier machine icons (excavator, crane, demolition)
+    lintec/                products/ (card photos), gallery/<plant>/
 ```
 
-Each page loads: `vendor/*.css` → `main.css` → its own page CSS, then `site.js` (+ `mbcrusher.js` on the catalogue).
+Each page loads: `vendor/*.css` → `main.css` → its own page CSS, then `site.js`.
+Brand pages also load their data file, then `catalog.js`.
+
+**Add another brand page** (e.g. Optimas): copy `lintec.html`, point it at a new `assets/js/data/<brand>.js`
+that sets `window.CATALOG = { brand, categories }` (see the field notes at the top of the existing data files).
 
 ## Common tasks
 

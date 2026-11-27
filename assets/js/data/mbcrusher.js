@@ -1,7 +1,14 @@
 /* =================================================================
    MB CRUSHER CATALOGUE DATA
    The single source for mbcrusher.html. To add, edit or remove a product,
-   change it here; the page builds itself from this file.
+   change it here; the page builds itself from this file (assets/js/catalog.js,
+   the same engine as lintec.html – see the field reference in
+   assets/js/data/lintec.js for the plant-specific fields).
+
+   brand fields
+     name, page, quoteBrand (value of the brand choice in the contact form),
+     origin (header eyebrow), lead (header text), logo, productWord,
+     stats (extra header stats after the automatic counts)
 
    product fields
      id          unique, used in links: mbcrusher.html?type=<category>&model=<id>
@@ -9,7 +16,7 @@
      tagline     short line under the name (optional)
      image       product photo (WebP)
      carriers    machines it fits + weight range in tonnes
-                 type: one of the keys in MB_CRUSHER.carriers
+                 type: one of the keys in CATALOG.carriers
                  max: null means "from <min> t upwards"
      group       (accessories) heading the item is listed under
      fits        (accessories) category ids it works with, or ['all']
@@ -24,7 +31,17 @@
    category fields
      specNote    line shown under every spec table in that category
    ================================================================= */
-window.MB_CRUSHER = {
+window.CATALOG = {
+  brand: {
+    name: "MB Crusher",
+    page: "mbcrusher.html",
+    quoteBrand: "MB Crusher",
+    origin: "Italy · Represented in Egypt by Rsquared Trade",
+    lead: "For over 20 years MB has offered the largest line of patented crusher buckets and attachments for excavators, skid loaders and backhoes of all sizes.",
+    logo: { src: "assets/images/partners/mb-crusher.png", width: 754, height: 271 },
+    productWord: ["Model", "Models"],
+    stats: [["7", "International subsidiaries"]]
+  },
   carriers: {
     excavator:  { label: "Excavator"         , icon: "assets/images/mbcrusher/icons/excavator.webp" },
     crane:      { label: "Crane"             , icon: "assets/images/mbcrusher/icons/crane.webp" },
