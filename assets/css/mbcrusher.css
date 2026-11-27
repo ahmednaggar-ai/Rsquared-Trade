@@ -651,25 +651,109 @@ a.mb-card__media{ display: block; }
 
 /* gallery */
 .mb-detail__gallery{ position: sticky; top: 150px; }
+/* slider: a strip of slides moved with translateX (by the timer, arrows, thumbs or a swipe) */
 .mb-detail__main{
+	position: relative;
 	margin: 0;
 	overflow: hidden;
 	aspect-ratio: 1;
 	border: 1px solid var(--rs-border);
 	border-radius: 18px;
 	background: #000;
+	outline: none;
 }
-.mb-detail__main img{
+.mb-detail__main:focus-visible{ box-shadow: 0 0 0 4px rgba(254,210,6,.45); }
+.mb-detail__track{
+	display: flex;
+	height: 100%;
+	touch-action: pan-y;        /* horizontal swipes go to the slider, vertical ones scroll the page */
+	cursor: grab;
+	user-select: none;
+	transition: transform .55s cubic-bezier(.22,.7,.2,1);
+	will-change: transform;
+}
+.mb-detail__track:active{ cursor: grabbing; }
+@media (prefers-reduced-motion: reduce){
+	.mb-detail__track{ transition-duration: .01s; }
+}
+.mb-detail__slide{
+	flex: 0 0 100%;
+	height: 100%;
+	background: #000;
+}
+.mb-detail__slide img{
 	display: block;
 	width: 100%;
 	height: 100%;
 	object-fit: cover;
-	animation: rs-fade .35s ease both;
+	pointer-events: none;       /* lets the drag start anywhere on the slide */
 }
 /* the product photo has a white background: show it whole on white */
-.mb-detail__main.is-product{ background: #fff; }
-.mb-detail__main.is-product img{ object-fit: contain; padding: 6%; }
-@keyframes rs-fade{ from{ opacity: 0; } to{ opacity: 1; } }
+.mb-detail__slide.is-product{ background: #fff; }
+.mb-detail__slide.is-product img{ object-fit: contain; padding: 6%; }
+
+/* arrows */
+.mb-detail__nav{
+	position: absolute;
+	top: 50%;
+	z-index: 2;
+	display: grid;
+	place-items: center;
+	width: 44px; height: 44px;
+	margin-top: -22px;
+	padding: 0;
+	border: 0;
+	border-radius: 50%;
+	background: rgba(17,21,26,.6);
+	color: #fff;
+	cursor: pointer;
+	transition: opacity .25s ease, background-color .2s ease, color .2s ease, transform .2s ease;
+}
+.mb-detail__nav--prev{ left: 14px; }
+.mb-detail__nav--next{ right: 14px; }
+.mb-detail__nav:hover{ background: var(--rs-accent); color: var(--rs-ink); }
+.mb-detail__nav:focus-visible{ outline: none; box-shadow: 0 0 0 4px rgba(254,210,6,.55); }
+@media (hover: hover) and (pointer: fine){
+	/* on desktop the arrows appear when the pointer is over the photo */
+	.mb-detail__nav{ opacity: 0; }
+	.mb-detail__main:hover .mb-detail__nav,
+	.mb-detail__nav:focus-visible{ opacity: 1; }
+}
+
+/* "2 / 5" counter */
+.mb-detail__counter{
+	position: absolute;
+	left: 14px; bottom: 16px;
+	z-index: 2;
+	padding: 5px 11px;
+	border-radius: 999px;
+	background: rgba(17,21,26,.6);
+	font-family: var(--rs-heading-font);
+	font-size: .75rem;
+	font-weight: 700;
+	color: #fff;
+	pointer-events: none;
+}
+
+/* auto-play progress bar */
+.mb-detail__progress{
+	position: absolute;
+	left: 0; right: 0; bottom: 0;
+	z-index: 2;
+	height: 4px;
+	background: rgba(255,255,255,.18);
+	pointer-events: none;
+}
+.mb-detail__progress::after{
+	content: "";
+	position: absolute;
+	inset: 0;
+	background: var(--rs-accent);
+	transform: scaleX(0);
+	transform-origin: left center;
+}
+.mb-detail__progress.is-running::after{ animation: rs-progress 4.5s linear forwards; } /* = INTERVAL in mbcrusher.js */
+@keyframes rs-progress{ from{ transform: scaleX(0); } to{ transform: scaleX(1); } }
 
 .mb-detail__thumbs{
 	display: grid;
@@ -841,3 +925,51 @@ a.mb-card__media{ display: block; }
 	animation: rs-rise .7s cubic-bezier(.2,.7,.2,1) both;
 }
 .catalog-hero__plate img{ display: block; width: min(250px, 55vw); height: auto; }
+
+/* accessories: which product lines it works with, and typical uses */
+.mb-detail__fits{
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	gap: 8px;
+	margin: 0 0 22px;
+}
+.mb-detail__fits span{
+	margin-right: 4px;
+	font-size: .72rem;
+	font-weight: 700;
+	letter-spacing: .12em;
+	text-transform: uppercase;
+	color: var(--rs-subtle);
+}
+.mb-detail__fits em{
+	padding: 6px 12px;
+	border: 1px solid var(--rs-border-strong);
+	border-radius: 999px;
+	font-style: normal;
+	font-size: .82rem;
+	font-weight: 600;
+	color: var(--rs-text);
+}
+.mb-detail__uses{
+	display: grid;
+	grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+	gap: 8px 20px;
+	margin: 4px 0 18px;
+	padding: 0;
+	list-style: none;
+}
+.mb-detail__uses li{
+	position: relative;
+	padding-left: 22px;
+	color: var(--rs-text-2);
+}
+.mb-detail__uses li::before{
+	content: "";
+	position: absolute;
+	left: 0; top: .55em;
+	width: 10px; height: 10px;
+	border-radius: 2px;
+	background: var(--rs-accent);
+	transform: rotate(45deg);
+}

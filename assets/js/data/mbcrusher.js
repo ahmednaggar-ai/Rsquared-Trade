@@ -16,6 +16,7 @@
 
    optional detail fields (a product with any of these gets a detail view)
      description paragraphs of text
+     uses        short list of typical uses (shown as bullet points)
      specs       [{ label, value }] technical features, shown as a table
      gallery     job-site photos (WebP)
      video       .mp4 URL, loaded only when the visitor presses play
@@ -713,13 +714,295 @@ window.MB_CRUSHER = {
       series: "MB-S / MB-LS",
       summary: "Perfect for the selection of natural materials, both before and after the crushing phase.",
       icon: "assets/images/mbcrusher/categories/screening-buckets.webp",
+      specNote: "The hydraulic flow and pressure must both meet the required parameters.",
       products: [
-        {"id": "mb-ls170-s2", "name": "MB-LS170 S2", "tagline": "Innovative and handy", "image": "assets/images/mbcrusher/products/screening-buckets/mb-ls170-s2.webp", "carriers": [{"type": "crane", "min": 8, "max": 15},{"type": "excavator", "min": 6.5, "max": 11}]},
-        {"id": "mb-ls220-s2", "name": "MB-LS220 S2", "tagline": "Great and Powerful", "image": "assets/images/mbcrusher/products/screening-buckets/mb-ls220-s2.webp", "carriers": [{"type": "crane", "min": 15, "max": 25},{"type": "excavator", "min": 12, "max": 25}]},
-        {"id": "mb-s10-s4", "name": "MB-S10 S4", "tagline": "Small and efficient", "image": "assets/images/mbcrusher/products/screening-buckets/mb-s10-s4.webp", "carriers": [{"type": "crane", "min": 4, "max": 9},{"type": "excavator", "min": 4, "max": 9}]},
-        {"id": "mb-s14-s4", "name": "MB-S14 S4", "tagline": "Handy with high performance", "image": "assets/images/mbcrusher/products/screening-buckets/mb-s14-s4.webp", "carriers": [{"type": "excavator", "min": 9, "max": 20}]},
-        {"id": "mb-s18-s4", "name": "MB-S18 S4", "tagline": "Great performance", "image": "assets/images/mbcrusher/products/screening-buckets/mb-s18-s4.webp", "carriers": [{"type": "excavator", "min": 20, "max": 35}]},
-        {"id": "mb-s23", "name": "MB-S23", "tagline": "The biggest in the world", "image": "assets/images/mbcrusher/products/screening-buckets/mb-s23.webp"}
+        {
+          "id": "mb-ls170-s2",
+          "name": "MB-LS170 S2",
+          "tagline": "Innovative and handy",
+          "image": "assets/images/mbcrusher/products/screening-buckets/mb-ls170-s2.webp",
+          "carriers": [
+            {
+              "type": "crane",
+              "min": 8,
+              "max": 15
+            },
+            {
+              "type": "excavator",
+              "min": 6.5,
+              "max": 11
+            }
+          ],
+          "description": [
+            "Ideal for natural material selection either pre or post crushing stage, the screening MB-LS170 allows to cut down up to 60% of the crushing time and to recover material suitable to the type of processing desired to handle it in the best way.",
+            "Particularly suitable for wheel loader and backhoe from 6.5 to 15 ton."
+          ],
+          "specs": [
+            {
+              "label": "Weight",
+              "value": "1.45 t"
+            },
+            {
+              "label": "Load capacity",
+              "value": "1.10 m³"
+            },
+            {
+              "label": "Pressure",
+              "value": "> 160 bar"
+            },
+            {
+              "label": "Counter pressure",
+              "value": "< 40 bar"
+            },
+            {
+              "label": "Oil flow",
+              "value": "80 L/min"
+            }
+          ],
+          "gallery": [
+            "assets/images/mbcrusher/gallery/screening-buckets/screenbucket/1.webp",
+            "assets/images/mbcrusher/gallery/screening-buckets/screenbucket/2.webp",
+            "assets/images/mbcrusher/gallery/screening-buckets/screenbucket/3.webp",
+            "assets/images/mbcrusher/gallery/screening-buckets/screenbucket/4.webp"
+          ],
+          "video": "https://www.rsquaredtrade.com/MB/Videos/screeningbucket%20%20LS170.mp4"
+        },
+        {
+          "id": "mb-ls220-s2",
+          "name": "MB-LS220 S2",
+          "tagline": "Great and Powerful",
+          "image": "assets/images/mbcrusher/products/screening-buckets/mb-ls220-s2.webp",
+          "carriers": [
+            {
+              "type": "crane",
+              "min": 15,
+              "max": 25
+            },
+            {
+              "type": "excavator",
+              "min": 12,
+              "max": 25
+            }
+          ],
+          "description": [
+            "The largest of the screening bucket MB designed for backhoe loaders, is ideal for the selection of natural materials in quarries and large yards. MB-LS220 allows to reduce up to 60% the crushing time and allows you to recover materials and handle it in the best way.",
+            "Particularly suitable for backhoe and loaders from 12 to 25 Ton.",
+            "Like the other screening buckets of MB range, MB-LS220 is equipped with interchangeable panels, available in different sieve sizes depending on the needs of the job. The simple assembly and dis-assembly of the screen panels makes for an easy change for different material output sizes."
+          ],
+          "specs": [
+            {
+              "label": "Weight",
+              "value": "2.80 t"
+            },
+            {
+              "label": "Load capacity",
+              "value": "2.40 m³"
+            },
+            {
+              "label": "Pressure",
+              "value": "> 200 bar"
+            },
+            {
+              "label": "Counter pressure",
+              "value": "< 40 bar"
+            },
+            {
+              "label": "Oil flow",
+              "value": "120 L/min"
+            }
+          ],
+          "gallery": [
+            "assets/images/mbcrusher/gallery/screening-buckets/ls200/1.webp",
+            "assets/images/mbcrusher/gallery/screening-buckets/ls200/2.webp",
+            "assets/images/mbcrusher/gallery/screening-buckets/ls200/3.webp"
+          ],
+          "video": "https://www.rsquaredtrade.com/MB/Videos/screeningbucket%20LS220.mp4"
+        },
+        {
+          "id": "mb-s10-s4",
+          "name": "MB-S10 S4",
+          "tagline": "Small and efficient",
+          "image": "assets/images/mbcrusher/products/screening-buckets/mb-s10-s4.webp",
+          "carriers": [
+            {
+              "type": "crane",
+              "min": 4,
+              "max": 9
+            },
+            {
+              "type": "excavator",
+              "min": 4,
+              "max": 9
+            }
+          ],
+          "description": [
+            "The MB-S10 S4 screening bucket is the ideal choice for small-scale sites in which the reduction of costs is remarkably advantageous as aided by rapid movement in limited spaces.",
+            "Crucial in space limited applications.",
+            "PRIMARY SELECTION:"
+          ],
+          "specs": [
+            {
+              "label": "Weight",
+              "value": "0.41 t"
+            },
+            {
+              "label": "Load capacity",
+              "value": "0.32 m³"
+            },
+            {
+              "label": "Pressure",
+              "value": "> 130 bar"
+            },
+            {
+              "label": "Counter pressure",
+              "value": "< 40 bar"
+            },
+            {
+              "label": "Oil flow",
+              "value": "40 L/min"
+            }
+          ],
+          "gallery": [
+            "assets/images/mbcrusher/gallery/screening-buckets/s10/1.webp",
+            "assets/images/mbcrusher/gallery/screening-buckets/s10/2.webp",
+            "assets/images/mbcrusher/gallery/screening-buckets/s10/3.webp",
+            "assets/images/mbcrusher/gallery/screening-buckets/s10/4.webp"
+          ],
+          "video": "https://www.rsquaredtrade.com/MB/Videos/screeningbucket%20S10.mp4"
+        },
+        {
+          "id": "mb-s14-s4",
+          "name": "MB-S14 S4",
+          "tagline": "Handy with high performance",
+          "image": "assets/images/mbcrusher/products/screening-buckets/mb-s14-s4.webp",
+          "carriers": [
+            {
+              "type": "excavator",
+              "min": 9,
+              "max": 20
+            }
+          ],
+          "description": [
+            "The MB-S14 screening bucket has been specially designed for clients who require high performance in small and medium-scale sites. Compact and easy to transport, thanks to its reduced weight, it is essential in all situations requiring volumetric separation.",
+            "A must in reducing volumes and optimizing the size of materials for specific uses.",
+            "The screening buckets MB are equipped with baskets formed by interchangeable modular panels, available with holes of different sizes based on requirements."
+          ],
+          "specs": [
+            {
+              "label": "Weight",
+              "value": "1.10 t"
+            },
+            {
+              "label": "Load capacity",
+              "value": "1.10 m³"
+            },
+            {
+              "label": "Pressure",
+              "value": "> 150 bar"
+            },
+            {
+              "label": "Counter pressure",
+              "value": "< 40 bar"
+            },
+            {
+              "label": "Oil flow",
+              "value": "60 L/min"
+            }
+          ],
+          "gallery": [
+            "assets/images/mbcrusher/gallery/screening-buckets/s14/1.webp",
+            "assets/images/mbcrusher/gallery/screening-buckets/s14/2.webp",
+            "assets/images/mbcrusher/gallery/screening-buckets/s14/3.webp",
+            "assets/images/mbcrusher/gallery/screening-buckets/s14/4.webp"
+          ],
+          "video": "https://www.rsquaredtrade.com/MB/Videos/screeningbucket%20S14.mp4"
+        },
+        {
+          "id": "mb-s18-s4",
+          "name": "MB-S18 S4",
+          "tagline": "Great performance",
+          "image": "assets/images/mbcrusher/products/screening-buckets/mb-s18-s4.webp",
+          "carriers": [
+            {
+              "type": "excavator",
+              "min": 20,
+              "max": 35
+            }
+          ],
+          "description": [
+            "The MB-S18 screening bucket has been designed for medium and large-scale contexts that require high performance and large-scale production.",
+            "This model is fitted with a metal separator that allows the rapid and efficient separation of iron from the material screened, as well as a spray for the reduction of dust resulting from operations.",
+            "PRIMARY SELECTION:"
+          ],
+          "specs": [
+            {
+              "label": "Weight",
+              "value": "2 t"
+            },
+            {
+              "label": "Load capacity",
+              "value": "2.40 m³"
+            },
+            {
+              "label": "Pressure",
+              "value": "> 200 bar"
+            },
+            {
+              "label": "Counter pressure",
+              "value": "< 40 bar"
+            },
+            {
+              "label": "Oil flow",
+              "value": "120 L/min"
+            }
+          ],
+          "gallery": [
+            "assets/images/mbcrusher/gallery/screening-buckets/s18/1.webp",
+            "assets/images/mbcrusher/gallery/screening-buckets/s18/2.webp",
+            "assets/images/mbcrusher/gallery/screening-buckets/s18/3.webp",
+            "assets/images/mbcrusher/gallery/screening-buckets/s18/4.webp"
+          ],
+          "video": "https://www.rsquaredtrade.com/MB/Videos/screeningbucket%20S18.mp4"
+        },
+        {
+          "id": "mb-s23",
+          "name": "MB-S23",
+          "tagline": "The biggest in the world",
+          "image": "assets/images/mbcrusher/products/screening-buckets/mb-s23.webp",
+          "description": [
+            "The largest screening bucket in the world, unique in its kind, can be used with excavators greater than 35 Ton.",
+            "Ideal for use before or after crushing, the MB-S23 screening bucket will reduce crushing time up to 60%. It also allows the screening of natural material (quarry residues, dry soil, and river stone) of any kind, making it convenient for on-site processing.",
+            "A must in reducing volumes and optimizing the size of materials for specific uses."
+          ],
+          "specs": [
+            {
+              "label": "Weight",
+              "value": "3.66 t"
+            },
+            {
+              "label": "Load capacity",
+              "value": "3.75 m³"
+            },
+            {
+              "label": "Pressure",
+              "value": "> 320 bar"
+            },
+            {
+              "label": "Counter pressure",
+              "value": "< 5 bar"
+            },
+            {
+              "label": "Oil flow",
+              "value": "160 L/min"
+            }
+          ],
+          "gallery": [
+            "assets/images/mbcrusher/gallery/screening-buckets/s23/1.webp",
+            "assets/images/mbcrusher/gallery/screening-buckets/s23/2.webp",
+            "assets/images/mbcrusher/gallery/screening-buckets/s23/3.webp"
+          ],
+          "video": "https://www.rsquaredtrade.com/MB/Videos/screeningbucket%20S23.mp4"
+        }
       ]
     },
     {
@@ -728,12 +1011,254 @@ window.MB_CRUSHER = {
       series: "MB-HDS",
       summary: "The ideal solution for processing all kinds of waste material, quickly repurposing it into re-usable and profitable material.",
       icon: "assets/images/mbcrusher/categories/shaft-screeners.webp",
+      specNote: "The hydraulic flow and pressure must both meet the required parameters.",
       products: [
-        {"id": "mb-hds214", "name": "MB-HDS214", "image": "assets/images/mbcrusher/products/shaft-screeners/mb-hds214.webp", "carriers": [{"type": "excavator", "min": 5, "max": 8},{"type": "demolition", "min": 6, "max": 12},{"type": "crane", "min": 3.5, "max": null}]},
-        {"id": "mb-hds314", "name": "MB-HDS314", "image": "assets/images/mbcrusher/products/shaft-screeners/mb-hds314.webp", "carriers": [{"type": "excavator", "min": 6, "max": 10},{"type": "demolition", "min": 6, "max": 10},{"type": "crane", "min": 3.5, "max": null}]},
-        {"id": "mb-hds320", "name": "MB-HDS320", "image": "assets/images/mbcrusher/products/shaft-screeners/mb-hds320.webp", "carriers": [{"type": "excavator", "min": 9, "max": 12},{"type": "demolition", "min": 9, "max": 12},{"type": "crane", "min": 3.5, "max": null}]},
-        {"id": "mb-hds323", "name": "MB-HDS323", "image": "assets/images/mbcrusher/products/shaft-screeners/mb-hds323.webp", "carriers": [{"type": "excavator", "min": 10, "max": 15},{"type": "demolition", "min": 10, "max": 15},{"type": "crane", "min": 3.5, "max": null}]},
-        {"id": "mb-hds523", "name": "MB-HDS523", "image": "assets/images/mbcrusher/products/shaft-screeners/mb-hds523.webp", "carriers": [{"type": "excavator", "min": 30, "max": 45}]}
+        {
+          "id": "mb-hds214",
+          "name": "MB-HDS214",
+          "image": "assets/images/mbcrusher/products/shaft-screeners/mb-hds214.webp",
+          "carriers": [
+            {
+              "type": "excavator",
+              "min": 5,
+              "max": 8
+            },
+            {
+              "type": "demolition",
+              "min": 6,
+              "max": 12
+            },
+            {
+              "type": "crane",
+              "min": 3.5,
+              "max": null
+            }
+          ],
+          "description": [
+            "Designed to be a real wild card: fitting for a wide range of job sites and various types of materials, with unprecedented simplicity and speed, without the need for specific training or specialized operators."
+          ],
+          "specs": [
+            {
+              "label": "Weight",
+              "value": "0.82 t"
+            },
+            {
+              "label": "Load capacity",
+              "value": "0.5 m³"
+            },
+            {
+              "label": "Pressure",
+              "value": "> 200 bar"
+            },
+            {
+              "label": "Oil flow",
+              "value": "75 L/min"
+            }
+          ],
+          "gallery": [
+            "assets/images/mbcrusher/gallery/shaft-screeners/shaftscreener/1.webp",
+            "assets/images/mbcrusher/gallery/shaft-screeners/shaftscreener/2.webp",
+            "assets/images/mbcrusher/gallery/shaft-screeners/shaftscreener/3.webp",
+            "assets/images/mbcrusher/gallery/shaft-screeners/shaftscreener/4.webp"
+          ],
+          "video": "https://www.rsquaredtrade.com/MB/Videos/Shafts%20Screener%20MB-HDS214.mp4"
+        },
+        {
+          "id": "mb-hds314",
+          "name": "MB-HDS314",
+          "image": "assets/images/mbcrusher/products/shaft-screeners/mb-hds314.webp",
+          "carriers": [
+            {
+              "type": "excavator",
+              "min": 6,
+              "max": 10
+            },
+            {
+              "type": "demolition",
+              "min": 6,
+              "max": 10
+            },
+            {
+              "type": "crane",
+              "min": 3.5,
+              "max": null
+            }
+          ],
+          "description": [
+            "Designed with our constructive approach towards reducing waste and increasing the profitability of the construction site, this machine is the latest “gem” in the MB Crusher line.",
+            "What is new about the MB-HDS Shafts Screener? Its ability to adapt to a wide range of job sites and varied types of materials.",
+            "It is the ideal solution for those who have to process various kind of waste material, which can be quickly repurposed into re-usable and profitable material."
+          ],
+          "specs": [
+            {
+              "label": "Weight",
+              "value": "1.4 t"
+            },
+            {
+              "label": "Load capacity",
+              "value": "0.9 m³"
+            },
+            {
+              "label": "Pressure",
+              "value": "> 230 bar"
+            },
+            {
+              "label": "Oil flow",
+              "value": "100 L/min"
+            }
+          ],
+          "gallery": [
+            "assets/images/mbcrusher/gallery/shaft-screeners/hds314/1.webp",
+            "assets/images/mbcrusher/gallery/shaft-screeners/hds314/2.webp",
+            "assets/images/mbcrusher/gallery/shaft-screeners/hds314/3.webp",
+            "assets/images/mbcrusher/gallery/shaft-screeners/hds314/4.webp"
+          ],
+          "video": "https://www.rsquaredtrade.com/MB/Videos/Shafts%20Screener%20MB-HDS314.mp4"
+        },
+        {
+          "id": "mb-hds320",
+          "name": "MB-HDS320",
+          "image": "assets/images/mbcrusher/products/shaft-screeners/mb-hds320.webp",
+          "carriers": [
+            {
+              "type": "excavator",
+              "min": 9,
+              "max": 12
+            },
+            {
+              "type": "demolition",
+              "min": 9,
+              "max": 12
+            },
+            {
+              "type": "crane",
+              "min": 3.5,
+              "max": null
+            }
+          ],
+          "description": [
+            "The new MB-HDS series selects and crushes excavation and demolition materials, asphalt, coal, organic materials, wood, bark, and light plastics. It also enables products to be re-purposed immediately on site. It is possible to transform one material into another effortlessly any time you need to: this is the most important and useful innovation.",
+            "In fact, with the MB-HDS Screening Bucket, you can easily change the rotating shafts on site in complete safety: one person can do this in a matter of minutes."
+          ],
+          "specs": [
+            {
+              "label": "Weight",
+              "value": "2.1 t"
+            },
+            {
+              "label": "Load capacity",
+              "value": "1.35 m³"
+            },
+            {
+              "label": "Pressure",
+              "value": "> 250 bar"
+            },
+            {
+              "label": "Oil flow",
+              "value": "120 L/min"
+            }
+          ],
+          "gallery": [
+            "assets/images/mbcrusher/gallery/shaft-screeners/hds320/1.webp",
+            "assets/images/mbcrusher/gallery/shaft-screeners/hds320/2.webp",
+            "assets/images/mbcrusher/gallery/shaft-screeners/hds320/3.webp",
+            "assets/images/mbcrusher/gallery/shaft-screeners/hds320/4.webp"
+          ],
+          "video": "https://www.rsquaredtrade.com/MB/Videos/Shafts%20Screener%20MB-HDS320.mp4"
+        },
+        {
+          "id": "mb-hds323",
+          "name": "MB-HDS323",
+          "image": "assets/images/mbcrusher/products/shaft-screeners/mb-hds323.webp",
+          "carriers": [
+            {
+              "type": "excavator",
+              "min": 10,
+              "max": 15
+            },
+            {
+              "type": "demolition",
+              "min": 10,
+              "max": 15
+            },
+            {
+              "type": "crane",
+              "min": 3.5,
+              "max": null
+            }
+          ],
+          "description": [
+            "Designed with our constructive approach towards reducing waste and increasing the profitability of the construction site, this machine is the latest “gem.” Designed and produced by an Italian company famous all over the world: what’s new about the MB-HDS Shafts Screener is its ability to adapt to a wide range of job sites and varied types of materials.",
+            "It is the ideal solution for those who have to process various kind of waste material, which can be quickly repurposed into re-usable and profitable material."
+          ],
+          "specs": [
+            {
+              "label": "Weight",
+              "value": "2.4 t"
+            },
+            {
+              "label": "Load capacity",
+              "value": "1.65 m³"
+            },
+            {
+              "label": "Pressure",
+              "value": "> 250 bar"
+            },
+            {
+              "label": "Oil flow",
+              "value": "120 L/min"
+            }
+          ],
+          "gallery": [
+            "assets/images/mbcrusher/gallery/shaft-screeners/hds323/1.webp",
+            "assets/images/mbcrusher/gallery/shaft-screeners/hds323/2.webp",
+            "assets/images/mbcrusher/gallery/shaft-screeners/hds323/3.webp",
+            "assets/images/mbcrusher/gallery/shaft-screeners/hds323/4.webp"
+          ],
+          "video": "https://www.rsquaredtrade.com/MB/Videos/Shafts%20Screener%20MB-HDS323.mp4"
+        },
+        {
+          "id": "mb-hds523",
+          "name": "MB-HDS523",
+          "image": "assets/images/mbcrusher/products/shaft-screeners/mb-hds523.webp",
+          "carriers": [
+            {
+              "type": "excavator",
+              "min": 30,
+              "max": 45
+            }
+          ],
+          "description": [
+            "The MB-HDS523 shafts screener is the equipment you want on-site for large quantities and large volumes. It’s the biggest, strongest, and toughest unit in the range.",
+            "Created mainly for the mining and quarry industry, the attachment can also be used to move, sift, and aerate huge quantities of soil on excavation and earthmoving jobs and in large trenching and road works projects.",
+            "Equipped with the “V Shaft System” designed to create a simultaneous dual screening effect and to increase production."
+          ],
+          "specs": [
+            {
+              "label": "Weight",
+              "value": "3.35 t"
+            },
+            {
+              "label": "Load capacity",
+              "value": "2.00 m³"
+            },
+            {
+              "label": "Pressure",
+              "value": "> 250 bar"
+            },
+            {
+              "label": "Oil flow",
+              "value": "230 L/min"
+            }
+          ],
+          "gallery": [
+            "assets/images/mbcrusher/gallery/shaft-screeners/hd523/1.webp",
+            "assets/images/mbcrusher/gallery/shaft-screeners/hd523/2.webp",
+            "assets/images/mbcrusher/gallery/shaft-screeners/hd523/3.webp",
+            "assets/images/mbcrusher/gallery/shaft-screeners/hd523/4.webp"
+          ],
+          "video": "https://www.rsquaredtrade.com/MB/Videos/Shafts%20Screener%20MB-HDS523.mp4"
+        }
       ]
     },
     {
@@ -742,11 +1267,262 @@ window.MB_CRUSHER = {
       series: "MB-R",
       summary: "Suitable for any application requiring hard material to be cut or ground away.",
       icon: "assets/images/mbcrusher/categories/drum-cutters.webp",
+      specNote: "The hydraulic flow and pressure must both meet the required parameters.",
       products: [
-        {"id": "mb-r500", "name": "MB-R500", "tagline": "The Jack of all trades", "image": "assets/images/mbcrusher/products/drum-cutters/mb-r500.webp", "carriers": [{"type": "crane", "min": 3.5, "max": 11},{"type": "excavator", "min": 3.5, "max": 6}]},
-        {"id": "mb-r700", "name": "MB-R700", "tagline": "Small and efficient", "image": "assets/images/mbcrusher/products/drum-cutters/mb-r700.webp", "carriers": [{"type": "crane", "min": 6, "max": 13},{"type": "excavator", "min": 6, "max": 10}]},
-        {"id": "mb-r800", "name": "MB-R800", "tagline": "Agile and efficient", "image": "assets/images/mbcrusher/products/drum-cutters/mb-r800.webp", "carriers": [{"type": "excavator", "min": 10, "max": 22}]},
-        {"id": "mb-r900", "name": "MB-R900", "tagline": "Great performance", "image": "assets/images/mbcrusher/products/drum-cutters/mb-r900.webp", "carriers": [{"type": "excavator", "min": 19, "max": 35}]}
+        {
+          "id": "mb-r500",
+          "name": "MB-R500",
+          "tagline": "The Jack of all trades",
+          "image": "assets/images/mbcrusher/products/drum-cutters/mb-r500.webp",
+          "carriers": [
+            {
+              "type": "crane",
+              "min": 3.5,
+              "max": 11
+            },
+            {
+              "type": "excavator",
+              "min": 3.5,
+              "max": 6
+            }
+          ],
+          "description": [
+            "The new MB-R500 is the smallest cutter head of MB Crusher range. It weighs only 300 kg and can be installed on mini and midi excavators from 3.5 to 11 tons, on skid steer loaders and backhoe loaders from 3.5 tons.",
+            "Its powerful cutter head has a diameter of 500 mm and grinds with extreme precision. Its drum can be replaced on site in less than an hour, without the need to take the unit to a specialised workshop.",
+            "It is easy to use and makes work on different sites easy, especially those that require precision."
+          ],
+          "specs": [
+            {
+              "label": "Cut width",
+              "value": "450 mm"
+            },
+            {
+              "label": "Speed (min/max)",
+              "value": "80/120 rpm"
+            },
+            {
+              "label": "Output torque",
+              "value": "5000 Nm"
+            },
+            {
+              "label": "Pressure",
+              "value": "> 350 bar"
+            },
+            {
+              "label": "Counter pressure",
+              "value": "< 4 bar"
+            },
+            {
+              "label": "Weight",
+              "value": "0.3 t"
+            },
+            {
+              "label": "Oil flow",
+              "value": "60–120 L/min"
+            },
+            {
+              "label": "Drum diameter",
+              "value": "500 mm"
+            }
+          ],
+          "gallery": [
+            "assets/images/mbcrusher/gallery/drum-cutters/r500/1.webp",
+            "assets/images/mbcrusher/gallery/drum-cutters/r500/2.webp",
+            "assets/images/mbcrusher/gallery/drum-cutters/r500/3.webp",
+            "assets/images/mbcrusher/gallery/drum-cutters/r500/4.webp"
+          ],
+          "video": "https://www.rsquaredtrade.com/MB/Videos/drumcutter%20R500.mp4"
+        },
+        {
+          "id": "mb-r700",
+          "name": "MB-R700",
+          "tagline": "Small and efficient",
+          "image": "assets/images/mbcrusher/products/drum-cutters/mb-r700.webp",
+          "carriers": [
+            {
+              "type": "crane",
+              "min": 6,
+              "max": 13
+            },
+            {
+              "type": "excavator",
+              "min": 6,
+              "max": 10
+            }
+          ],
+          "description": [
+            "Precise and powerful, the MB-R700 drum cutter model allows the accurate processing of natural materials (rock and stone), and the levelling of plasterwork, wall coverings and surfaces in concrete.",
+            "The low levels of noise generated, and the limited levels of vibration, render this machine ideal for use in delicate areas and residential centres."
+          ],
+          "specs": [
+            {
+              "label": "Cut width",
+              "value": "890 mm"
+            },
+            {
+              "label": "Pick force",
+              "value": "19600 N"
+            },
+            {
+              "label": "Speed (min/max)",
+              "value": "80/110 rpm"
+            },
+            {
+              "label": "Output torque",
+              "value": "5000 Nm"
+            },
+            {
+              "label": "Pressure",
+              "value": "> 350 bar"
+            },
+            {
+              "label": "Counter pressure",
+              "value": "< 4 bar"
+            },
+            {
+              "label": "Weight",
+              "value": "0.6 t"
+            },
+            {
+              "label": "Oil flow",
+              "value": "110–180 L/min"
+            },
+            {
+              "label": "Drum diameter",
+              "value": "500 mm"
+            }
+          ],
+          "gallery": [
+            "assets/images/mbcrusher/gallery/drum-cutters/r700/1.webp",
+            "assets/images/mbcrusher/gallery/drum-cutters/r700/2.webp",
+            "assets/images/mbcrusher/gallery/drum-cutters/r700/3.webp"
+          ],
+          "video": "https://www.rsquaredtrade.com/MB/Videos/drumcutter%20R700.mp4"
+        },
+        {
+          "id": "mb-r800",
+          "name": "MB-R800",
+          "tagline": "Agile and efficient",
+          "image": "assets/images/mbcrusher/products/drum-cutters/mb-r800.webp",
+          "carriers": [
+            {
+              "type": "excavator",
+              "min": 10,
+              "max": 22
+            }
+          ],
+          "description": [
+            "Precise and powerful, the MB-R800 drum cutter allows for the accurate processing of natural materials (rock and stone), and the levelling of plasterwork, wall coatings and concrete surfaces.",
+            "The low levels of noise generated, and the limited levels of vibration, render this machine ideal for use in quite and residential centres."
+          ],
+          "specs": [
+            {
+              "label": "Cut width",
+              "value": "1015 mm"
+            },
+            {
+              "label": "Pick force",
+              "value": "33900 N"
+            },
+            {
+              "label": "Speed (min/max)",
+              "value": "60/80 rpm"
+            },
+            {
+              "label": "Output torque",
+              "value": "10000 Nm"
+            },
+            {
+              "label": "Pressure",
+              "value": "> 350 bar"
+            },
+            {
+              "label": "Counter pressure",
+              "value": "< 4 bar"
+            },
+            {
+              "label": "Weight",
+              "value": "1 t"
+            },
+            {
+              "label": "Oil flow",
+              "value": "200–300 L/min"
+            },
+            {
+              "label": "Drum diameter",
+              "value": "600 mm"
+            }
+          ],
+          "gallery": [
+            "assets/images/mbcrusher/gallery/drum-cutters/r800/1.webp",
+            "assets/images/mbcrusher/gallery/drum-cutters/r800/mb-r800-komatsu-pc200-bolivia-rocks-granite-640x640.webp",
+            "assets/images/mbcrusher/gallery/drum-cutters/r800/3.webp",
+            "assets/images/mbcrusher/gallery/drum-cutters/r800/4.webp"
+          ],
+          "video": "https://www.rsquaredtrade.com/MB/Videos/drumcutter%20R800.mp4"
+        },
+        {
+          "id": "mb-r900",
+          "name": "MB-R900",
+          "tagline": "Great performance",
+          "image": "assets/images/mbcrusher/products/drum-cutters/mb-r900.webp",
+          "carriers": [
+            {
+              "type": "excavator",
+              "min": 19,
+              "max": 35
+            }
+          ],
+          "description": [
+            "Precise and powerful, the MB-R900 drum cutter is the largest in the range and allows for the accurate processing of natural materials (rock and stone), and the levelling of plasterwork, wall coatings and concrete surfaces.",
+            "The low levels of noise generated, and the limited levels of vibration, render this machine ideal for use in quite and residential centres.",
+            "Suitable for any application requiring hard materials to be cut or ground away."
+          ],
+          "specs": [
+            {
+              "label": "Cut width",
+              "value": "1130 mm"
+            },
+            {
+              "label": "Pick force",
+              "value": "40000 N"
+            },
+            {
+              "label": "Speed (min/max)",
+              "value": "60/80 rpm"
+            },
+            {
+              "label": "Output torque",
+              "value": "13200 Nm"
+            },
+            {
+              "label": "Pressure",
+              "value": "> 350 bar"
+            },
+            {
+              "label": "Counter pressure",
+              "value": "< 4 bar"
+            },
+            {
+              "label": "Weight",
+              "value": "1.4 t"
+            },
+            {
+              "label": "Oil flow",
+              "value": "250–350 L/min"
+            },
+            {
+              "label": "Drum diameter",
+              "value": "680 mm"
+            }
+          ],
+          "gallery": [
+            "assets/images/mbcrusher/gallery/drum-cutters/r900/1.webp",
+            "assets/images/mbcrusher/gallery/drum-cutters/r900/2.webp",
+            "assets/images/mbcrusher/gallery/drum-cutters/r900/3.webp"
+          ],
+          "video": "https://www.rsquaredtrade.com/MB/Videos/drumcutter%20R900.mp4"
+        }
       ]
     },
     {
@@ -755,14 +1531,392 @@ window.MB_CRUSHER = {
       series: "MB-G",
       summary: "Designed for handling, sorting and loading demolition materials.",
       icon: "assets/images/mbcrusher/categories/sorting-grapples.webp",
+      specNote: "The hydraulic flow and pressure must both meet the required parameters.",
       products: [
-        {"id": "mb-g350-s4", "name": "MB-G350 S4", "tagline": "Compact and precise", "image": "assets/images/mbcrusher/products/sorting-grapples/mb-g350-s4.webp", "carriers": [{"type": "excavator", "min": 1.3, "max": 2.6}]},
-        {"id": "mb-g450-s4", "name": "MB-G450 S4", "tagline": "Agile and versatile", "image": "assets/images/mbcrusher/products/sorting-grapples/mb-g450-s4.webp", "carriers": [{"type": "excavator", "min": 3, "max": 6}]},
-        {"id": "mb-g600-s4", "name": "MB-G600 S4", "tagline": "Small and efficient", "image": "assets/images/mbcrusher/products/sorting-grapples/mb-g600-s4.webp", "carriers": [{"type": "excavator", "min": 6, "max": 12}]},
-        {"id": "mb-g900-s4", "name": "MB-G900 S4", "tagline": "Handy with high performance", "image": "assets/images/mbcrusher/products/sorting-grapples/mb-g900-s4.webp", "carriers": [{"type": "excavator", "min": 12, "max": 18}]},
-        {"id": "mb-g1000-s4", "name": "MB-G1000 S4", "tagline": "Efficient and reliable", "image": "assets/images/mbcrusher/products/sorting-grapples/mb-g1000-s4.webp", "carriers": [{"type": "excavator", "min": 18, "max": 25}]},
-        {"id": "mb-g1200-s4", "name": "MB-G1200 S4", "tagline": "Great performance", "image": "assets/images/mbcrusher/products/sorting-grapples/mb-g1200-s4.webp", "carriers": [{"type": "excavator", "min": 18, "max": 30}]},
-        {"id": "mb-g1500-s4", "name": "MB-G1500 S4", "tagline": "Handy, practical, efficient", "image": "assets/images/mbcrusher/products/sorting-grapples/mb-g1500-s4.webp", "carriers": [{"type": "excavator", "min": 20, "max": 30}]}
+        {
+          "id": "mb-g350-s4",
+          "name": "MB-G350 S4",
+          "tagline": "Compact and precise",
+          "image": "assets/images/mbcrusher/products/sorting-grapples/mb-g350-s4.webp",
+          "carriers": [
+            {
+              "type": "excavator",
+              "min": 1.3,
+              "max": 2.6
+            }
+          ],
+          "description": [
+            "Compact, versatile, and precise, the MB-G350 sorting grapple works on mini-excavators to handle logs, rocks, debris, poles, to position stones for dry stone walls, separate branches from dirt, etc.",
+            "The unit's jaws have a wide opening, so it can grab and handle large materials.",
+            "It's equipped with a fall prevention valve, guaranteeing a safe job site. The unit can have an electrical kit installed for two-line functionality, allowing it to use the 360° rotation - even for mini-excavators which come with two hoses."
+          ],
+          "specs": [
+            {
+              "label": "Weight",
+              "value": "85 kg"
+            },
+            {
+              "label": "Load capacity",
+              "value": "0.03 m³ / 30 L"
+            },
+            {
+              "label": "Rotation",
+              "value": "360°"
+            },
+            {
+              "label": "Flow direction",
+              "value": "5 L/min"
+            },
+            {
+              "label": "Pressure of rotation",
+              "value": "150 bar"
+            },
+            {
+              "label": "Pressure (open/close)",
+              "value": "200 bar"
+            },
+            {
+              "label": "Oil flow (open/close)",
+              "value": "15 L/min"
+            }
+          ],
+          "gallery": [
+            "assets/images/mbcrusher/gallery/sorting-grapples/sortinggrapler/1.webp",
+            "assets/images/mbcrusher/gallery/sorting-grapples/sortinggrapler/2.webp",
+            "assets/images/mbcrusher/gallery/sorting-grapples/sortinggrapler/3.webp",
+            "assets/images/mbcrusher/gallery/sorting-grapples/sortinggrapler/4.webp"
+          ],
+          "video": "https://www.rsquaredtrade.com/MB/Videos/MB-G350%20-%20MB-G450_EN.mp4"
+        },
+        {
+          "id": "mb-g450-s4",
+          "name": "MB-G450 S4",
+          "tagline": "Agile and versatile",
+          "image": "assets/images/mbcrusher/products/sorting-grapples/mb-g450-s4.webp",
+          "carriers": [
+            {
+              "type": "excavator",
+              "min": 3,
+              "max": 6
+            }
+          ],
+          "description": [
+            "The MB-G450 sorting grapple works on midi-excavators from 3 to 6 tons and can move and handle materials of different shapes and sizes. The unit's design allows it to have an electrical kit installed for two line fuctionality, allowing it to use 360° rotation, even with midi-excavators that only have two hoses.",
+            "The unit's claws have a wide opening, making it able to handle large materials. It's equipped interchangeable blades, which can be flipped around to extend its life and an anti-fall valve."
+          ],
+          "specs": [
+            {
+              "label": "Weight",
+              "value": "288 kg"
+            },
+            {
+              "label": "Load capacity",
+              "value": "0.10 m³ / 100 L"
+            },
+            {
+              "label": "Rotation",
+              "value": "360°"
+            },
+            {
+              "label": "Flow direction",
+              "value": "10 L/min"
+            },
+            {
+              "label": "Pressure of rotation",
+              "value": "150 bar"
+            },
+            {
+              "label": "Pressure (open/close)",
+              "value": "250 bar"
+            },
+            {
+              "label": "Oil flow (open/close)",
+              "value": "40 L/min"
+            }
+          ],
+          "gallery": [
+            "assets/images/mbcrusher/gallery/sorting-grapples/g450/1.webp",
+            "assets/images/mbcrusher/gallery/sorting-grapples/g450/2.webp"
+          ],
+          "video": "https://www.rsquaredtrade.com/MB/Videos/MB-G350%20-%20MB-G450_EN.mp4"
+        },
+        {
+          "id": "mb-g600-s4",
+          "name": "MB-G600 S4",
+          "tagline": "Small and efficient",
+          "image": "assets/images/mbcrusher/products/sorting-grapples/mb-g600-s4.webp",
+          "carriers": [
+            {
+              "type": "excavator",
+              "min": 6,
+              "max": 12
+            }
+          ],
+          "description": [
+            "Designed for handling demolition materials and conceived according to the highest technological standards for any types of materials in a reliable way, with constance and total safety.",
+            "Thanks to the interchangeable claws and the 360° hydraulic rotation it allows you to handle large loads and odd forms."
+          ],
+          "specs": [
+            {
+              "label": "Recommended excavator",
+              "value": "6–12 t"
+            },
+            {
+              "label": "Weight",
+              "value": "0.60 t"
+            },
+            {
+              "label": "Load capacity (claws closed)",
+              "value": "0.29 m³ / 290 L"
+            },
+            {
+              "label": "Rotation",
+              "value": "360°"
+            },
+            {
+              "label": "Flow direction",
+              "value": "15–30 L/min"
+            },
+            {
+              "label": "Pressure of rotation",
+              "value": "> 160 bar"
+            },
+            {
+              "label": "Pressure (open/close)",
+              "value": "200–400 bar"
+            },
+            {
+              "label": "Oil flow (open/close)",
+              "value": "25 L/min"
+            }
+          ],
+          "gallery": [
+            "assets/images/mbcrusher/gallery/sorting-grapples/g600/1.webp",
+            "assets/images/mbcrusher/gallery/sorting-grapples/g600/2.webp",
+            "assets/images/mbcrusher/gallery/sorting-grapples/g600/3.webp",
+            "assets/images/mbcrusher/gallery/sorting-grapples/g600/4.webp"
+          ],
+          "video": "https://www.rsquaredtrade.com/MB/Videos/MB-G600%20-%20Kubota.mp4"
+        },
+        {
+          "id": "mb-g900-s4",
+          "name": "MB-G900 S4",
+          "tagline": "Handy with high performance",
+          "image": "assets/images/mbcrusher/products/sorting-grapples/mb-g900-s4.webp",
+          "carriers": [
+            {
+              "type": "excavator",
+              "min": 12,
+              "max": 18
+            }
+          ],
+          "description": [
+            "Designed for Xing and handling demolition materials and conceived according to the highest technological standards for any types of materials in a reliable way, with constance and total safety.",
+            "Thanks to the interchangeable claws and the 360° hydraulic rotation it allows you to handle large loads and odd forms."
+          ],
+          "specs": [
+            {
+              "label": "Weight",
+              "value": "0.78 t"
+            },
+            {
+              "label": "Load capacity (claws closed)",
+              "value": "0.43 m³ / 430 L"
+            },
+            {
+              "label": "Rotation",
+              "value": "360°"
+            },
+            {
+              "label": "Flow direction",
+              "value": "15–30 L/min"
+            },
+            {
+              "label": "Pressure of rotation",
+              "value": "> 160 bar"
+            },
+            {
+              "label": "Pressure (open/close)",
+              "value": "200–300 bar"
+            },
+            {
+              "label": "Oil flow (open/close)",
+              "value": "30 L/min"
+            }
+          ],
+          "gallery": [
+            "assets/images/mbcrusher/gallery/sorting-grapples/g900/1.webp",
+            "assets/images/mbcrusher/gallery/sorting-grapples/g900/2.webp",
+            "assets/images/mbcrusher/gallery/sorting-grapples/g900/3.webp",
+            "assets/images/mbcrusher/gallery/sorting-grapples/g900/4.webp"
+          ],
+          "video": "https://www.rsquaredtrade.com/MB/Videos/The%20MB-G900%20grapple%20in%20a%20big%20demolition%20project.mp4"
+        },
+        {
+          "id": "mb-g1000-s4",
+          "name": "MB-G1000 S4",
+          "tagline": "Efficient and reliable",
+          "image": "assets/images/mbcrusher/products/sorting-grapples/mb-g1000-s4.webp",
+          "carriers": [
+            {
+              "type": "excavator",
+              "min": 18,
+              "max": 25
+            }
+          ],
+          "description": [
+            "Designed for excavators with an operating weight ranging from 18 to 25 tons. The unit provides high performance and meets the expectations needed to work in various fields.",
+            "The strong closing force and precise movements makes it suitable for any construction site and makes it essential to sort various materials safely regardless of the weight or shape."
+          ],
+          "specs": [
+            {
+              "label": "Weight",
+              "value": "1.615 t"
+            },
+            {
+              "label": "Load capacity (claws closed)",
+              "value": "0.44 m³ / 440 L"
+            },
+            {
+              "label": "Rotation",
+              "value": "360°"
+            },
+            {
+              "label": "Flow direction",
+              "value": "40–70 L/min"
+            },
+            {
+              "label": "Pressure of rotation",
+              "value": "> 220 bar"
+            },
+            {
+              "label": "Pressure (open/close)",
+              "value": "300–400 bar"
+            },
+            {
+              "label": "Oil flow (open/close)",
+              "value": "70 L/min"
+            }
+          ],
+          "gallery": [
+            "assets/images/mbcrusher/gallery/sorting-grapples/g1000/1.webp",
+            "assets/images/mbcrusher/gallery/sorting-grapples/g1000/2.webp",
+            "assets/images/mbcrusher/gallery/sorting-grapples/g1000/3.webp",
+            "assets/images/mbcrusher/gallery/sorting-grapples/g1000/4.webp"
+          ],
+          "video": "https://www.rsquaredtrade.com/MB/Videos/MB-G1000_EN.mp4"
+        },
+        {
+          "id": "mb-g1200-s4",
+          "name": "MB-G1200 S4",
+          "tagline": "Great performance",
+          "image": "assets/images/mbcrusher/products/sorting-grapples/mb-g1200-s4.webp",
+          "carriers": [
+            {
+              "type": "excavator",
+              "min": 18,
+              "max": 30
+            }
+          ],
+          "description": [
+            "Designed for Xing and handling demolition materials and conceived according to the highest technological standards for any types of materials in a reliable way, with constance and total safety.",
+            "Thanks to the interchangeable claws and the 360° hydraulic rotation it allows you to handle large loads and odd forms."
+          ],
+          "specs": [
+            {
+              "label": "Weight",
+              "value": "1.65 t"
+            },
+            {
+              "label": "Load capacity (claws closed)",
+              "value": "0.71 m³ / 710 L"
+            },
+            {
+              "label": "Rotation",
+              "value": "360°"
+            },
+            {
+              "label": "Flow direction",
+              "value": "20–35 L/min"
+            },
+            {
+              "label": "Pressure of rotation",
+              "value": "> 220 bar"
+            },
+            {
+              "label": "Pressure (open/close)",
+              "value": "300–400 bar"
+            },
+            {
+              "label": "Oil flow (open/close)",
+              "value": "70 L/min"
+            }
+          ],
+          "gallery": [
+            "assets/images/mbcrusher/gallery/sorting-grapples/g1200/1.webp",
+            "assets/images/mbcrusher/gallery/sorting-grapples/g1200/2.webp",
+            "assets/images/mbcrusher/gallery/sorting-grapples/g1200/3.webp",
+            "assets/images/mbcrusher/gallery/sorting-grapples/g1200/5.webp"
+          ],
+          "video": "https://www.rsquaredtrade.com/MB/Videos/MB-G1200_Komatsu210_Croatia_moving%20and%20separating%20materials_wood.mp4"
+        },
+        {
+          "id": "mb-g1500-s4",
+          "name": "MB-G1500 S4",
+          "tagline": "Handy, practical, efficient",
+          "image": "assets/images/mbcrusher/products/sorting-grapples/mb-g1500-s4.webp",
+          "carriers": [
+            {
+              "type": "excavator",
+              "min": 20,
+              "max": 30
+            }
+          ],
+          "description": [
+            "Designed for Xing and handling demolition materials and conceived according to the highest technological standards for any types of materials in a reliable way, with constance and total safety.",
+            "Thanks to the interchangeable claws and the 360° hydraulic rotation it allows you to handle large loads and odd forms."
+          ],
+          "specs": [
+            {
+              "label": "Recommended excavator",
+              "value": "20–30 t"
+            },
+            {
+              "label": "Weight",
+              "value": "2.05 t"
+            },
+            {
+              "label": "Load capacity (claws closed)",
+              "value": "1.43 m³ / 1430 L"
+            },
+            {
+              "label": "Rotation",
+              "value": "360°"
+            },
+            {
+              "label": "Flow direction",
+              "value": "20–35 L/min"
+            },
+            {
+              "label": "Pressure of rotation",
+              "value": "> 220 bar"
+            },
+            {
+              "label": "Pressure (open/close)",
+              "value": "300–400 bar"
+            },
+            {
+              "label": "Oil flow (open/close)",
+              "value": "70 L/min"
+            }
+          ],
+          "gallery": [
+            "assets/images/mbcrusher/gallery/sorting-grapples/g1500/1.webp",
+            "assets/images/mbcrusher/gallery/sorting-grapples/g1500/2.webp",
+            "assets/images/mbcrusher/gallery/sorting-grapples/g1500/3.webp"
+          ],
+          "video": "https://www.rsquaredtrade.com/MB/Videos/Grapple%20rotary%20movement%20MB-G1500.mp4"
+        }
       ]
     },
     {
@@ -772,30 +1926,446 @@ window.MB_CRUSHER = {
       summary: "MB Crusher accessories complement and add value to MB attachments, personalising and optimising the work process on any job site.",
       icon: "assets/images/mbcrusher/categories/accessories.webp",
       products: [
-        {"id": "24-v-iron-separator", "name": "24 V Iron separator", "tagline": "It's available for MB's crushing attachments.", "image": "assets/images/mbcrusher/products/accessories/24-v-iron-separator.webp", "group": null, "fits": ["crusher-buckets"]},
-        {"id": "the-dust-suppression-kit", "name": "The dust suppression kit", "tagline": "This kit is available for the crusher attachments.", "image": "assets/images/mbcrusher/products/accessories/the-dust-suppression-kit.webp", "group": null, "fits": ["crusher-buckets"]},
-        {"id": "coupling", "name": "Coupling", "tagline": "Available for all MB units.", "image": "assets/images/mbcrusher/products/accessories/coupling.webp", "group": null, "fits": ["all"]},
-        {"id": "spare-parts-kit", "name": "Spare parts kit", "tagline": "Available for all MB units.", "image": "assets/images/mbcrusher/products/accessories/spare-parts-kit.webp", "group": null, "fits": ["all"]},
-        {"id": "warranty-extension-gold-24", "name": "Warranty extension gold 24", "tagline": "Available for all MB units.", "image": "assets/images/mbcrusher/products/accessories/warranty-extension-gold-24.webp", "group": null, "fits": ["all"]},
-        {"id": "hour-meter", "name": "Hour meter", "tagline": "It's available for both MB's crushing and screening attachments.", "image": "assets/images/mbcrusher/products/accessories/hour-meter.webp", "group": null, "fits": ["crusher-buckets", "screening-buckets"]},
-        {"id": "basket-protection-kit", "name": "Basket protection kit", "tagline": "It's available for all MB screening buckets.", "image": "assets/images/mbcrusher/products/accessories/basket-protection-kit.webp", "group": null, "fits": ["screening-buckets"]},
-        {"id": "shaft-holder", "name": "Shaft holder", "tagline": "It's available for all MB-HDS models.", "image": "assets/images/mbcrusher/products/accessories/shaft-holder.webp", "group": null, "fits": ["shaft-screeners"]},
-        {"id": "rc-compost-kit", "name": "RC compost kit", "tagline": "It's available for all MB-HDS models.", "image": "assets/images/mbcrusher/products/accessories/rc-compost-kit.webp", "group": "Shaft kits", "fits": ["shaft-screeners"]},
-        {"id": "rc-mixer-kit", "name": "RC mixer kit", "tagline": "It's available for all MB-HDS models.", "image": "assets/images/mbcrusher/products/accessories/rc-mixer-kit.webp", "group": "Shaft kits", "fits": ["shaft-screeners"]},
-        {"id": "re8-re16-fine-sifting-kit-compost-kit", "name": "RE8/RE16 fine sifting kit compost kit", "tagline": "It's available for all MB-HDS models.", "image": "assets/images/mbcrusher/products/accessories/re8-re16-fine-sifting-kit-compost-kit.webp", "group": "Shaft kits", "fits": ["shaft-screeners"]},
-        {"id": "rq20-rq50-medium-sifting-kit", "name": "RQ20/RQ50 medium sifting kit", "tagline": "It's available for all MB-HDS models.", "image": "assets/images/mbcrusher/products/accessories/rq20-rq50-medium-sifting-kit.webp", "group": "Shaft kits", "fits": ["shaft-screeners"]},
-        {"id": "drum-cover-kit", "name": "Drum cover kit", "tagline": "Available for the MB-R500", "image": "assets/images/mbcrusher/products/accessories/drum-cover-kit.webp", "group": null, "fits": ["drum-cutters"]},
-        {"id": "cutting-depth-adjustment-kit", "name": "Cutting depth adjustment kit", "tagline": "Available for the MB-R500", "image": "assets/images/mbcrusher/products/accessories/cutting-depth-adjustment-kit.webp", "group": null, "fits": ["drum-cutters"]},
-        {"id": "cutter-body-rotation-kit", "name": "Cutter body rotation kit", "tagline": "Available for the MB-R500", "image": "assets/images/mbcrusher/products/accessories/cutter-body-rotation-kit.webp", "group": null, "fits": ["drum-cutters"]},
-        {"id": "rock-and-asphalt-pick-kit", "name": "Rock and asphalt pick kit", "tagline": "It's available for all MB drum cutters.", "image": "assets/images/mbcrusher/products/accessories/rock-and-asphalt-pick-kit.webp", "group": null, "fits": ["drum-cutters"]},
-        {"id": "drum-kit", "name": "Drum kit", "tagline": "It's available for all MB drum cutters.", "image": "assets/images/mbcrusher/products/accessories/drum-kit.webp", "group": null, "fits": ["drum-cutters"]},
-        {"id": "power-transmission-kit", "name": "Power transmission kit", "tagline": "Available for the MB-R500.", "image": "assets/images/mbcrusher/products/accessories/power-transmission-kit.webp", "group": null, "fits": ["drum-cutters"]},
-        {"id": "oil-temperature-reducing-device", "name": "Oil temperature reducing device", "tagline": "It's available for all MB drum cutters.", "image": "assets/images/mbcrusher/products/accessories/oil-temperature-reducing-device.webp", "group": null, "fits": ["drum-cutters"]},
-        {"id": "rotation-power-extender-kit", "name": "Rotation power extender kit", "tagline": "It's available for MB Grapple models.", "image": "assets/images/mbcrusher/products/accessories/rotation-power-extender-kit.webp", "group": null, "fits": ["sorting-grapples"]},
-        {"id": "multi-purpose-blade-kit", "name": "Multi-purpose blade kit", "tagline": "It's available for all MB Grapple models.", "image": "assets/images/mbcrusher/products/accessories/multi-purpose-blade-kit.webp", "group": null, "fits": ["sorting-grapples"]},
-        {"id": "clamshell-kit", "name": "Clamshell kit", "tagline": "It's available for all MB Grapple models.", "image": "assets/images/mbcrusher/products/accessories/clamshell-kit.webp", "group": null, "fits": ["sorting-grapples"]},
-        {"id": "grip-improvement-kit", "name": "Grip improvement kit", "tagline": "It's available for all MB Grapple models.", "image": "assets/images/mbcrusher/products/accessories/grip-improvement-kit.webp", "group": null, "fits": ["sorting-grapples"]},
-        {"id": "tilting-lift-rubber-protection-kit", "name": "Tilting lift rubber protection kit", "tagline": "It's available for all MB Grapple models.", "image": "assets/images/mbcrusher/products/accessories/tilting-lift-rubber-protection-kit.webp", "group": null, "fits": ["sorting-grapples"]}
+        {
+          "id": "24-v-iron-separator",
+          "name": "24 V Iron separator",
+          "tagline": "Essential for the separation of rebar",
+          "image": "assets/images/mbcrusher/products/accessories/24-v-iron-separator.webp",
+          "group": null,
+          "fits": [
+            "crusher-buckets"
+          ],
+          "description": [
+            "The 24 V MB iron separator is perfect for separating iron from crushed or screened material. It's easy to install and is supplied with a complete support installation kit.",
+            "It's available for MB's crushing attachments."
+          ],
+          "gallery": [
+            "assets/images/mbcrusher/gallery/accessories/ironseprator/1.webp",
+            "assets/images/mbcrusher/gallery/accessories/ironseprator/2.webp",
+            "assets/images/mbcrusher/gallery/accessories/ironseprator/3.webp"
+          ]
+        },
+        {
+          "id": "the-dust-suppression-kit",
+          "name": "The dust suppression kit",
+          "tagline": "This kit is available for the crusher attachments.",
+          "image": "assets/images/mbcrusher/products/accessories/the-dust-suppression-kit.webp",
+          "group": null,
+          "fits": [
+            "crusher-buckets"
+          ],
+          "description": [
+            "The MB dust suppression kit nebulizes micro particles of water. Its primary function is to reduce dust emissions from crushing or screening.",
+            "This kit is available for the crusher attachments.",
+            "It is also available in different sizes, to accommodate the clients' needs."
+          ],
+          "gallery": [
+            "assets/images/mbcrusher/gallery/accessories/dustsupp/1.webp",
+            "assets/images/mbcrusher/gallery/accessories/dustsupp/2.webp"
+          ]
+        },
+        {
+          "id": "coupling",
+          "name": "Coupling",
+          "tagline": "Available for all MB units.",
+          "image": "assets/images/mbcrusher/products/accessories/coupling.webp",
+          "group": null,
+          "fits": [
+            "all"
+          ],
+          "description": [
+            "It connects the MB unit to the carrier machine.",
+            "Available for all MB units."
+          ],
+          "gallery": [
+            "assets/images/mbcrusher/gallery/accessories/coupling/1.webp",
+            "assets/images/mbcrusher/gallery/accessories/coupling/2.webp"
+          ]
+        },
+        {
+          "id": "spare-parts-kit",
+          "name": "Spare parts kit",
+          "tagline": "Available for all MB units.",
+          "image": "assets/images/mbcrusher/products/accessories/spare-parts-kit.webp",
+          "group": null,
+          "fits": [
+            "all"
+          ],
+          "description": [
+            "This kit of original spare parts is available for each model, to ensure the MB unit maintains 100% efficiency and productivity.",
+            "Available for all MB units."
+          ],
+          "gallery": [
+            "assets/images/mbcrusher/gallery/accessories/sparepart/mb-icon-kitricambi-640x640.webp"
+          ]
+        },
+        {
+          "id": "warranty-extension-gold-24",
+          "name": "Warranty extension gold 24",
+          "tagline": "Available for all MB units.",
+          "image": "assets/images/mbcrusher/products/accessories/warranty-extension-gold-24.webp",
+          "group": null,
+          "fits": [
+            "all"
+          ],
+          "description": [
+            "MB Crusher offers the possibility of purchasing a 24-month warranty extension.",
+            "Available for all MB units."
+          ],
+          "gallery": [
+            "assets/images/mbcrusher/gallery/accessories/warranty/mb-icon-garanziah24-640x640.webp"
+          ]
+        },
+        {
+          "id": "hour-meter",
+          "name": "Hour meter",
+          "tagline": "It's available for both MB's crushing and screening attachments.",
+          "image": "assets/images/mbcrusher/products/accessories/hour-meter.webp",
+          "group": null,
+          "fits": [
+            "crusher-buckets",
+            "screening-buckets"
+          ],
+          "description": [
+            "An instrument that tracks the MB unit's working hours.",
+            "It's available for both MB's crushing and screening attachments."
+          ],
+          "gallery": [
+            "assets/images/mbcrusher/gallery/accessories/hourmeter/mb-icon-contaore-640x640.webp"
+          ]
+        },
+        {
+          "id": "basket-protection-kit",
+          "name": "Basket protection kit",
+          "tagline": "It's available for all MB screening buckets.",
+          "image": "assets/images/mbcrusher/products/accessories/basket-protection-kit.webp",
+          "group": null,
+          "fits": [
+            "screening-buckets"
+          ],
+          "description": [
+            "The MB basket protection kit protects the basket and its frame from strong impacts.",
+            "It allows the operator to easily navigate the screening attachment.",
+            "It's available for all MB screening buckets."
+          ],
+          "gallery": [
+            "assets/images/mbcrusher/gallery/accessories/basketprotectkit/1.webp",
+            "assets/images/mbcrusher/gallery/accessories/basketprotectkit/2.webp",
+            "assets/images/mbcrusher/gallery/accessories/basketprotectkit/3.webp",
+            "assets/images/mbcrusher/gallery/accessories/basketprotectkit/4.webp"
+          ]
+        },
+        {
+          "id": "shaft-holder",
+          "name": "Shaft holder",
+          "tagline": "It's available for all MB-HDS models.",
+          "image": "assets/images/mbcrusher/products/accessories/shaft-holder.webp",
+          "group": null,
+          "fits": [
+            "shaft-screeners"
+          ],
+          "description": [
+            "It is available for all MB-HDS models."
+          ],
+          "gallery": [
+            "assets/images/mbcrusher/gallery/accessories/shaftholder/pallet-contenitore-porta-rotori-640x640.webp"
+          ]
+        },
+        {
+          "id": "rc-compost-kit",
+          "name": "RC compost kit",
+          "tagline": "It's available for all MB-HDS models.",
+          "image": "assets/images/mbcrusher/products/accessories/rc-compost-kit.webp",
+          "group": "Shaft kits",
+          "fits": [
+            "shaft-screeners"
+          ],
+          "description": [
+            "It is available for all MB-HDS models."
+          ],
+          "gallery": [
+            "assets/images/mbcrusher/gallery/accessories/rcvompost/kitcompostaggiorc.webp"
+          ]
+        },
+        {
+          "id": "rc-mixer-kit",
+          "name": "RM mixer kit",
+          "tagline": "It's available for all MB-HDS models.",
+          "image": "assets/images/mbcrusher/products/accessories/rc-mixer-kit.webp",
+          "group": "Shaft kits",
+          "fits": [
+            "shaft-screeners"
+          ],
+          "description": [
+            "It is available for all MB-HDS models."
+          ],
+          "gallery": [
+            "assets/images/mbcrusher/gallery/accessories/rmmixer/kitmiscelatorerm.webp"
+          ],
+          "uses": [
+            "Soil aeration",
+            "Compost aeration",
+            "Breaking down charcoal",
+            "Crushing glass",
+            "Crushing drywall"
+          ]
+        },
+        {
+          "id": "re8-re16-fine-sifting-kit-compost-kit",
+          "name": "RE8/RE16 fine sifting kit",
+          "tagline": "It's available for all MB-HDS models.",
+          "image": "assets/images/mbcrusher/products/accessories/re8-re16-fine-sifting-kit-compost-kit.webp",
+          "group": "Shaft kits",
+          "fits": [
+            "shaft-screeners"
+          ],
+          "description": [
+            "Sifting damp/dry soil",
+            "It is available for all MB-HDS models."
+          ],
+          "gallery": [
+            "assets/images/mbcrusher/gallery/accessories/re8/kitvagliaturafine-re16.webp"
+          ]
+        },
+        {
+          "id": "rq20-rq50-medium-sifting-kit",
+          "name": "RQ20/RQ50 medium sifting kit",
+          "tagline": "It's available for all MB-HDS models.",
+          "image": "assets/images/mbcrusher/products/accessories/rq20-rq50-medium-sifting-kit.webp",
+          "group": "Shaft kits",
+          "fits": [
+            "shaft-screeners"
+          ],
+          "description": [
+            "It is available for all MB-HDS models."
+          ],
+          "gallery": [
+            "assets/images/mbcrusher/gallery/accessories/rq/kitvagliaturamedia-rq20.webp"
+          ],
+          "uses": [
+            "Sifting damp/dry soil",
+            "Soil aeration"
+          ]
+        },
+        {
+          "id": "drum-cover-kit",
+          "name": "Drum cover kit",
+          "tagline": "Available for the MB-R500",
+          "image": "assets/images/mbcrusher/products/accessories/drum-cover-kit.webp",
+          "group": null,
+          "fits": [
+            "drum-cutters"
+          ],
+          "description": [
+            "Reduces dust emission significantly , allowing it to work in enclosed spaces.",
+            "Available for the MB-R500."
+          ],
+          "gallery": [
+            "assets/images/mbcrusher/gallery/accessories/drumcoverkit/1.webp",
+            "assets/images/mbcrusher/gallery/accessories/drumcoverkit/2.webp"
+          ]
+        },
+        {
+          "id": "cutting-depth-adjustment-kit",
+          "name": "Cutting depth adjustment kit",
+          "tagline": "Available for the MB-R500",
+          "image": "assets/images/mbcrusher/products/accessories/cutting-depth-adjustment-kit.webp",
+          "group": null,
+          "fits": [
+            "drum-cutters"
+          ],
+          "description": [
+            "For leveling and milling surfaces with precision. For example: milling a road or a city square to prepare it for resurfacing.",
+            "Available for the MB-R500."
+          ],
+          "gallery": [
+            "assets/images/mbcrusher/gallery/accessories/cuttingdepth/1.webp",
+            "assets/images/mbcrusher/gallery/accessories/cuttingdepth/2.webp"
+          ]
+        },
+        {
+          "id": "cutter-body-rotation-kit",
+          "name": "Cutter body rotation kit",
+          "tagline": "Available for the MB-R500",
+          "image": "assets/images/mbcrusher/products/accessories/cutter-body-rotation-kit.webp",
+          "group": null,
+          "fits": [
+            "drum-cutters"
+          ],
+          "description": [
+            "Allows the operator to rotate the drum cutter directly from the carrier machine's cabin. Requires a rotational circuit.",
+            "Available for the MB-R500."
+          ],
+          "gallery": [
+            "assets/images/mbcrusher/gallery/accessories/cuttingdepth/3.webp"
+          ]
+        },
+        {
+          "id": "rock-and-asphalt-pick-kit",
+          "name": "Rock and asphalt pick kit",
+          "tagline": "It's available for all MB drum cutters.",
+          "image": "assets/images/mbcrusher/products/accessories/rock-and-asphalt-pick-kit.webp",
+          "group": null,
+          "fits": [
+            "drum-cutters"
+          ],
+          "description": [
+            "Different picks to work with different materials, depending on the job.",
+            "It's available for all MB drum cutters."
+          ],
+          "gallery": [
+            "assets/images/mbcrusher/gallery/accessories/cuttingdepth/4.webp"
+          ]
+        },
+        {
+          "id": "drum-kit",
+          "name": "Drum kit",
+          "tagline": "It's available for all MB drum cutters.",
+          "image": "assets/images/mbcrusher/products/accessories/drum-kit.webp",
+          "group": null,
+          "fits": [
+            "drum-cutters"
+          ],
+          "description": [
+            "The Drums can be removed directly on the job site, without the intervention of a specialised workshop.",
+            "It's available for all MB drum cutters."
+          ],
+          "gallery": [
+            "assets/images/mbcrusher/gallery/accessories/cuttingdepth/5.webp"
+          ]
+        },
+        {
+          "id": "power-transmission-kit",
+          "name": "Power transmission kit",
+          "tagline": "Available for the MB-R500.",
+          "image": "assets/images/mbcrusher/products/accessories/power-transmission-kit.webp",
+          "group": null,
+          "fits": [
+            "drum-cutters"
+          ],
+          "description": [
+            "Increases the unit's efficiency and milling force.",
+            "Available for the MB-R500."
+          ],
+          "gallery": [
+            "assets/images/mbcrusher/gallery/accessories/access/powertranskit.webp"
+          ]
+        },
+        {
+          "id": "oil-temperature-reducing-device",
+          "name": "Oil temperature reducing device",
+          "tagline": "It's available for all MB drum cutters.",
+          "image": "assets/images/mbcrusher/products/accessories/oil-temperature-reducing-device.webp",
+          "group": null,
+          "fits": [
+            "drum-cutters"
+          ],
+          "description": [
+            "Reduces the carrier machine's oil temperature, without altering its performance.",
+            "It's available for all MB drum cutters."
+          ],
+          "gallery": [
+            "assets/images/mbcrusher/gallery/accessories/access/oil.webp"
+          ]
+        },
+        {
+          "id": "rotation-power-extender-kit",
+          "name": "Rotation power extender kit",
+          "tagline": "It's available for MB Grapple models.",
+          "image": "assets/images/mbcrusher/products/accessories/rotation-power-extender-kit.webp",
+          "group": null,
+          "fits": [
+            "sorting-grapples"
+          ],
+          "description": [
+            "It magnifies the rotation strength of the grapples and allows to move heavy material with extreme ease.",
+            "The MB rotation power extender kit can be installed on the top part of the MB grapple.",
+            "It is available for MB Grapple models."
+          ],
+          "gallery": [
+            "assets/images/mbcrusher/gallery/accessories/access/rotationpower.webp"
+          ]
+        },
+        {
+          "id": "multi-purpose-blade-kit",
+          "name": "Multi-purpose blade kit",
+          "tagline": "It's available for all MB Grapple models.",
+          "image": "assets/images/mbcrusher/products/accessories/multi-purpose-blade-kit.webp",
+          "group": null,
+          "fits": [
+            "sorting-grapples"
+          ],
+          "description": [
+            "The MB multipurpose blade kit is a replacement of the yellow blade at the end of the MB grapple. It allows the client to move material of any shape and form.",
+            "It has a double blade feature: it is toothed on one side and smooth on the other.",
+            "The blades are easily and quickly interchangeable."
+          ],
+          "gallery": [
+            "assets/images/mbcrusher/gallery/accessories/multipurpose/1.webp",
+            "assets/images/mbcrusher/gallery/accessories/multipurpose/2.webp",
+            "assets/images/mbcrusher/gallery/accessories/multipurpose/3.webp",
+            "assets/images/mbcrusher/gallery/accessories/multipurpose/4.webp"
+          ]
+        },
+        {
+          "id": "clamshell-kit",
+          "name": "Clamshell kit",
+          "tagline": "It's available for all MB Grapple models.",
+          "image": "assets/images/mbcrusher/products/accessories/clamshell-kit.webp",
+          "group": null,
+          "fits": [
+            "sorting-grapples"
+          ],
+          "description": [
+            "It allows to move particularly heavy and unusual shapes with ease, grip and precision.",
+            "It can be installed on the internal side of the MB grapple attachment."
+          ],
+          "gallery": [
+            "assets/images/mbcrusher/gallery/accessories/calmshell/1.webp",
+            "assets/images/mbcrusher/gallery/accessories/calmshell/2.webp",
+            "assets/images/mbcrusher/gallery/accessories/calmshell/3.webp",
+            "assets/images/mbcrusher/gallery/accessories/calmshell/4.webp"
+          ]
+        },
+        {
+          "id": "grip-improvement-kit",
+          "name": "Grip improvement kit",
+          "tagline": "It's available for all MB Grapple models.",
+          "image": "assets/images/mbcrusher/products/accessories/grip-improvement-kit.webp",
+          "group": null,
+          "fits": [
+            "sorting-grapples"
+          ],
+          "description": [
+            "It allows to move particularly heavy and unusual shapes with ease, grip and precision.",
+            "The MB grip improvement kit is installed on the internal side of the MB grapple.",
+            "It is available for all MB Grapple models."
+          ],
+          "gallery": [
+            "assets/images/mbcrusher/gallery/accessories/gripimprov/1.webp",
+            "assets/images/mbcrusher/gallery/accessories/gripimprov/2.webp",
+            "assets/images/mbcrusher/gallery/accessories/gripimprov/3.webp"
+          ]
+        },
+        {
+          "id": "tilting-lift-rubber-protection-kit",
+          "name": "Tilting lift rubber protection kit",
+          "tagline": "It's available for all MB Grapple models.",
+          "image": "assets/images/mbcrusher/products/accessories/tilting-lift-rubber-protection-kit.webp",
+          "group": null,
+          "fits": [
+            "sorting-grapples"
+          ],
+          "description": [
+            "It allows to move particularly heavy and unusual shapes with ease, grip and precision.",
+            "It can be installed on the internal side of the MB grapple attachment."
+          ],
+          "gallery": [
+            "assets/images/mbcrusher/gallery/accessories/tit/1.webp",
+            "assets/images/mbcrusher/gallery/accessories/tit/2.webp",
+            "assets/images/mbcrusher/gallery/accessories/tit/3.webp"
+          ]
+        }
       ]
     }
   ]

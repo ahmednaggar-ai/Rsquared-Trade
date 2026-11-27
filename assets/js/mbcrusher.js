@@ -262,8 +262,23 @@
       '<p class="catalog__count">Model ' + (idx + 1) + ' of ' + list.length + '</p>';
 
     var shots = [{ src: p.image, product: true }].concat((p.gallery || []).map(function (g) { return { src: g }; }));
-    var thumbs = shots.length > 1 ? '<div class="mb-detail__thumbs" role="group" aria-label="Photos">' + shots.map(function (s, i) {
-      return '<button type="button" class="mb-detail__thumb' + (i === 0 ? ' is-active' : '') + (s.product ? ' is-product' : '') + '" data-thumb="' + esc(s.src) + '" data-product="' + (s.product ? 1 : 0) + '" aria-label="Photo ' + (i + 1) + ' of ' + shots.length + '" aria-pressed="' + (i === 0) + '">' +
+    var many = shots.length > 1;
+    var slides = shots.map(function (s, i) {
+      return '<div class="mb-detail__slide' + (s.product ? ' is-product' : '') + '" role="group" aria-roledescription="slide" aria-label="' + (i + 1) + ' of ' + shots.length + '"' + (i ? ' aria-hidden="true"' : '') + '>' +
+        '<img src="' + esc(s.src) + '" alt="' + (i === 0 ? esc(p.name) : esc(p.name) + ' – photo ' + i) + '" width="640" height="640" draggable="false"' + (i ? ' loading="lazy"' : '') + ' decoding="async"></div>';
+    }).join('');
+    var mainGallery =
+      '<div class="mb-detail__main" data-gallery tabindex="0" aria-roledescription="carousel" aria-label="Photos of ' + esc(p.name) + '">' +
+        '<div class="mb-detail__track" data-track>' + slides + '</div>' +
+        (many
+          ? '<button type="button" class="mb-detail__nav mb-detail__nav--prev" data-gal-prev aria-label="Previous photo"><i class="fas fa-chevron-left" aria-hidden="true"></i></button>' +
+            '<button type="button" class="mb-detail__nav mb-detail__nav--next" data-gal-next aria-label="Next photo"><i class="fas fa-chevron-right" aria-hidden="true"></i></button>' +
+            '<span class="mb-detail__counter" data-gal-counter aria-live="polite">1 / ' + shots.length + '</span>' +
+            '<span class="mb-detail__progress" data-gal-progress></span>'
+          : '') +
+      '</div>';
+    var thumbs = many ? '<div class="mb-detail__thumbs" role="group" aria-label="Choose a photo">' + shots.map(function (s, i) {
+      return '<button type="button" class="mb-detail__thumb' + (i === 0 ? ' is-active' : '') + (s.product ? ' is-product' : '') + '" data-thumb="' + i + '" aria-label="Show photo ' + (i + 1) + ' of ' + shots.length + '" aria-pressed="' + (i === 0) + '">' +
         '<img src="' + esc(s.src) + '" alt="" width="120" height="120" loading="lazy" decoding="async"></button>';
     }).join('') + '</div>' : '';
 
@@ -283,19 +298,28 @@
         '</section>'
       : '';
 
+    // accessories: "It's available for …" repeats what the "Works with" chips already say
+    var avail = /\bavailable for\b/i;
+    var tagline = p.fits && avail.test(p.tagline || '') ? '' : p.tagline;
+    var paragraphs = (p.description || []).filter(function (d) { return !(p.fits && avail.test(d) && d.length < 90); });
+
     el.grid.className = 'catalog__detail';
     el.grid.innerHTML =
       '<div class="mb-detail">' +
         '<div class="mb-detail__gallery">' +
-          '<figure class="mb-detail__main is-product"><img src="' + esc(p.image) + '" alt="' + esc(p.name) + '" width="640" height="640" data-main></figure>' +
+          mainGallery +
           thumbs +
         '</div>' +
         '<div class="mb-detail__info">' +
           '<p class="mb-detail__eyebrow">' + esc(c.name) + (c.series ? ' · ' + esc(c.series) + ' series' : '') + '</p>' +
           '<h2 class="mb-detail__name">' + esc(p.name) + '</h2>' +
-          (p.tagline ? '<p class="mb-detail__tagline">' + esc(p.tagline) + '</p>' : '') +
+          (tagline ? '<p class="mb-detail__tagline">' + esc(tagline) + '</p>' : '') +
           carriers +
-          (p.description || []).map(function (d) { return '<p class="mb-detail__text">' + esc(d) + '</p>'; }).join('') +
+          (p.fits ? '<p class="mb-detail__fits"><span>Works with</span>' +
+            (p.fits.indexOf('all') !== -1 ? ['All MB units'] : p.fits.map(function (f) { var x = byId(f); return x ? x.name : f; }))
+              .map(function (n) { return '<em>' + esc(n) + '</em>'; }).join('') + '</p>' : '') +
+          paragraphs.map(function (d) { return '<p class="mb-detail__text">' + esc(d) + '</p>'; }).join('') +
+          (p.uses && p.uses.length ? '<ul class="mb-detail__uses">' + p.uses.map(function (u) { return '<li>' + esc(u) + '</li>'; }).join('') + '</ul>' : '') +
           '<div class="mb-detail__actions">' +
             '<a class="rs-btn rs-btn--accent" href="' + quoteUrl(p) + '">Request a quote <i class="fas fa-arrow-right" aria-hidden="true"></i></a>' +
             '<a class="rs-btn rs-btn--outline" href="tel:+20244875070"><i class="fas fa-phone-alt" aria-hidden="true"></i> +20 2 4487 5070</a>' +
@@ -348,14 +372,146 @@
     }
   };
 
+  /* --------------------------- gallery slider --------------------------- */
+  // Auto-advances every INTERVAL; swipe/drag, arrows, thumbnails and ←/→ keys
+  // move it by hand. Pauses on hover, focus, drag, when off-screen or the tab
+  // is hidden; no auto-play for visitors who prefer reduced motion.
+  var INTERVAL = 4500;
+  var reduceMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var gallery = null;
+
+  var destroyGallery = function () {
+    if (!gallery) return;
+    clearTimeout(gallery.timer);
+    if (gallery.io) gallery.io.disconnect();
+    gallery = null;
+  };
+
+  var initGallery = function () {
+    destroyGallery();
+    var root = el.grid.querySelector('[data-gallery]');
+    var track = root && root.querySelector('[data-track]');
+    if (!track) return;
+    var slides = track.children;
+    var n = slides.length;
+    if (n < 2) return;
+
+    var g = gallery = { i: 0, timer: null, io: null, hover: false, focus: false, drag: false, visible: true };
+    var counter = root.querySelector('[data-gal-counter]');
+    var progress = root.querySelector('[data-gal-progress]');
+    var thumbs = el.grid.querySelectorAll('[data-thumb]');
+
+    var paused = function () {
+      return reduceMotion || g.hover || g.focus || g.drag || !g.visible || document.hidden ||
+        document.documentElement.classList.contains('js-loading'); // still behind the loading screen
+    };
+    var restartProgress = function () {
+      if (!progress) return;
+      progress.classList.remove('is-running');
+      void progress.offsetWidth; // restart the CSS animation
+      if (!paused()) progress.classList.add('is-running');
+    };
+    var schedule = function () {
+      clearTimeout(g.timer);
+      restartProgress();
+      if (!paused()) g.timer = setTimeout(function () { go(g.i + 1); }, INTERVAL);
+    };
+    var place = function (offsetPx, animate) {
+      track.style.transition = animate === false ? 'none' : '';
+      track.style.transform = 'translateX(calc(' + (-g.i * 100) + '% + ' + (offsetPx || 0) + 'px))';
+    };
+    var go = function (i) {
+      g.i = (i % n + n) % n;
+      place(0);
+      Array.prototype.forEach.call(slides, function (s, k) { s.setAttribute('aria-hidden', String(k !== g.i)); });
+      Array.prototype.forEach.call(thumbs, function (t, k) {
+        t.classList.toggle('is-active', k === g.i);
+        t.setAttribute('aria-pressed', String(k === g.i));
+      });
+      if (counter) counter.textContent = (g.i + 1) + ' / ' + n;
+      schedule();
+    };
+    g.go = go;
+    g.schedule = schedule;
+
+    // hover / keyboard focus pause it
+    root.addEventListener('mouseenter', function () { g.hover = true; schedule(); });
+    root.addEventListener('mouseleave', function () { g.hover = false; schedule(); });
+    // only keyboard focus pauses it (a mouse click on an arrow also focuses the button)
+    root.addEventListener('focusin', function (e) {
+      var kb = true;
+      try { kb = e.target.matches(':focus-visible'); } catch (err) {}
+      g.focus = kb; schedule();
+    });
+    root.addEventListener('focusout', function () { g.focus = false; schedule(); });
+    root.addEventListener('keydown', function (e) {
+      if (e.key === 'ArrowLeft') { e.preventDefault(); go(g.i - 1); }
+      if (e.key === 'ArrowRight') { e.preventDefault(); go(g.i + 1); }
+    });
+    root.querySelector('[data-gal-prev]').addEventListener('click', function () { go(g.i - 1); });
+    root.querySelector('[data-gal-next]').addEventListener('click', function () { go(g.i + 1); });
+
+    // swipe / drag (mouse, touch, pen); vertical page scrolling still works (touch-action: pan-y)
+    var startX = 0, startY = 0, dx = 0, pointerId = null, horizontal = null;
+    track.addEventListener('pointerdown', function (e) {
+      if (e.button !== 0) return;
+      pointerId = e.pointerId; startX = e.clientX; startY = e.clientY; dx = 0; horizontal = null;
+      g.drag = true; schedule();
+    });
+    track.addEventListener('pointermove', function (e) {
+      if (e.pointerId !== pointerId) return;
+      var mx = e.clientX - startX, my = e.clientY - startY;
+      if (horizontal === null && (Math.abs(mx) > 6 || Math.abs(my) > 6)) {
+        horizontal = Math.abs(mx) > Math.abs(my);
+        if (horizontal) track.setPointerCapture(pointerId);
+      }
+      if (!horizontal) return;
+      dx = mx;
+      // resist at the ends of the strip
+      if ((g.i === 0 && dx > 0) || (g.i === n - 1 && dx < 0)) dx = dx / 3;
+      place(dx, false);
+    });
+    var end = function (e) {
+      if (e.pointerId !== pointerId) return;
+      pointerId = null;
+      g.drag = false;
+      var width = root.clientWidth || 1;
+      if (horizontal && Math.abs(dx) > Math.min(60, width * .15)) go(g.i + (dx < 0 ? 1 : -1));
+      else { place(0); schedule(); }
+      // a real drag shouldn't also count as a click on the image
+      if (horizontal && Math.abs(dx) > 6) root.dataset.justDragged = '1';
+      setTimeout(function () { delete root.dataset.justDragged; }, 0);
+    };
+    track.addEventListener('pointerup', end);
+    track.addEventListener('pointercancel', end);
+
+    // only run while the gallery is on screen
+    if ('IntersectionObserver' in window) {
+      g.io = new IntersectionObserver(function (entries) {
+        g.visible = entries[0].isIntersecting;
+        schedule();
+      }, { threshold: 0.35 });
+      g.io.observe(root);
+    }
+    go(0);
+  };
+  document.addEventListener('visibilitychange', function () { if (gallery) gallery.schedule(); });
+  // start the clock when the loading screen lifts (site.js removes .js-loading)
+  if (window.MutationObserver) {
+    new MutationObserver(function () { if (gallery) gallery.schedule(); })
+      .observe(document.documentElement, { attributes: true, attributeFilter: ['class'] });
+  }
+
   /* ---------------------------- render ---------------------------- */
   var render = function () {
     renderTabs();
     renderHero();
     var c = byId(state.cat);
     var m = productOf(c, state.model);
+    destroyGallery();
     if (m) {
       renderDetail(c, m);
+      initGallery();
     } else if (c) {
       renderToolbar(c);
       renderProducts();
@@ -388,16 +544,7 @@
     }
     var thumb = e.target.closest('[data-thumb]');
     if (thumb) {
-      var main = el.grid.querySelector('[data-main]');
-      if (main) {
-        main.src = thumb.getAttribute('data-thumb');
-        main.parentNode.classList.toggle('is-product', thumb.getAttribute('data-product') === '1');
-      }
-      Array.prototype.forEach.call(el.grid.querySelectorAll('[data-thumb]'), function (t) {
-        var on = t === thumb;
-        t.classList.toggle('is-active', on);
-        t.setAttribute('aria-pressed', String(on));
-      });
+      if (gallery) gallery.go(+thumb.getAttribute('data-thumb'));
       return;
     }
     var chip = e.target.closest('[data-fits]');
