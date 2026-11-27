@@ -1,5 +1,6 @@
 /* =================================================================
-   NAVBAR + HERO
+   SITE SCRIPT (every page)
+   - Loader: branded intro, once per session, waits only for the first screen
    - Navbar: solid on scroll, mobile menu, active-section highlight
    - Hero: lightweight cross-fade slideshow (replaces jQuery Vegas)
      * slide 1 paints instantly from a ~30 KB poster, then the video
@@ -12,6 +13,115 @@
   var reduceMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   var conn = navigator.connection || {};
   var saveData = !!conn.saveData || /(^|-)2g$/.test(conn.effectiveType || '');
+
+  /* ---------------------------- THEME ----------------------------- */
+  // The <head> script already applied the theme before first paint.
+  // Here: the toggle button, and following the system setting until the
+  // visitor makes their own choice.
+  (function () {
+    var html = document.documentElement;
+    var KEY = 'rs-theme';
+    var media = window.matchMedia ? window.matchMedia('(prefers-color-scheme: dark)') : null;
+    var saved = function () { try { return localStorage.getItem(KEY); } catch (e) { return null; } };
+    var current = function () { return html.getAttribute('data-theme') === 'dark' ? 'dark' : 'light'; };
+
+    var buttons = document.querySelectorAll('[data-theme-toggle]');
+    var label = function () {
+      var next = current() === 'dark' ? 'light' : 'dark';
+      Array.prototype.forEach.call(buttons, function (b) {
+        b.setAttribute('aria-label', 'Switch to ' + next + ' theme');
+        b.setAttribute('title', 'Switch to ' + next + ' theme');
+      });
+    };
+    var apply = function (theme, animate) {
+      if (animate && !reduceMotion) {
+        html.classList.add('theme-anim');
+        setTimeout(function () { html.classList.remove('theme-anim'); }, 400);
+      }
+      html.setAttribute('data-theme', theme);
+      label();
+    };
+
+    if (!html.hasAttribute('data-theme')) apply(media && media.matches ? 'dark' : 'light');
+    label();
+
+    Array.prototype.forEach.call(buttons, function (b) {
+      b.addEventListener('click', function () {
+        var next = current() === 'dark' ? 'light' : 'dark';
+        try { localStorage.setItem(KEY, next); } catch (e) {}
+        apply(next, true);
+      });
+    });
+
+    if (media) {
+      var onSystem = function (e) {
+        var s = saved();
+        if (s !== 'light' && s !== 'dark') apply(e.matches ? 'dark' : 'light', true);
+      };
+      if (media.addEventListener) media.addEventListener('change', onSystem);
+      else if (media.addListener) media.addListener(onSystem);
+    }
+  })();
+
+  /* ---------------------------- LOADER ---------------------------- */
+  // A 3-second intro: the bar fills smoothly over DURATION while the business
+  // lines appear one by one, then the shutter lifts. If the first screen
+  // (heading font + hero image) isn't ready yet, the bar holds at 95% until
+  // it is, up to MAX.
+  (function () {
+    var html = document.documentElement;
+    var loader = document.querySelector('[data-loader]');
+    if (!loader) return;
+    if (!html.classList.contains('js-loading')) { loader.parentNode.removeChild(loader); return; }
+
+    var bar = loader.querySelector('[data-loader-progress]');
+    var percent = loader.querySelector('[data-loader-percent]');
+    var DURATION = reduceMotion ? 600 : 3000, MAX = 6000;
+    var finished = false, ready = false;
+
+    var waitImage = function (img) {
+      return new Promise(function (resolve) {
+        if (!img || (img.complete && img.naturalWidth)) return resolve();
+        img.addEventListener('load', resolve, { once: true });
+        img.addEventListener('error', resolve, { once: true });
+      });
+    };
+    var tasks = [
+      document.fonts && document.fonts.ready ? document.fonts.ready : Promise.resolve(),
+      waitImage(document.querySelector('img[fetchpriority="high"]')),   // home hero frame
+      waitImage(document.querySelector('.rs-nav__brand img'))            // logo
+    ];
+    var setProgress = function (p) {
+      p = Math.round(p);
+      if (bar) bar.style.setProperty('--rs-progress', p + '%');
+      if (percent) percent.textContent = p + '%';
+    };
+    var ease = function (t) { return 1 - Math.pow(1 - t, 2); }; // fast start, gentle finish
+    var tick = function () {
+      if (finished) return;
+      var t = Math.min(performance.now() / DURATION, 1); // measured from when the page started opening
+      setProgress(Math.min(ease(t) * 100, ready ? 100 : 95));
+      if (t >= 1 && ready) return finish();
+      requestAnimationFrame(tick);
+    };
+
+    var finish = function () {
+      if (finished) return;
+      finished = true;
+      setProgress(100);
+      try { sessionStorage.setItem('rs-loaded', '1'); } catch (e) {}
+      setTimeout(function () {
+        loader.classList.add('is-done');     // shutter lifts
+        html.classList.remove('js-loading'); // hero content animates in underneath
+        setTimeout(function () {
+          if (loader.parentNode) loader.parentNode.removeChild(loader);
+        }, 1000);
+      }, 150);
+    };
+    Promise.all(tasks).then(function () { ready = true; });
+    requestAnimationFrame(tick);
+    setTimeout(finish, MAX);
+  })();
 
   /* ---------------------------- NAVBAR ---------------------------- */
   var nav = document.querySelector('[data-nav]');

@@ -119,11 +119,11 @@
 
 /* entrance animation */
 @media (prefers-reduced-motion: no-preference){
-	.hero__content > *{ animation: rs-rise .9s cubic-bezier(.2,.7,.2,1) both; }
-	.hero__content > *:nth-child(2){ animation-delay: .08s; }
-	.hero__content > *:nth-child(3){ animation-delay: .16s; }
-	.hero__content > *:nth-child(4){ animation-delay: .24s; }
-	.hero__content > *:nth-child(5){ animation-delay: .32s; }
+	html:not(.js-loading) .hero__content > *{ animation: rs-rise .9s cubic-bezier(.2,.7,.2,1) both; }
+	html:not(.js-loading) .hero__content > *:nth-child(2){ animation-delay: .08s; }
+	html:not(.js-loading) .hero__content > *:nth-child(3){ animation-delay: .16s; }
+	html:not(.js-loading) .hero__content > *:nth-child(4){ animation-delay: .24s; }
+	html:not(.js-loading) .hero__content > *:nth-child(5){ animation-delay: .32s; }
 }
 
 /* bottom bar: brands + slide controls */
@@ -234,8 +234,8 @@
 
 .about{
 	padding: 120px 0 110px;
-	background: #fff;
-	color: var(--rs-ink);
+	background: var(--rs-bg);
+	color: var(--rs-text);
 }
 .about__title{
 	margin: 0;
@@ -254,7 +254,7 @@
 	margin: 0 0 22px;
 	font-size: 1.05rem;
 	line-height: 1.8;
-	color: #5b636e;
+	color: var(--rs-muted);
 }
 .about__tags{
 	display: flex;
@@ -269,11 +269,11 @@
 	align-items: center;
 	gap: 8px;
 	padding: 7px 14px;
-	border: 1px solid #e4e7eb;
+	border: 1px solid var(--rs-border);
 	border-radius: 999px;
 	font-size: .8rem;
 	font-weight: 600;
-	color: var(--rs-ink-soft);
+	color: var(--rs-text-2);
 }
 .about__tags li::before{
 	content: "";
@@ -385,13 +385,13 @@
 	font-weight: 700;
 	letter-spacing: .14em;
 	text-transform: uppercase;
-	color: var(--rs-ink);
+	color: var(--rs-text);
 }
 .about-brand__body p:not(.about-brand__meta){
 	margin: 0 0 14px;
 	font-size: 1rem;
 	line-height: 1.8;
-	color: #5b636e;
+	color: var(--rs-muted);
 }
 .about-brand__link{
 	display: inline-flex;
@@ -406,10 +406,10 @@
 	letter-spacing: .06em;
 	text-transform: uppercase;
 	text-decoration: none;
-	color: var(--rs-ink);
+	color: var(--rs-text);
 }
 .about-brand__link i{ transition: transform .2s ease; }
-.about-brand__link:hover{ color: var(--rs-ink); }
+.about-brand__link:hover{ color: var(--rs-text); }
 .about-brand__link:hover i{ transform: translateX(5px); }
 
 @media (max-width: 991.98px){
@@ -643,8 +643,8 @@
 
 .contact{
 	padding: 120px 0;
-	background: #f5f6f8;
-	color: var(--rs-ink);
+	background: var(--rs-bg-alt);
+	color: var(--rs-text);
 }
 .contact__title{
 	margin: 0 0 20px;
@@ -663,7 +663,7 @@
 	margin: 0 0 40px;
 	font-size: 1.05rem;
 	line-height: 1.8;
-	color: #5b636e;
+	color: var(--rs-muted);
 }
 
 .contact__info{
@@ -684,7 +684,7 @@
 	flex-shrink: 0;
 	width: 52px; height: 52px;
 	border-radius: 14px;
-	background: var(--rs-ink);
+	background: var(--rs-icon-bg);
 	color: var(--rs-accent);
 	font-size: 1.05rem;
 }
@@ -694,7 +694,7 @@
 	font-weight: 700;
 	letter-spacing: .16em;
 	text-transform: uppercase;
-	color: #8a929c;
+	color: var(--rs-subtle);
 }
 .contact__value{
 	margin: 0;
@@ -702,10 +702,10 @@
 	font-size: 1.05rem;
 	font-weight: 600;
 	line-height: 1.5;
-	color: var(--rs-ink);
+	color: var(--rs-text);
 	text-decoration: none;
 }
-a.contact__value:hover{ color: var(--rs-ink-soft); text-decoration: underline; text-decoration-color: var(--rs-accent); text-decoration-thickness: 2px; }
+a.contact__value:hover{ color: var(--rs-text-2); text-decoration: underline; text-decoration-color: var(--rs-accent); text-decoration-thickness: 2px; }
 .contact__directions{
 	display: inline-flex;
 	align-items: center;
@@ -717,19 +717,19 @@ a.contact__value:hover{ color: var(--rs-ink-soft); text-decoration: underline; t
 	font-weight: 700;
 	letter-spacing: .08em;
 	text-transform: uppercase;
-	color: var(--rs-ink);
+	color: var(--rs-text);
 	text-decoration: none;
 }
-.contact__directions:hover{ color: var(--rs-ink); }
+.contact__directions:hover{ color: var(--rs-text); }
 .contact__directions i{ transition: transform .2s ease; }
 .contact__directions:hover i{ transform: translateX(4px); }
 
 /* form card */
 .contact-card{
 	padding: 40px;
-	border: 1px solid #e8ebef;
+	border: 1px solid var(--rs-border);
 	border-radius: 20px;
-	background: #fff;
+	background: var(--rs-surface);
 	box-shadow: 0 30px 60px rgba(17,21,26,.08);
 }
 .contact-card__title{
@@ -750,28 +750,28 @@ a.contact__value:hover{ color: var(--rs-ink-soft); text-decoration: underline; t
 	margin-bottom: 8px;
 	font-size: .82rem;
 	font-weight: 600;
-	color: var(--rs-ink-soft);
+	color: var(--rs-text-2);
 }
 .rs-field input,
 .rs-field textarea{
 	display: block;
 	width: 100%;
 	padding: 13px 16px;
-	border: 1px solid #dde1e6;
+	border: 1px solid var(--rs-border-strong);
 	border-radius: 10px;
-	background: #fafbfc;
+	background: var(--rs-surface-2);
 	font-size: 1rem;
-	color: var(--rs-ink);
+	color: var(--rs-text);
 	transition: border-color .2s ease, box-shadow .2s ease, background-color .2s ease;
 }
 .rs-field textarea{ resize: vertical; min-height: 130px; }
 .rs-field input::placeholder,
-.rs-field textarea::placeholder{ color: #a2a9b2; }
+.rs-field textarea::placeholder{ color: var(--rs-subtle); }
 .rs-field input:focus,
 .rs-field textarea:focus{
 	outline: none;
 	border-color: var(--rs-accent-dark);
-	background: #fff;
+	background: var(--rs-surface);
 	box-shadow: 0 0 0 4px rgba(254,210,6,.3);
 }
 .rs-field input:user-invalid,
@@ -799,19 +799,19 @@ a.contact__value:hover{ color: var(--rs-ink-soft); text-decoration: underline; t
 .rs-choices span{
 	display: inline-block;
 	padding: 9px 16px;
-	border: 1px solid #dde1e6;
+	border: 1px solid var(--rs-border-strong);
 	border-radius: 999px;
-	background: #fafbfc;
+	background: var(--rs-surface-2);
 	font-size: .85rem;
 	font-weight: 600;
-	color: var(--rs-ink-soft);
+	color: var(--rs-text-2);
 	transition: background-color .2s ease, border-color .2s ease, color .2s ease;
 }
-.rs-choices label:hover span{ border-color: #c4cad1; }
+.rs-choices label:hover span{ border-color: var(--rs-border-strong); }
 .rs-choices input:checked + span{
-	border-color: var(--rs-ink);
-	background: var(--rs-ink);
-	color: #fff;
+	border-color: var(--rs-contrast-bg);
+	background: var(--rs-contrast-bg);
+	color: var(--rs-contrast-text);
 }
 .rs-choices input:focus-visible + span{
 	box-shadow: 0 0 0 4px rgba(254,210,6,.45);
@@ -828,7 +828,7 @@ a.contact__value:hover{ color: var(--rs-ink-soft); text-decoration: underline; t
 .contact-card__status{
 	margin: 0;
 	font-size: .9rem;
-	color: #5b636e;
+	color: var(--rs-muted);
 }
 .contact-card__status.is-success{ color: #1e7b45; }
 
@@ -845,3 +845,26 @@ a.contact__value:hover{ color: var(--rs-ink-soft); text-decoration: underline; t
 @media (max-width: 991.98px){
 	.contact{ padding-bottom: 80px; }
 }
+
+
+/* ==========================================================================
+   Dark theme adjustments
+   ========================================================================== */
+
+/* partner logos are dark artwork: give them a light plate */
+[data-theme="dark"] .about-brand__logo{
+	height: 76px;
+	padding: 12px 18px;
+	border-radius: 12px;
+	background: #fff;
+}
+[data-theme="dark"] .about-brand__media img{ box-shadow: 0 24px 50px rgba(0,0,0,.45); }
+[data-theme="dark"] .contact-card{ box-shadow: 0 30px 60px rgba(0,0,0,.35); }
+/* About sits between the dark hero and dark Brands: separate it slightly */
+[data-theme="dark"] .brands{ border-top: 1px solid var(--rs-border); }
+/* the soft highlighter turns muddy on dark: use a crisp underline instead */
+[data-theme="dark"] .about__title span,
+[data-theme="dark"] .contact__title span{
+	background: linear-gradient(transparent 86%, var(--rs-accent) 86%);
+}
+[data-theme="dark"] .about-stats{ border: 1px solid var(--rs-border); }
