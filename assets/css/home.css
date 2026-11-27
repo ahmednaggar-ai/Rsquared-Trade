@@ -470,11 +470,18 @@
 	color: rgba(255,255,255,.65);
 }
 
+/* flex (not grid) so an incomplete last row is centred: 5 cards = 3 + 2 */
 .brands__grid{
-	display: grid;
-	grid-template-columns: repeat(3, 1fr);
-	gap: 28px;
+	--cols: 3;
+	--gap: 28px;
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+	gap: var(--gap);
 	margin-top: 64px;
+}
+.brands__grid > .brand-card{
+	flex: 0 0 calc((100% - (var(--cols) - 1) * var(--gap)) / var(--cols));
 }
 
 /* card */
@@ -621,7 +628,7 @@
 
 @media (max-width: 991.98px){
 	.brands{ padding: 90px 0; }
-	.brands__grid{ grid-template-columns: repeat(2, 1fr); }
+	.brands__grid{ --cols: 2; }
 	.brands__cta{
 		flex-direction: column;
 		align-items: flex-start;
@@ -629,8 +636,8 @@
 }
 @media (max-width: 767.98px){
 	.brands__grid{
-		grid-template-columns: 1fr;
-		gap: 24px;
+		--cols: 1;
+		--gap: 24px;
 	}
 }
 @media (max-width: 480px){
@@ -868,3 +875,11 @@ a.contact__value:hover{ color: var(--rs-text-2); text-decoration: underline; tex
 	background: linear-gradient(transparent 86%, var(--rs-accent) 86%);
 }
 [data-theme="dark"] .about-stats{ border: 1px solid var(--rs-border); }
+
+/* stacked logos (icon above the name) need more height to stay legible */
+.about-brand__logo--stacked{ height: 92px; max-width: none; }
+[data-theme="dark"] .about-brand__logo--stacked{ height: 112px; }
+
+/* stacked logo (icon above the name) in a brand card needs a taller chip */
+.brand-card__logo--stacked{ top: -52px; height: 96px; padding: 10px 16px; }
+.brand-card__logo--stacked ~ .brand-card__origin{ margin-top: 14px; }

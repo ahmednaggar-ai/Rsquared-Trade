@@ -237,6 +237,20 @@
     if (qProduct && form.elements.message && !form.elements.message.value) {
       form.elements.message.value = "I'd like a quote for the " + (qBrand ? qBrand + ' ' : '') + qProduct + '.';
     }
+
+    // In-page links like "Ask about HİDROMEK" (data-prefill-message) start the
+    // message for the visitor, without overwriting anything they typed.
+    var lastPrefill = '';
+    document.addEventListener('click', function (e) {
+      var a = e.target.closest('[data-prefill-message]');
+      if (!a || !form.elements.message) return;
+      var msg = form.elements.message;
+      if (!msg.value.trim() || msg.value === lastPrefill) {
+        lastPrefill = a.getAttribute('data-prefill-message');
+        msg.value = lastPrefill;
+      }
+    });
+
     form.addEventListener('submit', function (e) {
       var action = form.getAttribute('action') || '';
       if (action && action.indexOf('FORM_ID') === -1) return; // real endpoint: normal POST
