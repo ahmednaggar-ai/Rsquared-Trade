@@ -1402,3 +1402,39 @@ a.mb-card__media{ display: block; }
 	.mb-spectool__rows div{ grid-template-columns: 1fr; gap: 2px; padding: 10px 6px; }
 	.mb-dtabs__tab{ padding: 10px 12px; font-size: .76rem; }
 }
+
+
+/* compatible accessories (linked chips), product sheet downloads, embedded videos */
+.mb-detail__acc a{ text-decoration: none; }
+.mb-detail__acc a em{ transition: border-color .2s ease, background-color .2s ease; }
+.mb-detail__acc a:hover em{ border-color: var(--rs-accent-dark); background: rgba(254,210,6,.14); }
+.mb-detail__acc em i{ margin-left: 4px; font-size: .7rem; }
+.mb-detail__downloads{
+	display: flex;
+	flex-wrap: wrap;
+	gap: 10px;
+	margin-top: 16px;
+}
+.mb-download{
+	display: inline-flex;
+	align-items: center;
+	gap: 10px;
+	padding: 10px 14px;
+	border: 1px dashed var(--rs-border-strong);
+	border-radius: 10px;
+	font-size: .85rem;
+	font-weight: 600;
+	color: var(--rs-text-2);
+	text-decoration: none;
+	transition: border-color .2s ease, color .2s ease;
+}
+.mb-download i{ font-size: 1.1rem; color: #d93025; }
+.mb-download:hover{ border-color: var(--rs-accent-dark); color: var(--rs-text); }
+.catalog__embed{
+	position: relative;
+	aspect-ratio: 16 / 9;
+	overflow: hidden;
+	border-radius: 18px;
+	background: #000;
+}
+.catalog__embed iframe{ position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }

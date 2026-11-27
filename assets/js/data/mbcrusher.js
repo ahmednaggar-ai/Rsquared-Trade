@@ -26,7 +26,9 @@
      uses        short list of typical uses (shown as bullet points)
      specs       [{ label, value }] technical features, shown as a table
      gallery     job-site photos (WebP)
-     video       .mp4 URL, loaded only when the visitor presses play
+     video       .mp4 URL or a Vimeo/YouTube link, loaded only when the visitor presses play
+     accessories [{ name, id? }] compatible accessories (id links to that accessory's page)
+     downloads   [{ label, href }] product sheets (PDF)
 
    category fields
      specNote    line shown under every spec table in that category
@@ -45,7 +47,9 @@ window.CATALOG = {
   carriers: {
     excavator:  { label: "Excavator"         , icon: "assets/images/mbcrusher/icons/excavator.webp" },
     crane:      { label: "Crane"             , icon: "assets/images/mbcrusher/icons/crane.webp" },
-    demolition: { label: "Demolition machine", icon: "assets/images/mbcrusher/icons/demolition.webp" }
+    demolition: { label: "Demolition machine", icon: "assets/images/mbcrusher/icons/demolition.webp" },
+    backhoe:    { label: "Backhoe loader"    , icon: "assets/images/mbcrusher/icons/backhoe.svg" },
+    skid:       { label: "Skid steer loader" , icon: "assets/images/mbcrusher/icons/skid.svg" }
   },
   categories: [
     {
@@ -1933,6 +1937,443 @@ window.CATALOG = {
             "assets/images/mbcrusher/gallery/sorting-grapples/g1500/3.webp"
           ],
           "video": "https://www.rsquaredtrade.com/MB/Videos/Grapple%20rotary%20movement%20MB-G1500.mp4"
+        }
+      ]
+    },
+    {
+      id: "demolition-pulverizers",
+      name: "Demolition Pulverizers",
+      series: "MB-P / MB-PT",
+      summary: "Installed on excavators, backhoe loaders and skid steer loaders, they are designed for primary and secondary crushing. They offer precision for fast and effective demolition work. The 360° continuous hydraulic rotation facilitates the positioning of the attachment, enhancing maneuverability and ease of use.",
+      icon: "assets/images/mbcrusher/categories/demolition-pulverizers.webp",
+      products: [
+        {
+          "id": "mb-p160",
+          "name": "MB-P160",
+          "tagline": "For excavators and backhoe loaders",
+          "image": "assets/images/mbcrusher/products/demolition-pulverizers/mb-p160.webp",
+          "carriers": [
+            {
+              "type": "backhoe",
+              "min": 4,
+              "max": 6
+            },
+            {
+              "type": "excavator",
+              "min": 1.5,
+              "max": 3
+            }
+          ],
+          "description": [
+            "The MB-P160 demolition pulveriser by MB Crusher is the compact solution designed for those working with excavators and backhoe loaders. It delivers power, control and reliability in primary and secondary demolition operations. It is ideal for safe volume reduction and for handling mixed materials quickly, even in the tightest spaces.",
+            "Note: Only compatible with the rear (backhoe) boom of a backhoe loader."
+          ],
+          "specs": [
+            {
+              "label": "Weight",
+              "value": "0.17 t"
+            },
+            {
+              "label": "Pick force f1",
+              "value": "23 t"
+            },
+            {
+              "label": "Speed (min–max)",
+              "value": "15–20 rpm"
+            },
+            {
+              "label": "Rotation",
+              "value": "360°"
+            },
+            {
+              "label": "Oil pressure (rotation)",
+              "value": "130–170 bar"
+            },
+            {
+              "label": "Oil flow rate (rotation)",
+              "value": "5–10 L/min"
+            },
+            {
+              "label": "Oil pressure (opening - closing)",
+              "value": "200–250 bar"
+            },
+            {
+              "label": "Oil flow rate (opening - closing)",
+              "value": "20–30 L/min"
+            },
+            {
+              "label": "Blade force f2",
+              "value": "58 t"
+            }
+          ],
+          "accessories": [
+            {
+              "name": "Warranty extension gold 24",
+              "id": "warranty-extension-gold-24"
+            },
+            {
+              "name": "12 V Electrical Kit for 2 Hose Functionality"
+            },
+            {
+              "name": "MB-P Pulverizer Kit"
+            }
+          ],
+          "downloads": [
+            {
+              "label": "Product sheet – metric system",
+              "href": "https://storage.onpage.it/78b9c40f5e13e9c4f8909034b039f89f77d6422d/SchedaProdotto_A4_EU_MB-P160_EN_Rev20261120.pdf?download=1"
+            },
+            {
+              "label": "Product sheet – imperial system",
+              "href": "https://storage.onpage.it/1809340a931a9c58f0276a439100bec2e8083b36/SchedaProdotto_A4_US_MB-P160_EN_Rev20261120.pdf?download=1"
+            }
+          ],
+          "gallery": [
+            "assets/images/mbcrusher/gallery/demolition-pulverizers/mb-p160/1.webp",
+            "assets/images/mbcrusher/gallery/demolition-pulverizers/mb-p160/2.webp"
+          ]
+        },
+        {
+          "id": "mb-p380",
+          "name": "MB-P380",
+          "tagline": "For excavators, backhoe loaders and skid steer loaders",
+          "image": "assets/images/mbcrusher/products/demolition-pulverizers/mb-p380.webp",
+          "carriers": [
+            {
+              "type": "backhoe",
+              "min": 5,
+              "max": 7
+            },
+            {
+              "type": "excavator",
+              "min": 3,
+              "max": 6.5
+            },
+            {
+              "type": "skid",
+              "min": 3,
+              "max": 5
+            }
+          ],
+          "description": [
+            "The MB-P380 demolition pulveriser by MB Crusher works with excavators, backhoe loaders and skid steer loaders. It is powerful, precise and can be equipped with the pulverizer kit. To increase the jaw opening, a plug tooth is available, which closes the tooth seat and helps prevent breakages. The Hardox structure, protected cylinders and fast jaw geometry ensure constant power in demolition and volume reduction.",
+            "Note: Only compatible with the rear (backhoe) boom of a backhoe loader.",
+            "Note: Skid steer loaders: please verify the machine's rated operating capacity."
+          ],
+          "specs": [
+            {
+              "label": "Weight",
+              "value": "0.38 t"
+            },
+            {
+              "label": "Pick force f1",
+              "value": "32 t"
+            },
+            {
+              "label": "Speed (min–max)",
+              "value": "20–25 rpm"
+            },
+            {
+              "label": "Rotation",
+              "value": "360°"
+            },
+            {
+              "label": "Oil pressure (rotation)",
+              "value": "160–200 bar"
+            },
+            {
+              "label": "Oil flow rate (rotation)",
+              "value": "20–25 L/min"
+            },
+            {
+              "label": "Oil pressure (opening - closing)",
+              "value": "200–300 bar"
+            },
+            {
+              "label": "Oil flow rate (opening - closing)",
+              "value": "40–70 L/min"
+            },
+            {
+              "label": "Blade force f2",
+              "value": "87 t"
+            }
+          ],
+          "accessories": [
+            {
+              "name": "Warranty extension gold 24",
+              "id": "warranty-extension-gold-24"
+            },
+            {
+              "name": "12 V Electrical Kit for 2 Hose Functionality"
+            },
+            {
+              "name": "MB-P Pulverizer Kit"
+            },
+            {
+              "name": "Forestry pruner kit"
+            }
+          ],
+          "downloads": [
+            {
+              "label": "Product sheet – metric system",
+              "href": "https://storage.onpage.it/aaba91750ad9c3eb93544c61d7b0af57fabfddf4/SchedaProdotto_A4_EU_MB-P380_EN_Rev20261120.pdf?download=1"
+            },
+            {
+              "label": "Product sheet – imperial system",
+              "href": "https://storage.onpage.it/66662561f62265a703fa201a92fde7ce35d30e74/SchedaProdotto_A4_US_MB-P380_EN_Rev20261120.pdf?download=1"
+            }
+          ],
+          "gallery": [
+            "assets/images/mbcrusher/gallery/demolition-pulverizers/mb-p380/1.webp",
+            "assets/images/mbcrusher/gallery/demolition-pulverizers/mb-p380/2.webp",
+            "assets/images/mbcrusher/gallery/demolition-pulverizers/mb-p380/3.webp"
+          ]
+        },
+        {
+          "id": "mb-pt650",
+          "name": "MB-PT650",
+          "tagline": "For excavators and backhoe loaders",
+          "image": "assets/images/mbcrusher/products/demolition-pulverizers/mb-pt650.webp",
+          "carriers": [
+            {
+              "type": "backhoe",
+              "min": 6,
+              "max": 10
+            },
+            {
+              "type": "excavator",
+              "min": 6.5,
+              "max": 13
+            }
+          ],
+          "description": [
+            "The MB-PT650 by MB Crusher is a demolition pulveriser for excavators and backhoe loaders, designed for demolition jobs and on-site material handling. Its Hardox structure makes it robust and reliable. It can be equipped with three different kits: crusher kir, pulverizer kit and a shear kit for cutting metal. The kit changeover is quick and can be carried out directly on site. Blades and teeth can be replaced in the field and the cylinders are protected to ensure safe, risk-free operation.",
+            "Note: Only compatible with the rear (backhoe) boom of a backhoe loader."
+          ],
+          "specs": [
+            {
+              "label": "Speed (min–max)",
+              "value": "20–25 rpm"
+            },
+            {
+              "label": "Rotation",
+              "value": "360°"
+            },
+            {
+              "label": "Oil pressure (rotation)",
+              "value": "160–200 bar"
+            },
+            {
+              "label": "Oil flow rate (rotation)",
+              "value": "25–35 L/min"
+            },
+            {
+              "label": "Oil pressure (opening - closing)",
+              "value": "250–350 bar"
+            },
+            {
+              "label": "Oil flow rate (opening - closing)",
+              "value": "70–100 L/min"
+            },
+            {
+              "label": "Main frame weight",
+              "value": "0.50 t"
+            }
+          ],
+          "accessories": [
+            {
+              "name": "Warranty extension gold 24",
+              "id": "warranty-extension-gold-24"
+            },
+            {
+              "name": "12 V Electrical Kit for 2 Hose Functionality"
+            },
+            {
+              "name": "Crusher Kit"
+            },
+            {
+              "name": "Pulverizer Kit"
+            },
+            {
+              "name": "Shear Kit"
+            }
+          ],
+          "downloads": [
+            {
+              "label": "Product sheet – metric system",
+              "href": "https://storage.onpage.it/2b626db7be69faa48c83ffb65f257506c128d994/SchedaProdotto_A4_EU_MB-PT650_EN_Rev20261119.pdf?download=1"
+            },
+            {
+              "label": "Product sheet – imperial system",
+              "href": "https://storage.onpage.it/490bbdd093a9f56cd525712aacaa7768a81f8b8d/SchedaProdotto_A4_US_MB-PT650_EN_Rev20261119.pdf?download=1"
+            }
+          ],
+          "gallery": [
+            "assets/images/mbcrusher/gallery/demolition-pulverizers/mb-pt650/1.webp",
+            "assets/images/mbcrusher/gallery/demolition-pulverizers/mb-pt650/2.webp",
+            "assets/images/mbcrusher/gallery/demolition-pulverizers/mb-pt650/3.webp",
+            "assets/images/mbcrusher/gallery/demolition-pulverizers/mb-pt650/4.webp"
+          ],
+          "video": "https://vimeo.com/1067676935"
+        },
+        {
+          "id": "mb-pt1150",
+          "name": "MB-PT1150",
+          "tagline": "For excavators",
+          "image": "assets/images/mbcrusher/products/demolition-pulverizers/mb-pt1150.webp",
+          "carriers": [
+            {
+              "type": "excavator",
+              "min": 12,
+              "max": 19
+            }
+          ],
+          "description": [
+            "The MB-PT1150 by MB Crusher is a robust and versatile demolition pulveriser, suitable for different types of demolition and material downsizing. It is made of Hardox and delivers stable performance even under heavy loads. It can be equipped with three interchangeable kits: crusher kit, pulverizer kit and a shear kit for cutting metal. Kit changeover is fast and does not require stopping the carrier. Blades and teeth are interchangeable and the centralised greasing system makes maintenance straightforward."
+          ],
+          "specs": [
+            {
+              "label": "Speed (min–max)",
+              "value": "20–25 rpm"
+            },
+            {
+              "label": "Rotation",
+              "value": "360°"
+            },
+            {
+              "label": "Oil pressure (rotation)",
+              "value": "180–220 bar"
+            },
+            {
+              "label": "Oil flow rate (rotation)",
+              "value": "30–40 L/min"
+            },
+            {
+              "label": "Oil pressure (opening - closing)",
+              "value": "250–350 bar"
+            },
+            {
+              "label": "Oil flow rate (opening - closing)",
+              "value": "70–100 L/min"
+            },
+            {
+              "label": "Main frame weight",
+              "value": "0.85 t"
+            }
+          ],
+          "accessories": [
+            {
+              "name": "Warranty extension gold 24",
+              "id": "warranty-extension-gold-24"
+            },
+            {
+              "name": "12 V Electrical Kit for 2 Hose Functionality"
+            },
+            {
+              "name": "Crusher Kit"
+            },
+            {
+              "name": "Pulverizer Kit"
+            },
+            {
+              "name": "Shear Kit"
+            }
+          ],
+          "downloads": [
+            {
+              "label": "Product sheet – metric system",
+              "href": "https://storage.onpage.it/1de664255e52ba1ed049d83b7a9973c59a95168a/SchedaProdotto_A4_EU_MB-PT1150_EN_Rev20261119.pdf?download=1"
+            },
+            {
+              "label": "Product sheet – imperial system",
+              "href": "https://storage.onpage.it/e3e6a2785b46c86e60cbf6cf3ea3a1d6650e63f9/SchedaProdotto_A4_US_MB-PT1150_EN_Rev20261119.pdf?download=1"
+            }
+          ],
+          "gallery": [
+            "assets/images/mbcrusher/gallery/demolition-pulverizers/mb-pt1150/1.webp"
+          ],
+          "video": "https://vimeo.com/1067676935"
+        },
+        {
+          "id": "mb-pt1650",
+          "name": "MB-PT1650",
+          "tagline": "For excavators",
+          "image": "assets/images/mbcrusher/products/demolition-pulverizers/mb-pt1650.webp",
+          "carriers": [
+            {
+              "type": "excavator",
+              "min": 19,
+              "max": 25
+            }
+          ],
+          "description": [
+            "The MB-PT1650 is the most powerful model in the range, ideal for heavy-duty demolition and handling of structural materials. Made of Hardox, it guarantees consistent power and long service life. It can be equipped with all three operational kits, with quick changeover. Reversible blades, replaceable teeth, and protected cylinders allow safe operation even in the toughest conditions."
+          ],
+          "specs": [
+            {
+              "label": "Speed (min–max)",
+              "value": "20–25 rpm"
+            },
+            {
+              "label": "Rotation",
+              "value": "360°"
+            },
+            {
+              "label": "Oil pressure (rotation)",
+              "value": "200–250 bar"
+            },
+            {
+              "label": "Oil flow rate (rotation)",
+              "value": "30–40 L/min"
+            },
+            {
+              "label": "Oil pressure (opening - closing)",
+              "value": "300–350 bar"
+            },
+            {
+              "label": "Oil flow rate (opening - closing)",
+              "value": "100–150 L/min"
+            },
+            {
+              "label": "Main frame weight",
+              "value": "1.20 t"
+            }
+          ],
+          "accessories": [
+            {
+              "name": "Warranty extension gold 24",
+              "id": "warranty-extension-gold-24"
+            },
+            {
+              "name": "12 V Electrical Kit for 2 Hose Functionality"
+            },
+            {
+              "name": "Crusher Kit"
+            },
+            {
+              "name": "Pulverizer Kit"
+            },
+            {
+              "name": "Shear Kit"
+            }
+          ],
+          "downloads": [
+            {
+              "label": "Product sheet – metric system",
+              "href": "https://storage.onpage.it/8d955cbd06cd64c3724cd4bfc741218dc4642e40/SchedaProdotto_A4_EU_MB-PT1650_EN_Rev20261119.pdf?download=1"
+            },
+            {
+              "label": "Product sheet – imperial system",
+              "href": "https://storage.onpage.it/f47dc196f94de06d31f28227d10d4eb6e236bb7b/SchedaProdotto_A4_US_MB-PT1650_EN_Rev20261119.pdf?download=1"
+            }
+          ],
+          "gallery": [
+            "assets/images/mbcrusher/gallery/demolition-pulverizers/mb-pt1650/1.webp",
+            "assets/images/mbcrusher/gallery/demolition-pulverizers/mb-pt1650/2.webp",
+            "assets/images/mbcrusher/gallery/demolition-pulverizers/mb-pt1650/3.webp",
+            "assets/images/mbcrusher/gallery/demolition-pulverizers/mb-pt1650/4.webp"
+          ],
+          "video": "https://vimeo.com/1067676935"
         }
       ]
     },

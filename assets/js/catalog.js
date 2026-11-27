@@ -617,10 +617,25 @@
             : '') +
           (p.uses && p.uses.length ? '<ul class="mb-detail__uses">' + p.uses.map(function (u) { return '<li>' + esc(u) + '</li>'; }).join('') + '</ul>' : '') +
           features +
+          // compatible accessories: chips, linked when the accessory has its own page here
+          (p.accessories && p.accessories.length
+            ? '<h3 class="mb-detail__subhead">Compatible accessories</h3><p class="mb-detail__fits mb-detail__acc">' +
+                p.accessories.map(function (a) {
+                  return a.id && byId('accessories') && productOf(byId('accessories'), a.id)
+                    ? '<a href="' + urlFor('accessories', a.id) + '" data-cat="accessories" data-model="' + esc(a.id) + '"><em>' + esc(a.name) + ' <i class="fas fa-arrow-right" aria-hidden="true"></i></em></a>'
+                    : '<em>' + esc(a.name) + '</em>';
+                }).join('') + '</p>'
+            : '') +
           '<div class="mb-detail__actions">' +
             '<a class="rs-btn rs-btn--accent" href="' + quoteUrl(p) + '">Request a quote <i class="fas fa-arrow-right" aria-hidden="true"></i></a>' +
             '<a class="rs-btn rs-btn--outline" href="tel:+20244875070"><i class="fas fa-phone-alt" aria-hidden="true"></i> +20 2 4487 5070</a>' +
           '</div>' +
+          // product sheets (PDF downloads)
+          (p.downloads && p.downloads.length
+            ? '<div class="mb-detail__downloads">' + p.downloads.map(function (d) {
+                return '<a class="mb-download" href="' + esc(d.href) + '" target="_blank" rel="noopener"><i class="far fa-file-pdf" aria-hidden="true"></i><span>' + esc(d.label) + '</span></a>';
+              }).join('') + '</div>'
+            : '') +
         '</div>' +
       '</div>' +
       sections +
@@ -632,10 +647,16 @@
           '</nav>'
         : '');
 
+    // Vimeo / YouTube links are embedded (lazy iframe); anything else is played as an .mp4
+    var vimeo = p.video && String(p.video).match(/vimeo\.com\/(?:video\/)?(\d+)/);
+    var yt = p.video && String(p.video).match(/(?:youtube\.com\/(?:watch\?v=|embed\/)|youtu\.be\/)([\w-]{6,})/);
     if (p.video) {
       el.video.innerHTML = '<h2 class="catalog__video-title">See the ' + esc(p.name) + ' at work</h2>' +
-        '<video controls preload="none" playsinline' + (p.gallery && p.gallery[0] ? ' poster="' + esc(p.gallery[0]) + '"' : '') + '>' +
-        '<source src="' + esc(p.video) + '" type="video/mp4"></video>';
+        (vimeo || yt
+          ? '<div class="catalog__embed"><iframe src="' + (vimeo ? 'https://player.vimeo.com/video/' + vimeo[1] + '?dnt=1' : 'https://www.youtube-nocookie.com/embed/' + yt[1]) + '"' +
+            ' title="' + esc(p.name) + ' video" loading="lazy" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe></div>'
+          : '<video controls preload="none" playsinline' + (p.gallery && p.gallery[0] ? ' poster="' + esc(p.gallery[0]) + '"' : '') + '>' +
+            '<source src="' + esc(p.video) + '" type="video/mp4"></video>');
       el.video.hidden = false;
     } else {
       el.video.hidden = true;
