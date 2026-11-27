@@ -37,10 +37,13 @@ Each page loads: `vendor/*.css` → `main.css` → its own page CSS, then `site.
 Put the photo at `assets/images/mbcrusher/products/<line id>/<product id>.webp` and set `image` to that path.
 The field reference is at the top of the data file.
 
-**Show a video on a product line** – set that line's `video` in the data file to an `.mp4` path.
+**Give a product a detail page** – add any of `description`, `specs`, `gallery`, `video` to it in the data file
+(see the crusher buckets for examples). Its card then gets a "Details & specs" link. Gallery photos go in
+`assets/images/mbcrusher/gallery/<model>/`. Videos are linked from the live server
+(`https://www.rsquaredtrade.com/MB/Videos/…`) and only load when a visitor presses play.
 
 **Link straight to a product line or product**
-`mbcrusher.html?type=drum-cutters` or `mbcrusher.html?type=drum-cutters#mb-r500`
+`mbcrusher.html?type=drum-cutters` (line) or `mbcrusher.html?type=crusher-buckets&model=bf90-3-s4` (product details)
 
 **Quote links** – `index.html?brand=MB%20Crusher&product=BF90.3%20S4#contact` opens the contact form with the brand selected and the message pre-filled.
 

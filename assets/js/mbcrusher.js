@@ -2,10 +2,12 @@
    MB CRUSHER CATALOGUE
    One page for every product line. Reads window.MB_CRUSHER
    (assets/js/data/mbcrusher.js) and renders:
-     mbcrusher.html                       overview of all product lines
-     mbcrusher.html?type=<category id>    that line's products
-   Switching tabs updates the URL without reloading, so links can be
-   shared and the browser back button works.
+     mbcrusher.html                                   overview of all product lines
+     mbcrusher.html?type=<category id>                that line's products
+     mbcrusher.html?type=<category id>&model=<id>     one product's details
+                                                      (products that have description/specs/gallery)
+   Navigation updates the URL without reloading, so links can be shared
+   and the browser back button works.
    ================================================================= */
 (function () {
   'use strict';
@@ -40,7 +42,17 @@
     for (var i = 0; i < CATS.length; i++) if (CATS[i].id === id) return CATS[i];
     return null;
   };
-  var urlFor = function (id) { return id ? 'mbcrusher.html?type=' + encodeURIComponent(id) : 'mbcrusher.html'; };
+  var urlFor = function (id, model) {
+    if (!id) return 'mbcrusher.html';
+    return 'mbcrusher.html?type=' + encodeURIComponent(id) + (model ? '&model=' + encodeURIComponent(model) : '');
+  };
+  var hasDetails = function (p) { return !!(p && (p.description || p.specs || p.gallery)); };
+  var productOf = function (c, id) {
+    if (!c || !id) return null;
+    for (var i = 0; i < c.products.length; i++) if (c.products[i].id === id) return c.products[i];
+    return null;
+  };
+  var quoteUrl = function (p) { return QUOTE_URL + (p ? '&product=' + encodeURIComponent(p.name) : '') + '#contact'; };
   var fmtT = function (n) { return String(n).replace(/\.0+$/, ''); };
   var rangeText = function (c) {
     return c.max == null ? '≥ ' + fmtT(c.min) + ' t' : fmtT(c.min) + '–' + fmtT(c.max) + ' t';
@@ -48,12 +60,14 @@
   var total = CATS.reduce(function (n, c) { return n + c.products.length; }, 0);
 
   /* --------------------------- state --------------------------- */
-  var state = { cat: null, carrier: 'any', weight: '', fits: 'all' };
+  var state = { cat: null, model: null, carrier: 'any', weight: '', fits: 'all' };
 
   var readUrl = function () {
     var p = new URLSearchParams(location.search);
     var c = byId(p.get('type'));
+    var m = productOf(c, p.get('model'));
     state.cat = c ? c.id : null;
+    state.model = hasDetails(m) ? m.id : null;
     state.carrier = 'any';
     state.weight = '';
     state.fits = 'all';
@@ -80,8 +94,27 @@
   /* ---------------------------- hero ---------------------------- */
   var renderHero = function () {
     var c = byId(state.cat);
+    var m = productOf(c, state.model);
     var crumbs = '<li><a href="index.html">Home</a></li><li><a href="index.html#brand">Brands</a></li>';
-    if (c) {
+    if (m) {
+      crumbs += '<li><a href="' + urlFor(null) + '" data-cat="">MB Crusher</a></li>' +
+        '<li><a href="' + urlFor(c.id) + '" data-cat="' + c.id + '">' + esc(c.name) + '</a></li>' +
+        '<li aria-current="page">' + esc(m.name) + '</li>';
+      el.eyebrow.textContent = 'MB Crusher · ' + c.name;
+      el.title.textContent = m.name;
+      el.lead.textContent = m.tagline || c.summary;
+      var spec = function (label) {
+        for (var i = 0; i < (m.specs || []).length; i++) if (m.specs[i].label.toLowerCase() === label) return m.specs[i].value;
+        return null;
+      };
+      el.stats.innerHTML =
+        (spec('weight') ? stat(spec('weight'), 'Weight') : '') +
+        (spec('load capacity') ? stat(spec('load capacity'), 'Load capacity') : '') +
+        (m.carriers && m.carriers.length ? stat(rangeText(m.carriers[0]), (CARRIERS[m.carriers[0].type] || {}).label || 'Carrier') : '');
+      // product photos have white backgrounds: present them on a white plate
+      el.visual.innerHTML = '<span class="catalog-hero__plate"><img src="' + esc(m.image) + '" alt="" width="360" height="360"></span>';
+      document.title = m.name + ' – ' + c.name + ' – MB Crusher – Rsquared Trade';
+    } else if (c) {
       crumbs += '<li><a href="' + urlFor(null) + '" data-cat="">MB Crusher</a></li><li aria-current="page">' + esc(c.name) + '</li>';
       el.eyebrow.textContent = c.series ? 'MB Crusher · ' + c.series + ' series' : 'MB Crusher';
       el.title.textContent = c.name;
@@ -184,7 +217,10 @@
   };
 
   var card = function (p, c, i) {
-    var quote = QUOTE_URL + '&product=' + encodeURIComponent(p.name) + '#contact';
+    var quote = quoteUrl(p);
+    var detail = hasDetails(p);
+    var dUrl = urlFor(c.id, p.id);
+    var dAttrs = ' href="' + dUrl + '" data-cat="' + c.id + '" data-model="' + esc(p.id) + '"';
     var specs = '';
     if (p.carriers) {
       specs = '<ul class="mb-card__carriers">' + p.carriers.map(function (r) {
@@ -195,16 +231,94 @@
       var names = p.fits.indexOf('all') !== -1 ? ['All MB units'] : p.fits.map(function (f) { var x = byId(f); return x ? x.name : f; });
       specs = '<p class="mb-card__fits"><span>Works with</span> ' + names.map(esc).join(', ') + '</p>';
     }
-    return '<article class="mb-card" id="' + esc(p.id) + '" style="--i:' + Math.min(i, 12) + '">' +
-      '<div class="mb-card__media"><img src="' + esc(p.image) + '" alt="' + esc(p.name) + '" width="360" height="360" loading="lazy" decoding="async"></div>' +
+    var img = '<img src="' + esc(p.image) + '" alt="' + esc(p.name) + '" width="360" height="360" loading="lazy" decoding="async">';
+    var name = esc(p.name);
+    return '<article class="mb-card' + (detail ? ' has-details' : '') + '" id="' + esc(p.id) + '" style="--i:' + Math.min(i, 12) + '">' +
+      (detail ? '<a class="mb-card__media"' + dAttrs + ' tabindex="-1" aria-hidden="true">' + img + '</a>' : '<div class="mb-card__media">' + img + '</div>') +
       '<div class="mb-card__body">' +
         (p.group ? '<p class="mb-card__group">' + esc(p.group) + '</p>' : '') +
-        '<h3 class="mb-card__name">' + esc(p.name) + '</h3>' +
+        '<h3 class="mb-card__name">' + (detail ? '<a' + dAttrs + '>' + name + '</a>' : name) + '</h3>' +
         (p.tagline ? '<p class="mb-card__tagline">' + esc(p.tagline) + '</p>' : '') +
         specs +
       '</div>' +
-      '<a class="mb-card__cta" href="' + quote + '">Request a quote <i class="fas fa-arrow-right" aria-hidden="true"></i></a>' +
+      (detail
+        ? '<div class="mb-card__actions"><a class="mb-card__cta mb-card__cta--details"' + dAttrs + '>Details &amp; specs <i class="fas fa-arrow-right" aria-hidden="true"></i></a>' +
+          '<a class="mb-card__cta mb-card__cta--quote" href="' + quote + '">Quote</a></div>'
+        : '<a class="mb-card__cta" href="' + quote + '">Request a quote <i class="fas fa-arrow-right" aria-hidden="true"></i></a>') +
     '</article>';
+  };
+
+  /* ---------------------------- detail ---------------------------- */
+  var renderDetail = function (c, p) {
+    var list = c.products;
+    var idx = list.indexOf(p);
+    var withDetails = list.filter(hasDetails);
+    var di = withDetails.indexOf(p);
+    var prev = withDetails[(di - 1 + withDetails.length) % withDetails.length];
+    var next = withDetails[(di + 1) % withDetails.length];
+
+    el.toolbar.innerHTML =
+      '<a class="catalog-back" href="' + urlFor(c.id) + '" data-cat="' + c.id + '"><i class="fas fa-arrow-left" aria-hidden="true"></i> All ' + esc(c.name.toLowerCase()) + '</a>' +
+      '<p class="catalog__count">Model ' + (idx + 1) + ' of ' + list.length + '</p>';
+
+    var shots = [{ src: p.image, product: true }].concat((p.gallery || []).map(function (g) { return { src: g }; }));
+    var thumbs = shots.length > 1 ? '<div class="mb-detail__thumbs" role="group" aria-label="Photos">' + shots.map(function (s, i) {
+      return '<button type="button" class="mb-detail__thumb' + (i === 0 ? ' is-active' : '') + (s.product ? ' is-product' : '') + '" data-thumb="' + esc(s.src) + '" data-product="' + (s.product ? 1 : 0) + '" aria-label="Photo ' + (i + 1) + ' of ' + shots.length + '" aria-pressed="' + (i === 0) + '">' +
+        '<img src="' + esc(s.src) + '" alt="" width="120" height="120" loading="lazy" decoding="async"></button>';
+    }).join('') + '</div>' : '';
+
+    var carriers = p.carriers ? '<ul class="mb-card__carriers mb-detail__carriers">' + p.carriers.map(function (r) {
+      var t = CARRIERS[r.type] || { label: r.type, icon: '' };
+      return '<li><img src="' + esc(t.icon) + '" alt="" width="36" height="36"><span class="mb-card__carrier">' + esc(t.label) + '</span><span class="mb-card__range">' + rangeText(r) + '</span></li>';
+    }).join('') + '</ul>' : '';
+
+    var specs = p.specs && p.specs.length
+      ? '<section class="mb-specs" aria-labelledby="mb-specs-title">' +
+          '<h2 class="mb-specs__title" id="mb-specs-title">Technical features</h2>' +
+          '<dl class="mb-specs__table">' +
+            '<div><dt>Model</dt><dd>' + esc(p.name) + '</dd></div>' +
+            p.specs.map(function (s) { return '<div><dt>' + esc(s.label) + '</dt><dd>' + esc(s.value) + '</dd></div>'; }).join('') +
+          '</dl>' +
+          (c.specNote ? '<p class="mb-specs__note"><i class="fas fa-info-circle" aria-hidden="true"></i> ' + esc(c.specNote) + '</p>' : '') +
+        '</section>'
+      : '';
+
+    el.grid.className = 'catalog__detail';
+    el.grid.innerHTML =
+      '<div class="mb-detail">' +
+        '<div class="mb-detail__gallery">' +
+          '<figure class="mb-detail__main is-product"><img src="' + esc(p.image) + '" alt="' + esc(p.name) + '" width="640" height="640" data-main></figure>' +
+          thumbs +
+        '</div>' +
+        '<div class="mb-detail__info">' +
+          '<p class="mb-detail__eyebrow">' + esc(c.name) + (c.series ? ' · ' + esc(c.series) + ' series' : '') + '</p>' +
+          '<h2 class="mb-detail__name">' + esc(p.name) + '</h2>' +
+          (p.tagline ? '<p class="mb-detail__tagline">' + esc(p.tagline) + '</p>' : '') +
+          carriers +
+          (p.description || []).map(function (d) { return '<p class="mb-detail__text">' + esc(d) + '</p>'; }).join('') +
+          '<div class="mb-detail__actions">' +
+            '<a class="rs-btn rs-btn--accent" href="' + quoteUrl(p) + '">Request a quote <i class="fas fa-arrow-right" aria-hidden="true"></i></a>' +
+            '<a class="rs-btn rs-btn--outline" href="tel:+20244875070"><i class="fas fa-phone-alt" aria-hidden="true"></i> +20 2 4487 5070</a>' +
+          '</div>' +
+        '</div>' +
+      '</div>' +
+      specs +
+      (withDetails.length > 1
+        ? '<nav class="mb-pager" aria-label="Other models">' +
+            '<a href="' + urlFor(c.id, prev.id) + '" data-cat="' + c.id + '" data-model="' + esc(prev.id) + '"><span><i class="fas fa-arrow-left" aria-hidden="true"></i> Previous</span><strong>' + esc(prev.name) + '</strong></a>' +
+            '<a href="' + urlFor(c.id, next.id) + '" data-cat="' + c.id + '" data-model="' + esc(next.id) + '"><span>Next <i class="fas fa-arrow-right" aria-hidden="true"></i></span><strong>' + esc(next.name) + '</strong></a>' +
+          '</nav>'
+        : '');
+
+    if (p.video) {
+      el.video.innerHTML = '<h2 class="catalog__video-title">See the ' + esc(p.name) + ' at work</h2>' +
+        '<video controls preload="none" playsinline' + (p.gallery && p.gallery[0] ? ' poster="' + esc(p.gallery[0]) + '"' : '') + '>' +
+        '<source src="' + esc(p.video) + '" type="video/mp4"></video>';
+      el.video.hidden = false;
+    } else {
+      el.video.hidden = true;
+      el.video.innerHTML = '';
+    }
   };
 
   var renderProducts = function () {
@@ -238,8 +352,11 @@
   var render = function () {
     renderTabs();
     renderHero();
-    if (state.cat) {
-      var c = byId(state.cat);
+    var c = byId(state.cat);
+    var m = productOf(c, state.model);
+    if (m) {
+      renderDetail(c, m);
+    } else if (c) {
       renderToolbar(c);
       renderProducts();
       renderVideo(c);
@@ -248,9 +365,9 @@
     }
   };
 
-  var go = function (id, push) {
-    var url = urlFor(id);
-    if (push) history.pushState({ cat: id }, '', url);
+  var go = function (id, push, model) {
+    var url = urlFor(id, model);
+    if (push) history.pushState({ cat: id, model: model || null }, '', url);
     readUrl();
     render();
     // bring the products into view when switching from further down the page
@@ -266,7 +383,21 @@
     var a = e.target.closest('a[data-cat]');
     if (a && !e.metaKey && !e.ctrlKey && !e.shiftKey && e.button === 0) {
       e.preventDefault();
-      go(a.getAttribute('data-cat') || null, true);
+      go(a.getAttribute('data-cat') || null, true, a.getAttribute('data-model'));
+      return;
+    }
+    var thumb = e.target.closest('[data-thumb]');
+    if (thumb) {
+      var main = el.grid.querySelector('[data-main]');
+      if (main) {
+        main.src = thumb.getAttribute('data-thumb');
+        main.parentNode.classList.toggle('is-product', thumb.getAttribute('data-product') === '1');
+      }
+      Array.prototype.forEach.call(el.grid.querySelectorAll('[data-thumb]'), function (t) {
+        var on = t === thumb;
+        t.classList.toggle('is-active', on);
+        t.setAttribute('aria-pressed', String(on));
+      });
       return;
     }
     var chip = e.target.closest('[data-fits]');
