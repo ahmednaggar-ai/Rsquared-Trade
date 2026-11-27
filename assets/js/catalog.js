@@ -129,7 +129,8 @@
       el.title.textContent = m.name;
       el.lead.textContent = m.tagline || c.summary;
       var spec = function (label) {
-        for (var i = 0; i < (m.specs || []).length; i++) if (m.specs[i].label.toLowerCase() === label) return m.specs[i].value;
+        // only short values fit the header (long free text stays in the specs table)
+        for (var i = 0; i < (m.specs || []).length; i++) if (m.specs[i].label.toLowerCase() === label) return m.specs[i].value.length <= 18 ? m.specs[i].value : null;
         return null;
       };
       el.stats.innerHTML = m.variants
@@ -201,7 +202,8 @@
       return '<a class="line-card' + (photo ? ' line-card--photo' : '') + '" href="' + urlFor(c.id) + '" data-cat="' + c.id + '" style="--i:' + i + '">' +
         '<div class="line-card__media"><img src="' + esc(c.icon) + '" alt="" width="' + (photo ? 900 : 200) + '" height="' + (photo ? 675 : 200) + '" loading="lazy"></div>' +
         '<div class="line-card__body">' +
-          (c.series ? '<p class="line-card__series">' + esc(c.series) + ' series</p>' : '<p class="line-card__series">Add-ons &amp; kits</p>') +
+          (c.series ? '<p class="line-card__series">' + esc(c.series) + ' series</p>'
+            : c.products.some(function (x) { return x.fits; }) ? '<p class="line-card__series">Add-ons &amp; kits</p>' : '') +
           '<h2 class="line-card__name">' + esc(c.name) + '</h2>' +
           '<p class="line-card__summary">' + esc(c.summary) + '</p>' +
           '<span class="line-card__foot"><span>' + countLabel(c.products.length) + '</span><span class="line-card__cta">View range <i class="fas fa-arrow-right" aria-hidden="true"></i></span></span>' +
@@ -282,6 +284,14 @@
         '<li><span class="mb-card__carrier">' + 'Models' + '</span><span class="mb-card__range">' + esc(p.variants.columns.join(' · ')) + '</span></li>' +
         (cap ? '<li><span class="mb-card__carrier">Capacity</span><span class="mb-card__range">' + esc(cap) + '</span></li>' : '') +
         '</ul>';
+    } else if (p.specs && p.specs.length) {
+      // generic products: the first two short specs (long free-text values are left to the detail page)
+      var short = p.specs.filter(function (s) { return s.value.length <= 32; }).slice(0, 2);
+      if (short.length) {
+        specs = '<ul class="mb-card__carriers mb-card__variants">' + short.map(function (s) {
+          return '<li><span class="mb-card__carrier">' + esc(s.label) + '</span><span class="mb-card__range">' + esc(s.value) + '</span></li>';
+        }).join('') + '</ul>';
+      }
     }
     var img = '<img src="' + esc(p.image) + '" alt="' + esc(p.name) + '" width="' + (p.photo ? 900 : 360) + '" height="' + (p.photo ? 675 : 360) + '" loading="lazy" decoding="async">';
     var name = esc(p.name);

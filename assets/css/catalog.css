@@ -1098,3 +1098,10 @@ a.mb-card__media{ display: block; }
 .mb-variants tbody th,
 .mb-variants thead th:first-child{ position: sticky; left: 0; z-index: 1; }
 .mb-variants thead th:first-child{ background: var(--rs-ink); }
+
+/* phones: spec-style card rows (Optimas specs, Lintec models) keep their label, stacked above the value */
+@media (max-width: 575.98px){
+	.mb-card__variants li{ grid-template-columns: 1fr; gap: 2px; }
+	.mb-card__variants .mb-card__carrier{ display: block; font-size: .7rem; }
+	.mb-card__variants .mb-card__range{ text-align: left; white-space: normal; }
+}
