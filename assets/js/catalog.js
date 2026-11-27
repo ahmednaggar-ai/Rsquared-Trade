@@ -452,6 +452,11 @@
       b.tabIndex = on ? 0 : -1;
       var panel = document.getElementById(b.getAttribute('aria-controls'));
       if (panel) panel.hidden = !on;
+      // compare table: bring "this model" into view when it's far to the right
+      if (on && panel) {
+        var cur = panel.querySelector('th.is-current'), scroller = panel.querySelector('.mb-compare__scroll');
+        if (cur && scroller) scroller.scrollLeft = Math.max(0, cur.offsetLeft - (scroller.clientWidth - cur.offsetWidth) / 2);
+      }
     });
   };
   // spec groups: "all" or one group; search filters rows across every group
