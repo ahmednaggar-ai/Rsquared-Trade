@@ -117,6 +117,8 @@
 	box-shadow: 0 30px 60px rgba(0,0,0,.35);
 }
 .catalog-hero__logo img{ display: block; width: min(320px, 60vw); height: auto; }
+/* square-ish logos (e.g. Loggia) would be huge at the wide-logo width */
+.catalog-hero__logo--stacked img{ width: min(190px, 40vw); }
 .catalog-hero__product{
 	width: min(300px, 70vw);
 	height: auto;
