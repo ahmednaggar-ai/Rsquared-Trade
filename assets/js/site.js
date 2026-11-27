@@ -1,0 +1,293 @@
+/* =================================================================
+   NAVBAR + HERO
+   - Navbar: solid on scroll, mobile menu, active-section highlight
+   - Hero: lightweight cross-fade slideshow (replaces jQuery Vegas)
+     * slide 1 paints instantly from a ~30 KB poster, then the video
+       (1.9 MB, was a 52 MB GIF) fades in once it can play
+     * the other slides download only after the page has loaded
+   ================================================================= */
+(function () {
+  'use strict';
+
+  var reduceMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var conn = navigator.connection || {};
+  var saveData = !!conn.saveData || /(^|-)2g$/.test(conn.effectiveType || '');
+
+  /* ---------------------------- NAVBAR ---------------------------- */
+  var nav = document.querySelector('[data-nav]');
+  if (nav) {
+    var toggle = nav.querySelector('[data-nav-toggle]');
+    var links = nav.querySelectorAll('.rs-nav__link');
+
+    var onScroll = function () {
+      nav.classList.toggle('is-scrolled', window.pageYOffset > 40);
+    };
+    onScroll();
+    window.addEventListener('scroll', onScroll, { passive: true });
+
+    var setOpen = function (open) {
+      nav.classList.toggle('is-open', open);
+      toggle.setAttribute('aria-expanded', String(open));
+      toggle.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+    };
+    toggle.addEventListener('click', function () {
+      setOpen(!nav.classList.contains('is-open'));
+    });
+    nav.addEventListener('click', function (e) {
+      if (e.target.closest('a')) setOpen(false);
+    });
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape' && nav.classList.contains('is-open')) {
+        setOpen(false);
+        toggle.focus();
+      }
+    });
+    document.addEventListener('click', function (e) {
+      if (nav.classList.contains('is-open') && !nav.contains(e.target)) setOpen(false);
+    });
+
+    // Highlight the link for the section currently in view
+    if ('IntersectionObserver' in window) {
+      var byId = {};
+      Array.prototype.forEach.call(links, function (a) {
+        var id = a.getAttribute('href').slice(1);
+        var section = document.getElementById(id);
+        if (section) byId[id] = { link: a, section: section };
+      });
+      var visible = {};
+      var spy = new IntersectionObserver(function (entries) {
+        entries.forEach(function (en) { visible[en.target.id] = en.isIntersecting; });
+        // the last visible section in document order wins
+        var current = null;
+        Object.keys(byId).forEach(function (id) { if (visible[id]) current = id; });
+        if (!current) return;
+        Array.prototype.forEach.call(links, function (a) { a.classList.remove('is-active'); });
+        byId[current].link.classList.add('is-active');
+      }, { rootMargin: '-45% 0px -50% 0px' });
+      Object.keys(byId).forEach(function (id) { spy.observe(byId[id].section); });
+    }
+  }
+
+  /* ------------------ SCROLL REVEAL + COUNTERS -------------------- */
+  var revealEls = document.querySelectorAll('.reveal');
+  var counters = document.querySelectorAll('[data-count]');
+
+  var countUp = function (el) {
+    var target = parseInt(el.getAttribute('data-count'), 10) || 0;
+    if (reduceMotion) { el.textContent = target; return; }
+    var start = null, dur = 1600;
+    var step = function (t) {
+      if (start === null) start = t;
+      var p = Math.min((t - start) / dur, 1);
+      el.textContent = Math.round(target * (1 - Math.pow(1 - p, 3))); // ease-out
+      if (p < 1) requestAnimationFrame(step);
+    };
+    el.textContent = '0';
+    requestAnimationFrame(step);
+  };
+
+  if ('IntersectionObserver' in window && (revealEls.length || counters.length)) {
+    document.documentElement.classList.add('reveal-ready');
+    var revealObs = new IntersectionObserver(function (entries) {
+      entries.forEach(function (en) {
+        if (!en.isIntersecting) return;
+        en.target.classList.add('is-visible');
+        Array.prototype.forEach.call(en.target.querySelectorAll('[data-count]'), countUp);
+        revealObs.unobserve(en.target);
+      });
+    }, { rootMargin: '0px 0px -10% 0px', threshold: 0.12 });
+    Array.prototype.forEach.call(revealEls, function (el) { revealObs.observe(el); });
+  }
+
+  /* ------------------------- FOOTER YEAR -------------------------- */
+  Array.prototype.forEach.call(document.querySelectorAll('[data-year]'), function (el) {
+    el.textContent = new Date().getFullYear();
+  });
+
+  /* ------------------------- CONTACT FORM ------------------------- */
+  // While the form service isn't configured (action still contains FORM_ID),
+  // open the visitor's email app with the message pre-filled instead of
+  // posting to a dead endpoint.
+  var form = document.querySelector('[data-contact-form]');
+  if (form) {
+    var status = form.querySelector('[data-contact-status]');
+
+    // Prefill from "Request a quote" links: index.html?brand=MB%20Crusher&product=BF90.3%20S4#contact
+    var params = new URLSearchParams(window.location.search);
+    var qBrand = params.get('brand');
+    var qProduct = params.get('product');
+    if (qBrand) {
+      Array.prototype.forEach.call(form.querySelectorAll('input[name="interest"]'), function (r) {
+        if (r.value === qBrand) r.checked = true;
+      });
+    }
+    if (qProduct && form.elements.message && !form.elements.message.value) {
+      form.elements.message.value = "I'd like a quote for the " + (qBrand ? qBrand + ' ' : '') + qProduct + '.';
+    }
+    form.addEventListener('submit', function (e) {
+      var action = form.getAttribute('action') || '';
+      if (action && action.indexOf('FORM_ID') === -1) return; // real endpoint: normal POST
+      e.preventDefault();
+      var val = function (n) {
+        var f = form.elements[n];
+        if (!f) return '';
+        if (f.length && !f.tagName) { // radio group
+          for (var i = 0; i < f.length; i++) if (f[i].checked) return f[i].value;
+          return '';
+        }
+        return (f.value || '').trim();
+      };
+      var name = val('name');
+      var body = [
+        'Name: ' + name,
+        'Email: ' + val('email'),
+        'Phone: ' + (val('phone') || '-'),
+        'Interested in: ' + val('interest'),
+        '',
+        val('message')
+      ].join('\n');
+      var subject = 'Website enquiry' + (val('interest') && val('interest') !== 'Not sure yet' ? ' – ' + val('interest') : '') + ' – ' + name;
+      window.location.href = 'mailto:' + form.getAttribute('data-fallback-email') +
+        '?subject=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(body);
+      if (status) {
+        status.textContent = 'Your email app should open with the message ready to send.';
+        status.classList.add('is-success');
+      }
+    });
+  }
+
+  /* ----------------------------- HERO ----------------------------- */
+  var hero = document.querySelector('[data-hero]');
+  if (!hero) return;
+
+  var slides = Array.prototype.slice.call(hero.querySelectorAll('.hero__slide'));
+  var dotsWrap = hero.querySelector('[data-hero-dots]');
+  var video = hero.querySelector('.hero__video');
+  var useVideo = !!video && !reduceMotion && !saveData;
+  var current = 0;
+  var timer = null;
+  var paused = false;
+  var dots = [];
+
+  // Load the remaining slide images once (after page load / on demand)
+  var loadImage = function (slide) {
+    var img = slide.querySelector('img[data-srcset]');
+    if (!img) return Promise.resolve();
+    return new Promise(function (resolve) {
+      img.addEventListener('load', resolve, { once: true });
+      img.addEventListener('error', resolve, { once: true });
+      img.srcset = img.getAttribute('data-srcset');
+      img.removeAttribute('data-srcset');
+    });
+  };
+  var isLoaded = function (slide) {
+    var img = slide.querySelector('img');
+    return !img || (!img.hasAttribute('data-srcset') && img.complete && img.naturalWidth > 0);
+  };
+  var preloadRest = function () { slides.slice(1).forEach(loadImage); };
+
+  // Video: attach sources only now so the bytes don't block the first paint
+  var videoStarted = false;
+  var startVideo = function () {
+    if (!useVideo) return;
+    if (!videoStarted) {
+      videoStarted = true;
+      Array.prototype.forEach.call(video.querySelectorAll('source[data-src]'), function (s) {
+        s.src = s.getAttribute('data-src');
+        s.removeAttribute('data-src');
+      });
+      video.addEventListener('playing', function () { video.classList.add('is-ready'); });
+      video.load();
+    } else {
+      video.currentTime = 0;
+    }
+    var p = video.play();
+    if (p && p.catch) p.catch(function () { /* autoplay blocked: poster stays */ });
+  };
+
+  var slideDuration = function (i) {
+    return parseInt(slides[i].getAttribute('data-duration'), 10) || 7000;
+  };
+
+  var schedule = function () {
+    clearTimeout(timer);
+    if (paused || slides.length < 2) return;
+    var ms = slideDuration(current);
+    if (dots[current]) dots[current].style.setProperty('--rs-slide-duration', ms + 'ms');
+    timer = setTimeout(function () { go(current + 1); }, ms);
+  };
+
+  var go = function (i) {
+    i = (i + slides.length) % slides.length;
+    var target = slides[i];
+    if (!isLoaded(target)) {
+      // not downloaded yet: fetch it, then show it (max wait 4s)
+      var done = false;
+      var finish = function () { if (!done) { done = true; show(i); } };
+      loadImage(target).then(finish);
+      setTimeout(finish, 4000);
+      return;
+    }
+    show(i);
+  };
+
+  var show = function (i) {
+    if (current !== i) {
+      slides[current].classList.remove('is-active');
+      if (current === 0 && video) video.pause();
+      // restart the Ken Burns animation
+      var img = slides[i].querySelector('img');
+      if (img) { img.style.animation = 'none'; void img.offsetWidth; img.style.animation = ''; }
+      slides[i].classList.add('is-active');
+      current = i;
+    }
+    if (i === 0) startVideo();
+    dots.forEach(function (d, n) {
+      d.classList.remove('is-active');
+      d.setAttribute('aria-current', n === i ? 'true' : 'false');
+    });
+    if (dots[i]) { void dots[i].offsetWidth; dots[i].classList.add('is-active'); }
+    schedule();
+  };
+
+  // Dots
+  if (dotsWrap && slides.length > 1) {
+    slides.forEach(function (_, n) {
+      var b = document.createElement('button');
+      b.type = 'button';
+      b.className = 'hero__dot';
+      b.setAttribute('aria-label', 'Show slide ' + (n + 1));
+      b.addEventListener('click', function () { go(n); });
+      dotsWrap.appendChild(b);
+      dots.push(b);
+    });
+  }
+
+  // Pause when the hero is off-screen or the tab is hidden (saves CPU/battery)
+  var setPaused = function (p) {
+    if (p === paused) return;
+    paused = p;
+    dots.forEach(function (d) { d.classList.toggle('is-paused', p); });
+    if (p) {
+      clearTimeout(timer);
+      if (video && current === 0) video.pause();
+    } else {
+      show(current); // restart the current slide so timer and progress bar stay in sync
+    }
+  };
+  var heroVisible = true;
+  if ('IntersectionObserver' in window) {
+    new IntersectionObserver(function (entries) {
+      heroVisible = entries[0].isIntersecting;
+      setPaused(!heroVisible || document.hidden);
+    }, { threshold: 0.1 }).observe(hero);
+  }
+  document.addEventListener('visibilitychange', function () {
+    setPaused(document.hidden || !heroVisible);
+  });
+
+  // Kick off: first slide is already visible (poster)
+  show(0);
+  if (document.readyState === 'complete') preloadRest();
+  else window.addEventListener('load', preloadRest, { once: true });
+})();
