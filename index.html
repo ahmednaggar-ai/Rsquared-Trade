@@ -283,71 +283,165 @@
 			</div>
 		</div>
 
-		<div class="brands__grid">
-			<a class="brand-card reveal" href="mbcrusher.html">
-				<div class="brand-card__media">
-					<img src="assets/images/home/about/brand-mbcrusher-640.webp" width="640" height="640" alt="" loading="lazy" decoding="async">
-				</div>
-				<div class="brand-card__body">
-					<span class="brand-card__logo"><img src="assets/images/partners/mb-crusher.svg" alt="" width="220" height="70" loading="lazy"></span>
-					<p class="brand-card__origin">Italy</p>
-					<h3 class="brand-card__name">MB Crusher</h3>
-					<p class="brand-card__desc">Crusher buckets, screening buckets, drum cutters, shaft screeners, sorting grapples, demolition pulverizers and accessories.</p>
-					<span class="brand-card__cta">View products <i class="fas fa-arrow-right" aria-hidden="true"></i></span>
-				</div>
-			</a>
+		<!-- Brand showcase: the tabs choose the brand shown in the panel.
+		     Without JavaScript every brand panel is simply listed. -->
+		<div class="brand-show reveal" data-brand-show>
+			<div class="brand-show__nav" role="tablist" aria-label="Our brands">
+				<button class="brand-show__tab is-active" type="button" role="tab" id="brand-tab-mb" aria-controls="brand-panel-mb" aria-selected="true" data-brand-tab>
+					<span class="brand-show__num">01</span>
+					<span class="brand-show__label"><strong>MB Crusher</strong><small>Italy &middot; Crushing &amp; screening attachments</small></span>
+					<span class="brand-show__timer" aria-hidden="true"></span>
+				</button>
+				<button class="brand-show__tab" type="button" role="tab" id="brand-tab-lintec" aria-controls="brand-panel-lintec" aria-selected="false" tabindex="-1" data-brand-tab>
+					<span class="brand-show__num">02</span>
+					<span class="brand-show__label"><strong>Lintec &amp; Linnhoff</strong><small>Germany &middot; Asphalt mixing plants</small></span>
+					<span class="brand-show__timer" aria-hidden="true"></span>
+				</button>
+				<button class="brand-show__tab" type="button" role="tab" id="brand-tab-optimas" aria-controls="brand-panel-optimas" aria-selected="false" tabindex="-1" data-brand-tab>
+					<span class="brand-show__num">03</span>
+					<span class="brand-show__label"><strong>Optimas</strong><small>Germany &middot; Paving machinery &amp; tools</small></span>
+					<span class="brand-show__timer" aria-hidden="true"></span>
+				</button>
+				<button class="brand-show__tab" type="button" role="tab" id="brand-tab-hidromek" aria-controls="brand-panel-hidromek" aria-selected="false" tabindex="-1" data-brand-tab>
+					<span class="brand-show__num">04</span>
+					<span class="brand-show__label"><strong>HİDROMEK</strong><small>Türkiye &middot; Construction machinery</small></span>
+					<span class="brand-show__timer" aria-hidden="true"></span>
+				</button>
+				<button class="brand-show__tab" type="button" role="tab" id="brand-tab-loggia" aria-controls="brand-panel-loggia" aria-selected="false" tabindex="-1" data-brand-tab>
+					<span class="brand-show__num">05</span>
+					<span class="brand-show__label"><strong>Loggia</strong><small>Italy &middot; Paints &amp; decorative coatings</small></span>
+					<span class="brand-show__timer" aria-hidden="true"></span>
+				</button>
+			</div>
 
-			<a class="brand-card reveal" href="lintec.html" style="--reveal-delay:.1s">
-				<div class="brand-card__media">
-					<img src="assets/images/home/about/about-lintec-640.webp" width="640" height="480" alt="" loading="lazy" decoding="async">
-				</div>
-				<div class="brand-card__body">
-					<span class="brand-card__logo"><img src="assets/images/partners/lintec-linnhoff.png" alt="" width="500" height="122" loading="lazy"></span>
-					<p class="brand-card__origin">Germany</p>
-					<h3 class="brand-card__name">Lintec &amp; Linnhoff</h3>
-					<p class="brand-card__desc">Asphalt batch-mix and premix plants producing hot and warm mix asphalt, with RAP recycling.</p>
-					<span class="brand-card__cta">View products <i class="fas fa-arrow-right" aria-hidden="true"></i></span>
-				</div>
-			</a>
+			<div class="brand-show__panels">
+				<article class="brand-panel is-active" role="tabpanel" id="brand-panel-mb" aria-labelledby="brand-tab-mb" data-brand-panel>
+					<a class="brand-panel__media" href="mbcrusher.html" tabindex="-1" aria-hidden="true">
+						<img src="assets/images/home/brands/brand-mbcrusher-1600.webp" style="object-position: 50% 22%" srcset="assets/images/home/brands/brand-mbcrusher-800.webp 800w, assets/images/home/brands/brand-mbcrusher-1600.webp 1600w" sizes="(min-width: 1200px) 980px, (min-width: 992px) 64vw, 100vw" width="1600" height="900" alt="Two MB Crusher MB-PT demolition pulverizers crushing reinforced concrete on excavators" loading="lazy" decoding="async">
+						<span class="brand-panel__logo"><img src="assets/images/partners/mb-crusher.svg" alt="" width="220" height="70" loading="lazy"></span>
+					</a>
+					<div class="brand-panel__body">
+						<div class="brand-panel__intro">
+							<p class="brand-panel__eyebrow">Italy <span>&middot;</span> Crushing &amp; screening attachments</p>
+							<h3 class="brand-panel__name">MB Crusher</h3>
+							<p class="brand-panel__desc">The largest line of patented crusher buckets and attachments for excavators, skid steers and backhoe loaders: crush, screen, cut, sort and demolish directly on the job site.</p>
+							<a class="rs-btn rs-btn--accent" href="mbcrusher.html">Explore MB Crusher <i class="fas fa-arrow-right" aria-hidden="true"></i></a>
+						</div>
+						<div class="brand-panel__lines">
+							<p class="brand-panel__lines-title">Product lines</p>
+							<ul>
+								<li><a href="mbcrusher.html?type=crusher-buckets">Crusher buckets<i class="fas fa-arrow-right" aria-hidden="true"></i></a></li>
+								<li><a href="mbcrusher.html?type=screening-buckets">Screening buckets<i class="fas fa-arrow-right" aria-hidden="true"></i></a></li>
+								<li><a href="mbcrusher.html?type=shaft-screeners">Shaft screeners<i class="fas fa-arrow-right" aria-hidden="true"></i></a></li>
+								<li><a href="mbcrusher.html?type=drum-cutters">Drum cutters<i class="fas fa-arrow-right" aria-hidden="true"></i></a></li>
+								<li><a href="mbcrusher.html?type=sorting-grapples">Sorting grapples<i class="fas fa-arrow-right" aria-hidden="true"></i></a></li>
+								<li><a href="mbcrusher.html?type=demolition-pulverizers">Demolition pulverizers<i class="fas fa-arrow-right" aria-hidden="true"></i></a></li>
+								<li><a href="mbcrusher.html?type=accessories">Accessories<i class="fas fa-arrow-right" aria-hidden="true"></i></a></li>
+							</ul>
+						</div>
+					</div>
+				</article>
 
-			<a class="brand-card reveal" href="optimas.html" style="--reveal-delay:.2s">
-				<div class="brand-card__media">
-					<img src="assets/images/home/about/brand-optimas-640.webp" width="640" height="425" alt="" loading="lazy" decoding="async">
-				</div>
-				<div class="brand-card__body">
-					<span class="brand-card__logo"><img src="assets/images/partners/optimas.png" alt="" width="696" height="157" loading="lazy"></span>
-					<p class="brand-card__origin">Germany</p>
-					<h3 class="brand-card__name">Optimas</h3>
-					<p class="brand-card__desc">Machines and equipment for paving job sites, from laying machines to hardscape tools.</p>
-					<span class="brand-card__cta">View products <i class="fas fa-arrow-right" aria-hidden="true"></i></span>
-				</div>
-			</a>
+				<article class="brand-panel" role="tabpanel" id="brand-panel-lintec" aria-labelledby="brand-tab-lintec" data-brand-panel>
+					<a class="brand-panel__media" href="lintec.html" tabindex="-1" aria-hidden="true">
+						<img src="assets/images/home/brands/brand-lintec-1100.webp" srcset="assets/images/home/brands/brand-lintec-800.webp 800w, assets/images/home/brands/brand-lintec-1100.webp 1100w" sizes="(min-width: 1200px) 980px, (min-width: 992px) 64vw, 100vw" width="1100" height="825" alt="Red Lintec containerised asphalt plant in a forest quarry" loading="lazy" decoding="async">
+						<span class="brand-panel__logo"><img src="assets/images/partners/lintec-linnhoff.png" alt="" width="500" height="122" loading="lazy"></span>
+					</a>
+					<div class="brand-panel__body">
+						<div class="brand-panel__intro">
+							<p class="brand-panel__eyebrow">Germany <span>&middot;</span> Asphalt mixing plants</p>
+							<h3 class="brand-panel__name">Lintec &amp; Linnhoff</h3>
+							<p class="brand-panel__desc">Containerised and mobile asphalt batch-mix plants producing hot and warm mix asphalt, with RAP recycling for lower costs and a smaller carbon footprint.</p>
+							<a class="rs-btn rs-btn--accent" href="lintec.html">Explore Lintec &amp; Linnhoff <i class="fas fa-arrow-right" aria-hidden="true"></i></a>
+						</div>
+						<div class="brand-panel__lines">
+							<p class="brand-panel__lines-title">Product lines</p>
+							<ul>
+								<li><a href="lintec.html?type=lintec">Lintec containerised plants<i class="fas fa-arrow-right" aria-hidden="true"></i></a></li>
+								<li><a href="lintec.html?type=linnhoff">Linnhoff mobile &amp; compact plants<i class="fas fa-arrow-right" aria-hidden="true"></i></a></li>
+							</ul>
+						</div>
+					</div>
+				</article>
 
-			<a class="brand-card reveal" href="hidromek.html">
-				<div class="brand-card__media">
-					<img src="assets/images/home/about/brand-hidromek-640.webp" width="640" height="640" alt="" loading="lazy" decoding="async">
-				</div>
-				<div class="brand-card__body">
-					<span class="brand-card__logo"><img src="assets/images/partners/hidromek.png" alt="" width="465" height="60" loading="lazy"></span>
-					<p class="brand-card__origin">Türkiye</p>
-					<h3 class="brand-card__name">HİDROMEK</h3>
-					<p class="brand-card__desc">Backhoe loaders, hydraulic excavators, wheel loaders, motor graders and soil compactors.</p>
-					<span class="brand-card__cta">View products <i class="fas fa-arrow-right" aria-hidden="true"></i></span>
-				</div>
-			</a>
+				<article class="brand-panel" role="tabpanel" id="brand-panel-optimas" aria-labelledby="brand-tab-optimas" data-brand-panel>
+					<a class="brand-panel__media" href="optimas.html" tabindex="-1" aria-hidden="true">
+						<img src="assets/images/home/brands/brand-optimas-1600.webp" srcset="assets/images/home/brands/brand-optimas-800.webp 800w, assets/images/home/brands/brand-optimas-1600.webp 1600w" sizes="(min-width: 1200px) 980px, (min-width: 992px) 64vw, 100vw" width="1600" height="1068" alt="Optimas PaveJet paver laying machine carrying a layer of paving stones" loading="lazy" decoding="async">
+						<span class="brand-panel__logo"><img src="assets/images/partners/optimas.png" alt="" width="696" height="157" loading="lazy"></span>
+					</a>
+					<div class="brand-panel__body">
+						<div class="brand-panel__intro">
+							<p class="brand-panel__eyebrow">Germany <span>&middot;</span> Paving machinery &amp; tools</p>
+							<h3 class="brand-panel__name">Optimas</h3>
+							<p class="brand-panel__desc">Machines and equipment for paving job sites: paver laying machines, vacuum lifting technology, screeding and jointing systems, and professional hardscape tools.</p>
+							<a class="rs-btn rs-btn--accent" href="optimas.html">Explore Optimas <i class="fas fa-arrow-right" aria-hidden="true"></i></a>
+						</div>
+						<div class="brand-panel__lines">
+							<p class="brand-panel__lines-title">Product lines</p>
+							<ul>
+								<li><a href="optimas.html?type=paving">Paving<i class="fas fa-arrow-right" aria-hidden="true"></i></a></li>
+								<li><a href="optimas.html?type=screeding">Screeding<i class="fas fa-arrow-right" aria-hidden="true"></i></a></li>
+								<li><a href="optimas.html?type=jointing">Jointing<i class="fas fa-arrow-right" aria-hidden="true"></i></a></li>
+								<li><a href="optimas.html?type=edging-kerbing">Edging &amp; kerbing<i class="fas fa-arrow-right" aria-hidden="true"></i></a></li>
+								<li><a href="optimas.html?type=lifting-technology">Lifting technology<i class="fas fa-arrow-right" aria-hidden="true"></i></a></li>
+								<li><a href="optimas.html?type=tools">Tools<i class="fas fa-arrow-right" aria-hidden="true"></i></a></li>
+							</ul>
+						</div>
+					</div>
+				</article>
 
-			<a class="brand-card reveal" href="loggia.html" style="--reveal-delay:.1s">
-				<div class="brand-card__media">
-					<img src="assets/images/home/about/about-loggia-460.webp" width="460" height="460" alt="" loading="lazy" decoding="async">
-				</div>
-				<div class="brand-card__body">
-					<span class="brand-card__logo brand-card__logo--stacked"><img src="assets/images/partners/loggia.png" alt="" width="155" height="112" loading="lazy"></span>
-					<p class="brand-card__origin">Italy</p>
-					<h3 class="brand-card__name">Loggia</h3>
-					<p class="brand-card__desc">Professional indoor and outdoor paints, plus a decorative line for walls and floors.</p>
-					<span class="brand-card__cta">View products <i class="fas fa-arrow-right" aria-hidden="true"></i></span>
-				</div>
-			</a>
+				<article class="brand-panel" role="tabpanel" id="brand-panel-hidromek" aria-labelledby="brand-tab-hidromek" data-brand-panel>
+					<a class="brand-panel__media" href="hidromek.html" tabindex="-1" aria-hidden="true">
+						<img src="assets/images/home/brands/brand-hidromek-1600.webp" style="object-position: 50% 72%" srcset="assets/images/home/brands/brand-hidromek-800.webp 800w, assets/images/home/brands/brand-hidromek-1600.webp 1600w" sizes="(min-width: 1200px) 980px, (min-width: 992px) 64vw, 100vw" width="1600" height="1067" alt="HİDROMEK backhoe loader working on an earthworks site" loading="lazy" decoding="async">
+						<span class="brand-panel__logo"><img src="assets/images/partners/hidromek.png" alt="" width="465" height="60" loading="lazy"></span>
+					</a>
+					<div class="brand-panel__body">
+						<div class="brand-panel__intro">
+							<p class="brand-panel__eyebrow">Türkiye <span>&middot;</span> Construction machinery</p>
+							<h3 class="brand-panel__name">HİDROMEK</h3>
+							<p class="brand-panel__desc">Backhoe loaders, hydraulic excavators, wheel loaders, motor graders and soil compactors from the first construction-machine maker designed by Turkish engineers.</p>
+							<a class="rs-btn rs-btn--accent" href="hidromek.html">Explore HİDROMEK <i class="fas fa-arrow-right" aria-hidden="true"></i></a>
+						</div>
+						<div class="brand-panel__lines">
+							<p class="brand-panel__lines-title">Product lines</p>
+							<ul>
+								<li><a href="hidromek.html?type=backhoe-loaders">Backhoe loaders<i class="fas fa-arrow-right" aria-hidden="true"></i></a></li>
+								<li><a href="hidromek.html?type=crawler-excavators">Crawler excavators<i class="fas fa-arrow-right" aria-hidden="true"></i></a></li>
+								<li><a href="hidromek.html?type=wheel-excavators">Wheel excavators<i class="fas fa-arrow-right" aria-hidden="true"></i></a></li>
+								<li><a href="hidromek.html?type=wheel-loaders">Wheel loaders<i class="fas fa-arrow-right" aria-hidden="true"></i></a></li>
+								<li><a href="hidromek.html?type=motor-graders">Motor graders<i class="fas fa-arrow-right" aria-hidden="true"></i></a></li>
+								<li><a href="hidromek.html?type=soil-compactors">Soil compactors<i class="fas fa-arrow-right" aria-hidden="true"></i></a></li>
+							</ul>
+						</div>
+					</div>
+				</article>
+
+				<article class="brand-panel" role="tabpanel" id="brand-panel-loggia" aria-labelledby="brand-tab-loggia" data-brand-panel>
+					<a class="brand-panel__media" href="loggia.html" tabindex="-1" aria-hidden="true">
+						<img src="assets/images/home/brands/brand-loggia-1600.webp" srcset="assets/images/home/brands/brand-loggia-800.webp 800w, assets/images/home/brands/brand-loggia-1600.webp 1600w" sizes="(min-width: 1200px) 980px, (min-width: 992px) 64vw, 100vw" width="1600" height="785" alt="Living room with a dark Loggia decorative wall and a yellow armchair" loading="lazy" decoding="async">
+						<span class="brand-panel__logo brand-panel__logo--stacked"><img src="assets/images/partners/loggia.png" alt="" width="155" height="112" loading="lazy"></span>
+					</a>
+					<div class="brand-panel__body">
+						<div class="brand-panel__intro">
+							<p class="brand-panel__eyebrow">Italy <span>&middot;</span> Paints &amp; decorative coatings</p>
+							<h3 class="brand-panel__name">Loggia</h3>
+							<p class="brand-panel__desc">Professional indoor and outdoor paints, a wide decorative line for walls and floors including the patented Plasma 3D, and ETRON waterproofing, made in Italy.</p>
+							<a class="rs-btn rs-btn--accent" href="loggia.html">Explore Loggia <i class="fas fa-arrow-right" aria-hidden="true"></i></a>
+						</div>
+						<div class="brand-panel__lines">
+							<p class="brand-panel__lines-title">Product lines</p>
+							<ul>
+								<li><a href="loggia.html?type=wall-coverings">Wall coverings<i class="fas fa-arrow-right" aria-hidden="true"></i></a></li>
+								<li><a href="loggia.html?type=floor-coverings">Floor coverings<i class="fas fa-arrow-right" aria-hidden="true"></i></a></li>
+								<li><a href="loggia.html?type=plasma-3d">Plasma 3D<i class="fas fa-arrow-right" aria-hidden="true"></i></a></li>
+								<li><a href="loggia.html?type=interior-paints">Interior paints<i class="fas fa-arrow-right" aria-hidden="true"></i></a></li>
+								<li><a href="loggia.html?type=exterior-paints">Exterior paints<i class="fas fa-arrow-right" aria-hidden="true"></i></a></li>
+								<li><a href="loggia.html?type=etron">ETRON waterproofing<i class="fas fa-arrow-right" aria-hidden="true"></i></a></li>
+							</ul>
+						</div>
+					</div>
+				</article>
+			</div>
 		</div>
 
 		<div class="brands__cta reveal">

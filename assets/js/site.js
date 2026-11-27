@@ -286,6 +286,74 @@
     });
   }
 
+  /* ------------------------ BRAND SHOWCASE ------------------------ */
+  // Tabs choose the brand panel. While the section is on screen it moves to
+  // the next brand when the active tab's progress bar fills (CSS animation, so
+  // pausing on hover/focus is just animation-play-state). Choosing a brand
+  // yourself stops the auto-advance.
+  (function () {
+    var show = document.querySelector('[data-brand-show]');
+    if (!show) return;
+    var tabs = Array.prototype.slice.call(show.querySelectorAll('[data-brand-tab]'));
+    var panels = Array.prototype.slice.call(show.querySelectorAll('[data-brand-panel]'));
+    var nav = show.querySelector('[role="tablist"]');
+    var current = 0;
+    var reduce = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    show.classList.add('is-ready');
+    if (!reduce) show.classList.add('is-auto');
+
+    var select = function (i, focus) {
+      current = (i + tabs.length) % tabs.length;
+      tabs.forEach(function (t, k) {
+        var on = k === current;
+        t.classList.toggle('is-active', on);
+        t.setAttribute('aria-selected', on ? 'true' : 'false');
+        t.tabIndex = on ? 0 : -1;
+      });
+      panels.forEach(function (p, k) { p.classList.toggle('is-active', k === current); });
+      if (focus) tabs[current].focus({ preventScroll: true });
+      // keep the active tab visible in the swipeable row (small screens) without moving the page
+      if (nav.scrollWidth > nav.clientWidth) {
+        var t = tabs[current];
+        nav.scrollTo({ left: t.offsetLeft - (nav.clientWidth - t.offsetWidth) / 2, behavior: reduce ? 'auto' : 'smooth' });
+      }
+    };
+    var stopAuto = function () { show.classList.remove('is-auto'); };
+
+    tabs.forEach(function (t, i) {
+      t.addEventListener('click', function () { stopAuto(); select(i); });
+      // the progress bar finishing = time for the next brand
+      t.querySelector('.brand-show__timer').addEventListener('animationend', function () {
+        if (show.classList.contains('is-auto') && i === current) select(current + 1);
+      });
+    });
+    nav.addEventListener('keydown', function (e) {
+      var k = e.key, next = null;
+      if (k === 'ArrowDown' || k === 'ArrowRight') next = current + 1;
+      else if (k === 'ArrowUp' || k === 'ArrowLeft') next = current - 1;
+      else if (k === 'Home') next = 0;
+      else if (k === 'End') next = tabs.length - 1;
+      if (next === null) return;
+      e.preventDefault();
+      stopAuto();
+      select(next, true);
+    });
+
+    // pause while the visitor is looking at / using a panel, or the section is off screen
+    var hovering = false, focused = false, visible = false;
+    var update = function () { show.classList.toggle('is-paused', hovering || focused || !visible || document.hidden); };
+    show.addEventListener('mouseenter', function () { hovering = true; update(); });
+    show.addEventListener('mouseleave', function () { hovering = false; update(); });
+    show.addEventListener('focusin', function () { focused = true; update(); });
+    show.addEventListener('focusout', function (e) { if (!show.contains(e.relatedTarget)) { focused = false; update(); } });
+    document.addEventListener('visibilitychange', update);
+    if ('IntersectionObserver' in window) {
+      new IntersectionObserver(function (entries) { visible = entries[0].isIntersecting; update(); }, { threshold: 0.35 }).observe(show);
+    } else { visible = true; }
+    update();
+  })();
+
   /* ----------------------------- HERO ----------------------------- */
   var hero = document.querySelector('[data-hero]');
   if (!hero) return;
