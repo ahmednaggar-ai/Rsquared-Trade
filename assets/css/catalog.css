@@ -1163,3 +1163,242 @@ a.mb-card__media{ display: block; }
 @media (max-width: 991.98px){
 	.mb-spec-groups{ columns: 1; }
 }
+
+
+/* ==========================================================================
+   Structured machine details: key figures + tabs (Specifications ·
+   Features & benefits · Compare models)
+   ========================================================================== */
+
+/* key figures strip */
+.mb-figures{
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+	gap: 1px;
+	margin-top: 56px;
+	overflow: hidden;
+	border: 1px solid var(--rs-border);
+	border-radius: 18px;
+	background: var(--rs-border);
+}
+.mb-figure{
+	display: grid;
+	gap: 6px;
+	align-content: start;
+	padding: 22px 22px 20px;
+	background: var(--rs-surface);
+}
+.mb-figure i{
+	display: grid;
+	place-items: center;
+	width: 38px; height: 38px;
+	margin-bottom: 6px;
+	border-radius: 10px;
+	background: var(--rs-icon-bg);
+	color: var(--rs-accent);
+	font-size: .95rem;
+}
+.mb-figure strong{
+	font-family: var(--rs-heading-font);
+	font-size: 1.3rem;
+	font-weight: 700;
+	line-height: 1.15;
+	color: var(--rs-text);
+}
+.mb-figure span{
+	font-size: .7rem;
+	font-weight: 700;
+	letter-spacing: .12em;
+	text-transform: uppercase;
+	color: var(--rs-subtle);
+}
+
+/* tabs */
+.mb-dtabs{ margin-top: 40px; }
+.mb-dtabs__bar{
+	position: sticky;
+	top: 130px;              /* under the navbar + product-line tabs */
+	z-index: 5;
+	display: flex;
+	gap: 6px;
+	overflow-x: auto;
+	scrollbar-width: none;
+	padding: 6px;
+	border: 1px solid var(--rs-border);
+	border-radius: 14px;
+	background: var(--rs-nav-bg);
+	-webkit-backdrop-filter: saturate(180%) blur(12px);
+	backdrop-filter: saturate(180%) blur(12px);
+}
+.mb-dtabs__bar::-webkit-scrollbar{ display: none; }
+.mb-dtabs__tab{
+	flex-shrink: 0;
+	display: inline-flex;
+	align-items: center;
+	gap: 10px;
+	padding: 12px 18px;
+	border: 0;
+	border-radius: 10px;
+	background: transparent;
+	font-family: var(--rs-heading-font);
+	font-size: .82rem;
+	font-weight: 700;
+	letter-spacing: .04em;
+	color: var(--rs-text-2);
+	cursor: pointer;
+	transition: background-color .2s ease, color .2s ease;
+}
+.mb-dtabs__tab span{
+	min-width: 24px;
+	padding: 2px 8px;
+	border-radius: 999px;
+	background: var(--rs-surface-2);
+	font-size: .7rem;
+	color: var(--rs-subtle);
+}
+.mb-dtabs__tab:hover{ background: var(--rs-surface-2); color: var(--rs-text); }
+.mb-dtabs__tab.is-active{ background: var(--rs-contrast-bg); color: var(--rs-contrast-text); }
+.mb-dtabs__tab.is-active span{ background: var(--rs-accent); color: var(--rs-ink); }
+.mb-dtabs__tab:focus-visible{ outline: none; box-shadow: 0 0 0 4px rgba(254,210,6,.45); }
+.mb-dtabs__panel{ padding-top: 24px; animation: rs-rise .4s cubic-bezier(.2,.7,.2,1) both; }
+
+/* Specifications: group list + rows */
+.mb-spectool{
+	display: grid;
+	grid-template-columns: 260px 1fr;
+	gap: 28px;
+	align-items: start;
+}
+.mb-spectool__nav{
+	position: sticky;
+	top: 210px;
+	display: grid;
+	gap: 4px;
+	padding: 10px;
+	border: 1px solid var(--rs-border);
+	border-radius: 14px;
+	background: var(--rs-surface);
+}
+.mb-spectool__group{
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	gap: 10px;
+	padding: 11px 14px;
+	border: 0;
+	border-radius: 10px;
+	background: transparent;
+	font-size: .9rem;
+	font-weight: 600;
+	text-align: left;
+	color: var(--rs-text-2);
+	cursor: pointer;
+	transition: background-color .2s ease, color .2s ease;
+}
+.mb-spectool__group span{ font-size: .75rem; font-weight: 700; color: var(--rs-subtle); }
+.mb-spectool__group:hover{ background: var(--rs-surface-2); color: var(--rs-text); }
+.mb-spectool__group.is-active{ background: rgba(254,210,6,.16); color: var(--rs-text); box-shadow: inset 3px 0 0 var(--rs-accent); }
+.mb-spectool__group:focus-visible{ outline: none; box-shadow: 0 0 0 3px rgba(254,210,6,.5); }
+
+.mb-spectool__panel{
+	padding: 22px 28px 26px;
+	border: 1px solid var(--rs-border);
+	border-radius: 18px;
+	background: var(--rs-surface);
+}
+.mb-spectool__search{
+	display: flex;
+	align-items: center;
+	gap: 10px;
+	margin: 0 0 8px;
+	padding: 0 14px;
+	border: 1px solid var(--rs-border-strong);
+	border-radius: 10px;
+	background: var(--rs-surface-2);
+	color: var(--rs-subtle);
+}
+.mb-spectool__search input{
+	flex: 1;
+	height: 44px;
+	border: 0;
+	background: transparent;
+	font-size: .95rem;
+	color: var(--rs-text);
+	outline: none;
+}
+.mb-spectool__search:focus-within{ border-color: var(--rs-accent-dark); box-shadow: 0 0 0 4px rgba(254,210,6,.25); }
+.mb-spectool__block .mb-spec-group__title{ margin-top: 22px; }
+.mb-spectool__rows{ margin: 0; }
+.mb-spectool__rows div{
+	display: grid;
+	grid-template-columns: minmax(160px, 40%) 1fr;
+	gap: 16px;
+	padding: 12px 10px;
+	border-bottom: 1px solid var(--rs-border);
+}
+.mb-spectool__rows div:nth-child(even){ background: var(--rs-surface-2); }
+.mb-spectool__rows dt{
+	font-size: .88rem;
+	font-weight: 600;
+	color: var(--rs-muted);
+}
+.mb-spectool__rows dd{
+	margin: 0;
+	font-family: var(--rs-heading-font);
+	font-size: .92rem;
+	font-weight: 700;
+	color: var(--rs-text);
+}
+.mb-spectool__empty{ margin: 18px 0 0; color: var(--rs-muted); }
+
+/* Features & benefits: numbered cards in flowing columns (no gaps under short cards) */
+.mb-features-grid{ columns: 2; column-gap: 20px; }
+.mb-features-grid .mb-section{
+	display: inline-block;
+	width: 100%;
+	margin-bottom: 20px;
+	break-inside: avoid;
+	position: relative;
+	padding-left: 64px;
+}
+.mb-section__num{
+	position: absolute;
+	left: 22px; top: 22px;
+	font-family: var(--rs-heading-font);
+	font-size: .85rem;
+	font-weight: 700;
+	color: var(--rs-accent-text);
+}
+
+/* Compare models */
+.mb-compare{ min-width: 640px; }
+.mb-compare thead th a{ color: #fff; text-decoration: none; border-bottom: 1px dashed rgba(255,255,255,.5); }
+.mb-compare thead th a:hover{ color: var(--rs-accent); border-bottom-color: var(--rs-accent); }
+.mb-compare thead th.is-current{ background: var(--rs-accent); color: var(--rs-ink); }
+.mb-compare thead th small{ display: block; margin-top: 2px; font-size: .62rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; opacity: .7; }
+.mb-compare td.is-current{ background: rgba(254,210,6,.14); }
+
+@media (max-width: 991.98px){
+	.mb-dtabs__bar{ top: 118px; }
+	.mb-spectool{ grid-template-columns: 1fr; gap: 14px; }
+	/* group list becomes a scrolling row of chips */
+	.mb-spectool__nav{
+		position: static;
+		display: flex;
+		overflow-x: auto;
+		scrollbar-width: none;
+		padding: 6px;
+	}
+	.mb-spectool__nav::-webkit-scrollbar{ display: none; }
+	.mb-spectool__group{ flex-shrink: 0; padding: 9px 12px; }
+	.mb-spectool__group.is-active{ box-shadow: inset 0 -3px 0 var(--rs-accent); }
+	.mb-features-grid{ columns: 1; }
+}
+@media (max-width: 575.98px){
+	.mb-figures{ grid-template-columns: repeat(2, 1fr); }
+	.mb-figure{ padding: 16px; }
+	.mb-figure strong{ font-size: 1.1rem; }
+	.mb-spectool__panel{ padding: 14px 14px 18px; }
+	.mb-spectool__rows div{ grid-template-columns: 1fr; gap: 2px; padding: 10px 6px; }
+	.mb-dtabs__tab{ padding: 10px 12px; font-size: .76rem; }
+}

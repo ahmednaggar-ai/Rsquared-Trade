@@ -317,6 +317,194 @@
     '</article>';
   };
 
+  /* ------------------- structured machine details ------------------- */
+  var clip = function (s, n) { s = String(s); return s.length > n ? s.slice(0, n).replace(/\s+\S*$/, '') + '…' : s; };
+
+  // The figures buyers compare first, looked up in the grouped specs (first match wins)
+  var FIGURES = [
+    { label: 'Operating weight', icon: 'fa-weight-hanging', re: /operating weight/i },
+    { label: 'Engine power', icon: 'fa-tachometer-alt', re: /maximum power|net power|gross power|rated power/i },
+    { label: 'Bucket capacity', icon: 'fa-cube', re: /bucket capacity/i },
+    { label: 'Max digging depth', icon: 'fa-arrows-alt-v', re: /maximum digging depth|max\.? digging depth/i },
+    { label: 'Max reach', icon: 'fa-arrows-alt-h', re: /maximum (digging )?reach|reach at ground/i },
+    { label: 'Dump height', icon: 'fa-level-up-alt', re: /dumping height|dump height|loading height/i },
+    { label: 'Blade width', icon: 'fa-ruler-horizontal', re: /blade width|blade length|drum width/i },
+    { label: 'Travel speed', icon: 'fa-shipping-fast', re: /high speed|maximum speed|travel speed|forward speed/i },
+    { label: 'Max torque', icon: 'fa-cog', re: /maximum torque/i }
+  ];
+  var keyFigures = function (p, max) {
+    var out = [];
+    FIGURES.forEach(function (f) {
+      if (out.length >= (max || 6)) return;
+      for (var g = 0; g < (p.specGroups || []).length; g++) {
+        var grp = p.specGroups[g];
+        for (var i = 0; i < grp.specs.length; i++) {
+          var s = grp.specs[i];
+          if (f.re.test(s.label) || (f.re.test(grp.title) && grp.specs.length === 1)) {
+            var v = s.value.replace(/\s*@.*$/, '').trim();
+            if (v && v.length <= 28) { out.push({ label: f.label, icon: f.icon, value: v }); return; }
+          }
+        }
+      }
+    });
+    return out;
+  };
+  var keyFiguresStrip = function (p) {
+    var figs = keyFigures(p, 6);
+    if (!figs.length) return '';
+    return '<section class="mb-figures" aria-label="Key figures">' + figs.map(function (f) {
+      return '<div class="mb-figure"><i class="fas ' + f.icon + '" aria-hidden="true"></i>' +
+        '<strong>' + esc(f.value) + '</strong><span>' + esc(f.label) + '</span></div>';
+    }).join('') + '</section>';
+  };
+
+  var tabbedDetails = function (c, p) {
+    var tabs = [];
+    if (p.specGroups && p.specGroups.length) {
+      var total = p.specGroups.reduce(function (n, g) { return n + g.specs.length; }, 0);
+      tabs.push({
+        id: 'specs', label: 'Specifications', count: total,
+        html:
+          '<div class="mb-spectool">' +
+            '<div class="mb-spectool__nav" role="tablist" aria-label="Specification groups">' +
+              '<button type="button" class="mb-spectool__group is-active" data-spec-group="all" aria-selected="true">All<span>' + total + '</span></button>' +
+              p.specGroups.map(function (g, i) {
+                return '<button type="button" class="mb-spectool__group" data-spec-group="' + i + '" aria-selected="false">' + esc(g.title) + '<span>' + g.specs.length + '</span></button>';
+              }).join('') +
+            '</div>' +
+            '<div class="mb-spectool__panel">' +
+              '<label class="mb-spectool__search"><i class="fas fa-search" aria-hidden="true"></i>' +
+                '<span class="visually-hidden">Search specifications</span>' +
+                '<input type="search" placeholder="Search specifications (e.g. engine, depth, pump)" data-spec-search></label>' +
+              p.specGroups.map(function (g, i) {
+                return '<div class="mb-spectool__block" data-spec-block="' + i + '">' +
+                  '<h3 class="mb-spec-group__title">' + esc(g.title) + '</h3>' +
+                  '<dl class="mb-spectool__rows">' + g.specs.map(function (s) {
+                    return '<div data-spec-row><dt>' + esc(s.label) + '</dt><dd>' + esc(s.value) + '</dd></div>';
+                  }).join('') + '</dl>' +
+                '</div>';
+              }).join('') +
+              '<p class="mb-spectool__empty" data-spec-empty hidden>No specification matches your search.</p>' +
+              (c.specNote ? '<p class="mb-specs__note"><i class="fas fa-info-circle" aria-hidden="true"></i> ' + esc(c.specNote) + '</p>' : '') +
+              (p.source ? '<p class="mb-specs__note"><i class="fas fa-external-link-alt" aria-hidden="true"></i> Specifications from the manufacturer; <a href="' + esc(p.source) + '" target="_blank" rel="noopener">see the official page</a>.</p>' : '') +
+            '</div>' +
+          '</div>'
+      });
+    }
+    if (p.sections && p.sections.length) {
+      tabs.push({
+        id: 'features', label: 'Features & benefits', count: p.sections.length,
+        html: '<div class="mb-features-grid">' + p.sections.map(function (s, i) {
+          return '<article class="mb-section">' +
+            '<span class="mb-section__num">' + (i < 9 ? '0' : '') + (i + 1) + '</span>' +
+            (s.title ? '<h3 class="mb-section__title">' + esc(s.title) + '</h3>' : '') +
+            s.text.map(function (t) { return '<p>' + esc(t) + '</p>'; }).join('') +
+          '</article>';
+        }).join('') + '</div>'
+      });
+    }
+    // compare the key figures of every model in this line, this one highlighted
+    var peers = c.products.filter(function (x) { return x.specGroups; });
+    if (peers.length > 1) {
+      var rows = [], seen = {};
+      peers.forEach(function (x) { keyFigures(x, 9).forEach(function (f) { if (!seen[f.label]) { seen[f.label] = 1; rows.push(f.label); } }); });
+      var val = function (x, label) { var f = keyFigures(x, 9).filter(function (y) { return y.label === label; })[0]; return f ? f.value : '–'; };
+      tabs.push({
+        id: 'compare', label: 'Compare models', count: peers.length,
+        html:
+          '<div class="mb-variants__scroll mb-compare__scroll" tabindex="0" role="region" aria-label="Compare ' + esc(c.name) + '">' +
+            '<table class="mb-variants mb-compare">' +
+              '<thead><tr><th scope="col">' + esc(c.name) + '</th>' + peers.map(function (x) {
+                var me = x === p;
+                return '<th scope="col"' + (me ? ' class="is-current"' : '') + '>' +
+                  (me ? esc(x.name) + '<small>This model</small>'
+                      : '<a href="' + urlFor(c.id, x.id) + '" data-cat="' + c.id + '" data-model="' + esc(x.id) + '">' + esc(x.name) + '</a>') +
+                '</th>';
+              }).join('') + '</tr></thead>' +
+              '<tbody>' + rows.map(function (r) {
+                return '<tr><th scope="row">' + esc(r) + '</th>' + peers.map(function (x) {
+                  return '<td' + (x === p ? ' class="is-current"' : '') + '>' + esc(val(x, r)) + '</td>';
+                }).join('') + '</tr>';
+              }).join('') + '</tbody>' +
+            '</table>' +
+          '</div>'
+      });
+    }
+    if (!tabs.length) return '';
+    return '<section class="mb-dtabs" data-dtabs>' +
+      '<div class="mb-dtabs__bar" role="tablist" aria-label="Model details">' + tabs.map(function (t, i) {
+        return '<button type="button" role="tab" class="mb-dtabs__tab' + (i ? '' : ' is-active') + '" id="dtab-' + t.id + '" aria-controls="dpanel-' + t.id + '" aria-selected="' + !i + '" data-dtab="' + t.id + '">' +
+          esc(t.label) + '<span>' + t.count + '</span></button>';
+      }).join('') + '</div>' +
+      tabs.map(function (t, i) {
+        return '<div class="mb-dtabs__panel" role="tabpanel" id="dpanel-' + t.id + '" aria-labelledby="dtab-' + t.id + '"' + (i ? ' hidden' : '') + '>' + t.html + '</div>';
+      }).join('') +
+    '</section>';
+  };
+
+  var showDetailTab = function (btn) {
+    var root = btn.closest('[data-dtabs]');
+    if (!root) return;
+    Array.prototype.forEach.call(root.querySelectorAll('[data-dtab]'), function (b) {
+      var on = b === btn;
+      b.classList.toggle('is-active', on);
+      b.setAttribute('aria-selected', String(on));
+      b.tabIndex = on ? 0 : -1;
+      var panel = document.getElementById(b.getAttribute('aria-controls'));
+      if (panel) panel.hidden = !on;
+    });
+  };
+  // spec groups: "all" or one group; search filters rows across every group
+  var showSpecGroup = function (which) {
+    var root = el.grid.querySelector('.mb-spectool');
+    if (!root) return;
+    var search = root.querySelector('[data-spec-search]');
+    if (search) search.value = '';
+    Array.prototype.forEach.call(root.querySelectorAll('[data-spec-group]'), function (b) {
+      var on = b.getAttribute('data-spec-group') === which;
+      b.classList.toggle('is-active', on);
+      b.setAttribute('aria-selected', String(on));
+    });
+    Array.prototype.forEach.call(root.querySelectorAll('[data-spec-block]'), function (blk) {
+      blk.hidden = which !== 'all' && blk.getAttribute('data-spec-block') !== which;
+      Array.prototype.forEach.call(blk.querySelectorAll('[data-spec-row]'), function (r) { r.hidden = false; });
+    });
+    var empty = root.querySelector('[data-spec-empty]');
+    if (empty) empty.hidden = true;
+  };
+  var searchSpecs = function (q) {
+    var root = el.grid.querySelector('.mb-spectool');
+    if (!root) return;
+    q = q.trim().toLowerCase();
+    if (!q) { showSpecGroup('all'); return; }
+    Array.prototype.forEach.call(root.querySelectorAll('[data-spec-group]'), function (b) {
+      b.classList.remove('is-active'); b.setAttribute('aria-selected', 'false');
+    });
+    var any = false;
+    Array.prototype.forEach.call(root.querySelectorAll('[data-spec-block]'), function (blk) {
+      var title = blk.querySelector('h3').textContent.toLowerCase();
+      var shown = 0;
+      Array.prototype.forEach.call(blk.querySelectorAll('[data-spec-row]'), function (r) {
+        var hit = title.indexOf(q) !== -1 || r.textContent.toLowerCase().indexOf(q) !== -1;
+        r.hidden = !hit; if (hit) shown++;
+      });
+      blk.hidden = !shown; if (shown) any = true;
+    });
+    var empty = root.querySelector('[data-spec-empty]');
+    if (empty) empty.hidden = any;
+  };
+  document.addEventListener('input', function (e) {
+    if (e.target.matches && e.target.matches('[data-spec-search]')) searchSpecs(e.target.value);
+  });
+  // arrow keys move between the detail tabs
+  document.addEventListener('keydown', function (e) {
+    var t = e.target.closest && e.target.closest('[data-dtab]');
+    if (!t || (e.key !== 'ArrowRight' && e.key !== 'ArrowLeft')) return;
+    var all = Array.prototype.slice.call(t.parentNode.querySelectorAll('[data-dtab]'));
+    var next = all[(all.indexOf(t) + (e.key === 'ArrowRight' ? 1 : -1) + all.length) % all.length];
+    showDetailTab(next); next.focus(); e.preventDefault();
+  });
+
   /* ---------------------------- detail ---------------------------- */
   var renderDetail = function (c, p) {
     var list = c.products;
@@ -388,35 +576,9 @@
           p.features.map(function (f) { return '<li>' + esc(f) + '</li>'; }).join('') + '</ul>'
       : '';
 
-    // grouped technical specs (e.g. Engine / Hydraulic system / Working dimensions)
-    if (p.specGroups && p.specGroups.length) {
-      specs +=
-        '<section class="mb-specs" aria-labelledby="mb-groups-title">' +
-          '<h2 class="mb-specs__title" id="mb-groups-title">Technical specifications</h2>' +
-          '<div class="mb-spec-groups">' + p.specGroups.map(function (g) {
-            return '<div class="mb-spec-group">' +
-              '<h3 class="mb-spec-group__title">' + esc(g.title) + '</h3>' +
-              '<dl class="mb-specs__table mb-specs__table--single">' + g.specs.map(function (s) {
-                return '<div><dt>' + esc(s.label) + '</dt><dd>' + esc(s.value) + '</dd></div>';
-              }).join('') + '</dl>' +
-            '</div>';
-          }).join('') + '</div>' +
-          (c.specNote ? '<p class="mb-specs__note"><i class="fas fa-info-circle" aria-hidden="true"></i> ' + esc(c.specNote) + '</p>' : '') +
-          (p.source ? '<p class="mb-specs__note"><i class="fas fa-external-link-alt" aria-hidden="true"></i> Specifications from the manufacturer; <a href="' + esc(p.source) + '" target="_blank" rel="noopener">see the official page</a>.</p>' : '') +
-        '</section>';
-    }
-    // "Features & benefits": titled text blocks, shown as cards under the main details
-    var sections = p.sections && p.sections.length
-      ? '<section class="mb-sections" aria-labelledby="mb-sections-title">' +
-          '<h2 class="mb-specs__title" id="mb-sections-title">Features &amp; benefits</h2>' +
-          '<div class="mb-sections__grid">' + p.sections.map(function (s) {
-            return '<article class="mb-section">' +
-              (s.title ? '<h3 class="mb-section__title">' + esc(s.title) + '</h3>' : '') +
-              s.text.map(function (t) { return '<p>' + esc(t) + '</p>'; }).join('') +
-            '</article>';
-          }).join('') + '</div>' +
-        '</section>'
-      : '';
+    // Machines with grouped specs / feature sections (e.g. HİDROMEK) get a structured layout instead
+    // of long stacked blocks: a key-figures strip, then tabs (Specifications · Features · Compare).
+    var sections = p.specGroups || p.sections ? keyFiguresStrip(p) + tabbedDetails(c, p) : '';
 
     // accessories: "It's available for …" repeats what the "Works with" chips already say
     var avail = /\bavailable for\b/i;
@@ -444,6 +606,10 @@
             (p.fits.indexOf('all') !== -1 ? ['All ' + BRAND.name + ' units'] : p.fits.map(function (f) { var x = byId(f); return x ? x.name : f; }))
               .map(function (n) { return '<em>' + esc(n) + '</em>'; }).join('') + '</p>' : '') +
           paragraphs.map(function (d) { return '<p class="mb-detail__text">' + esc(d) + '</p>'; }).join('') +
+          // no description of its own: open with the first feature as a short intro
+          (!paragraphs.length && p.sections && p.sections[0] && p.sections[0].text[0]
+            ? '<p class="mb-detail__text">' + esc(clip(p.sections[0].text[0], 240)) + '</p>'
+            : '') +
           (p.uses && p.uses.length ? '<ul class="mb-detail__uses">' + p.uses.map(function (u) { return '<li>' + esc(u) + '</li>'; }).join('') + '</ul>' : '') +
           features +
           '<div class="mb-detail__actions">' +
@@ -669,6 +835,10 @@
       go(a.getAttribute('data-cat') || null, true, a.getAttribute('data-model'));
       return;
     }
+    var dtab = e.target.closest('[data-dtab]');
+    if (dtab) { showDetailTab(dtab); return; }
+    var grpBtn = e.target.closest('[data-spec-group]');
+    if (grpBtn) { showSpecGroup(grpBtn.getAttribute('data-spec-group')); return; }
     var thumb = e.target.closest('[data-thumb]');
     if (thumb) {
       if (gallery) gallery.go(+thumb.getAttribute('data-thumb'));
